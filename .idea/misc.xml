@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Workspace/app/src/main/res/drawable/asset_banner.xml" value="0.1675" />
+        <entry key="..\:/Workspace/app/src/main/res/drawable/ic_round_arrow_back_ios.xml" value="0.1675" />
+        <entry key="..\:/Workspace/app/src/main/res/drawable/ic_round_bookmark_border.xml" value="0.1675" />
+        <entry key="..\:/Workspace/app/src/main/res/drawable/ic_round_star_border.xml" value="0.1675" />
         <entry key="..\:/Workspace/app/src/main/res/drawable/shape_search_background.xml" value="0.1675" />
+        <entry key="..\:/Workspace/app/src/main/res/layout/activity_cover.xml" value="0.25" />
         <entry key="..\:/Workspace/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Workspace/app/src/main/res/layout/activity_splash.xml" value="0.264" />
       </map>
