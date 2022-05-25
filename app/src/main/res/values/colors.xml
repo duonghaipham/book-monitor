@@ -16,4 +16,6 @@
     <color name="secondaryDarkColor">#c75b39</color>
     <color name="primaryTextColor">#262626</color>
     <color name="secondaryTextColor">#262626</color>
+
+    <color name="buttonAccent">#FF4C485F</color>
 </resources>

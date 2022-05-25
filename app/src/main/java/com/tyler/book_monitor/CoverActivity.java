@@ -1,14 +1,17 @@
 package com.tyler.book_monitor;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.tyler.book_monitor.helpers.DominantColor;
 
 public class CoverActivity extends AppCompatActivity {
 
@@ -25,22 +28,16 @@ public class CoverActivity extends AppCompatActivity {
         llCover = findViewById(R.id.ll_cover);
         ivCover = findViewById(R.id.iv_cover);
 
-        Bitmap cover = ((BitmapDrawable)ivCover.getDrawable()).getBitmap();
+        Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
 
-        int dominantColor = getDominantColor(cover);
+        DominantColor dominantColor = new DominantColor(cover);
+        int color = dominantColor.getDominantColor();
+        GradientDrawable gd = dominantColor.getDominantColorGradient();
 
-        GradientDrawable gd = new GradientDrawable(
-                GradientDrawable.Orientation.TOP_BOTTOM,
-                new int[] {dominantColor, Color.WHITE}
-        );
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(color);
 
         llCover.setBackground(gd);
-    }
-
-    public static int getDominantColor(Bitmap bitmap) {
-        Bitmap newBitmap = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
-        final int color = newBitmap.getPixel(0, 0);
-        newBitmap.recycle();
-        return color;
     }
 }

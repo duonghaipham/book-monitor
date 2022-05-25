@@ -12,6 +12,7 @@
         android:id="@+id/ll_cover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -62,6 +63,86 @@
             android:maxWidth="240dp"
             android:maxHeight="360dp"
             android:src="@drawable/mock_book_cover"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="17dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_book_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textIsSelectable="true"
+            android:textStyle="bold"
+            android:text="Mật mã Da Vinci"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/material_text_headline"/>
+
+        <TextView
+            android:id="@+id/tv_book_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:gravity="center"
+            android:textIsSelectable="true"
+            android:text="Dan Brown"
+            android:textSize="@dimen/material_text_title"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:maxLines="5"
+            android:ellipsize="end"
+            android:text="@string/lorem_ipsum"
+            android:textSize="@dimen/material_text_body1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/buttonAccent"
+            android:textSize="@dimen/material_text_button"
+            android:text="@string/read_offline"
+            app:icon="@drawable/ic_round_menu_book"
+            app:iconPadding="0dp"
+            app:iconGravity="end" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/buttonAccent"
+            android:textSize="@dimen/material_text_button"
+            android:text="@string/read_online"
+            app:icon="@drawable/ic_round_public"
+            app:iconPadding="0dp"
+            app:iconGravity="end" />
 
     </LinearLayout>
 
