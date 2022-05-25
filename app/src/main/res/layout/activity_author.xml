@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AuthorActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/mock_author"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Dan Brown"
+            android:textSize="@dimen/material_text_display1"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textColor="@color/primaryTextColor"/>
+
+        <TextView
+            android:id="@+id/tv_author_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="He is a writer, author, and professor of the English language at Harvard University."
+            android:textSize="@dimen/material_text_body1"
+            android:fontFamily="@font/roboto_condensed_regular"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_author_books"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="All Books"
+            android:textSize="@dimen/material_text_title"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textColor="@color/primaryTextColor"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_author_books"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

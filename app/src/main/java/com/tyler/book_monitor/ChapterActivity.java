@@ -1,6 +1,7 @@
 package com.tyler.book_monitor;
 
-import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
@@ -10,11 +11,9 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.tyler.book_monitor.helpers.DominantColor;
 
-public class CoverActivity extends AppCompatActivity {
+public class ChapterActivity extends AppCompatActivity {
 
     private LinearLayout llCover;
     private ImageView ivCover;
@@ -22,7 +21,7 @@ public class CoverActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cover);
+        setContentView(R.layout.activity_chapter);
 
         getSupportActionBar().hide();
 
@@ -40,8 +39,5 @@ public class CoverActivity extends AppCompatActivity {
         window.setStatusBarColor(color);
 
         llCover.setBackground(gd);
-
-        Intent intent = new Intent(this, ChapterActivity.class);
-        startActivity(intent);
     }
 }
