@@ -1,164 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginBottom="0dp"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/hello"
-        android:textSize="@dimen/material_text_display1"
-        android:fontFamily="@font/roboto_condensed_regular"
-        android:textColor="@color/primaryTextColor"/>
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/shape_search_background"
-        android:elevation="3dp"
-        app:iconifiedByDefault="false"
-        app:queryBackground="@null"
-        app:queryHint="@string/search_hint"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/asset_banner"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="0dp"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/hello"
+            android:textSize="@dimen/material_text_display1"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textColor="@color/primaryTextColor"/>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sv_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/shape_search_background"
+            android:elevation="3dp"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@null"
+            app:queryHint="@string/search_hint"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/asset_banner"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="bottom">
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/popular_authors"
-                android:textSize="@dimen/material_text_headline"
-                android:fontFamily="@font/roboto_condensed_regular"
-                android:textColor="@color/primaryTextColor"/>
+                android:layout_marginBottom="10dp"
+                android:gravity="bottom">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/popular_authors"
+                    android:textSize="@dimen/material_text_headline"
+                    android:fontFamily="@font/roboto_condensed_regular"
+                    android:textColor="@color/primaryTextColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foreground="?selectableItemBackground"
-                android:text="@string/view_all"
-                android:textSize="@dimen/material_text_button" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foreground="?selectableItemBackground"
+                    android:text="@string/view_all"
+                    android:textSize="@dimen/material_text_button" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_popular_authors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_popular_authors"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="bottom">
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/continue_reading"
-                android:textSize="@dimen/material_text_headline"
-                android:fontFamily="@font/roboto_condensed_regular"
-                android:textColor="@color/primaryTextColor"/>
+                android:layout_marginBottom="10dp"
+                android:gravity="bottom">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/continue_reading"
+                    android:textSize="@dimen/material_text_headline"
+                    android:fontFamily="@font/roboto_condensed_regular"
+                    android:textColor="@color/primaryTextColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foreground="?selectableItemBackground"
-                android:text="@string/view_all"
-                android:textSize="@dimen/material_text_button" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foreground="?selectableItemBackground"
+                    android:text="@string/view_all"
+                    android:textSize="@dimen/material_text_button" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_continued_books"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_continued_books"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="bottom">
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/trending_books"
-                android:textSize="@dimen/material_text_headline"
-                android:fontFamily="@font/roboto_condensed_regular"
-                android:textColor="@color/primaryTextColor"/>
+                android:layout_marginBottom="10dp"
+                android:gravity="bottom">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trending_books"
+                    android:textSize="@dimen/material_text_headline"
+                    android:fontFamily="@font/roboto_condensed_regular"
+                    android:textColor="@color/primaryTextColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foreground="?selectableItemBackground"
-                android:text="@string/view_all"
-                android:textSize="@dimen/material_text_button" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foreground="?selectableItemBackground"
+                    android:text="@string/view_all"
+                    android:textSize="@dimen/material_text_button" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_trending_books"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_trending_books"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
