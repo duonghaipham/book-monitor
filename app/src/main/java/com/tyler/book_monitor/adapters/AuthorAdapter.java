@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.models.Author;
+import com.tyler.book_monitor.data.models.Author;
+import com.tyler.book_monitor.helpers.IAuthorClick;
 
 import java.util.List;
 
@@ -18,10 +19,12 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
 
     private LayoutInflater inflater;
     private List<Author> authors;
+    private IAuthorClick authorClick;
 
-    public AuthorAdapter(Context context, List<Author> authors) {
+    public AuthorAdapter(Context context, List<Author> authors, IAuthorClick authorClick) {
         this.inflater = LayoutInflater.from(context);
         this.authors = authors;
+        this.authorClick = authorClick;
     }
 
     @NonNull
@@ -52,6 +55,19 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
 
             tvName = itemView.findViewById(R.id.tv_name);
 //            ivAvatar = itemView.findViewById(R.id.iv_avatar);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (authorClick != null) {
+                        int position = getAdapterPosition();
+
+                        if (position != RecyclerView.NO_POSITION) {
+                            authorClick.onAuthorClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

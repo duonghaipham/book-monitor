@@ -1,4 +1,4 @@
-package com.tyler.book_monitor;
+package com.tyler.book_monitor.ui.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.tyler.book_monitor.R;
+import com.tyler.book_monitor.ui.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

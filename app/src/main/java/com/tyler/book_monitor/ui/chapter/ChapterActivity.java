@@ -1,4 +1,4 @@
-package com.tyler.book_monitor;
+package com.tyler.book_monitor.ui.chapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.helpers.DominantColor;
 
 public class ChapterActivity extends AppCompatActivity {

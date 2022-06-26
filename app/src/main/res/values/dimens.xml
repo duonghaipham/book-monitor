@@ -12,5 +12,8 @@
     <dimen name="material_text_display2">45sp</dimen>
     <dimen name="material_text_display3">56sp</dimen>
     <dimen name="material_text_display4">112sp</dimen>
-<!--    Reference: https://gist.github.com/passsy/9ab560b8877b316a14ea-->
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--    Reference: https://gist.github.com/passsy/9ab560b8877b316a14ea-->
 </resources>

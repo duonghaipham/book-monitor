@@ -1,4 +1,4 @@
-package com.tyler.book_monitor.models;
+package com.tyler.book_monitor.data.models;
 
 public class Author {
     private String name;

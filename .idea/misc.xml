@@ -5,9 +5,17 @@
       <map>
         <entry key="..\:/Books/app/src/main/res/drawable/asset_banner.xml" value="0.1595" />
         <entry key="..\:/Books/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1595" />
+        <entry key="..\:/Books/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.33197278911564626" />
+        <entry key="..\:/Books/app/src/main/res/layout/activity_all_authors.xml" value="0.25416666666666665" />
+        <entry key="..\:/Books/app/src/main/res/layout/activity_all_books.xml" value="0.25416666666666665" />
+        <entry key="..\:/Books/app/src/main/res/layout/activity_author.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_chapter.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_content.xml" value="0.264" />
+        <entry key="..\:/Books/app/src/main/res/layout/activity_cover.xml" value="0.25416666666666665" />
+        <entry key="..\:/Books/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Books/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/Books/app/src/main/res/layout/fragment_view_authors.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/item_author.xml" value="0.253125" />
         <entry key="..\:/Books/app/src/main/res/layout/item_book.xml" value="0.4" />
         <entry key="..\:/Books/app/src/main/res/menu/bottom_navigation_menu_content.xml" value="0.25416666666666665" />
