@@ -30,4 +30,13 @@ public class DominantColor {
 
         return gd;
     }
+
+    public static GradientDrawable getDominantColorGradient(int color) {
+        GradientDrawable gd = new GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                new int[]{color, Color.WHITE}
+        );
+
+        return gd;
+    }
 }

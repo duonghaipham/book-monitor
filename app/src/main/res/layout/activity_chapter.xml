@@ -42,6 +42,19 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_book_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textIsSelectable="true"
+        android:textStyle="bold"
+        android:text="Mật mã Da Vinci"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/material_text_headline"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

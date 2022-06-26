@@ -5,10 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context=".ui.content.ContentActivity">
+    tools:context=".ui.content.ContentFragment">
 
     <LinearLayout
-        android:id="@+id/ll_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,16 +49,34 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_chapter_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:textSize="@dimen/material_text_title"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:textColor="@color/primaryTextColor"/>
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fl_content"
-        app:layout_constraintTop_toBottomOf="@+id/ll_header"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnv_adjustment"
+        android:id="@+id/bnv_content"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
