@@ -1,27 +1,30 @@
 package com.tyler.book_monitor.ui.content;
 
 import android.annotation.SuppressLint;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.data.models.Chapter;
+import com.tyler.book_monitor.data.models.Setting;
 import com.tyler.book_monitor.helpers.DominantColor;
 import com.tyler.book_monitor.helpers.OnSwipeTouchListener;
 import com.tyler.book_monitor.ui.base.BaseActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ContentActivity extends BaseActivity implements ContentContract.View, ChapterChoicesFragment.IChapterChoice {
+public class ContentActivity extends BaseActivity
+        implements ContentContract.View, ChapterChoicesFragment.IChapterChoice, SettingsContentFragment.ISettingsContent {
 
     private ContentContract.Presenter presenter;
 
@@ -47,20 +50,20 @@ public class ContentActivity extends BaseActivity implements ContentContract.Vie
 
         clContent.setOnTouchListener(new OnSwipeTouchListener(this) {
             public void onSwipeLeft() {
-                presenter.jumpNextChapter();
+                presenter.jumpNextChapter(ContentActivity.this);
             }
 
             public void onSwipeRight() {
-                presenter.jumpPreviousChapter();
+                presenter.jumpPreviousChapter(ContentActivity.this);
             }
         });
 
         ibPrev.setOnClickListener(v -> {
-            presenter.jumpPreviousChapter();
+            presenter.jumpPreviousChapter(this);
         });
 
         ibNext.setOnClickListener(v -> {
-            presenter.jumpNextChapter();
+            presenter.jumpNextChapter(this);
         });
 
         bnvAdjustment.setOnItemSelectedListener(v -> {
@@ -69,7 +72,7 @@ public class ContentActivity extends BaseActivity implements ContentContract.Vie
                     presenter.showChapterChoices();
                     return true;
                 case R.id.bnvi_settings:
-                    presenter.showSettings();
+                    presenter.showSettings(this);
                     return true;
             }
 
@@ -77,7 +80,7 @@ public class ContentActivity extends BaseActivity implements ContentContract.Vie
         });
 
         presenter.initialize(this);
-        presenter.loadContent();
+        presenter.loadContent(this);
     }
 
     @Override
@@ -92,10 +95,15 @@ public class ContentActivity extends BaseActivity implements ContentContract.Vie
     }
 
     @Override
-    public void onLoadContent(String chapter, String content) {
+    public void onLoadContent(Setting setting, String chapter, String content) {
         Bundle bundle = new Bundle();
         bundle.putString("chapter", chapter);
         bundle.putString("content", content);
+        bundle.putInt("font", setting.getFont());
+        bundle.putInt("fontSize", setting.getFontSize());
+
+        ibPrev.setVisibility(setting.getNavigation() ? View.VISIBLE : View.GONE);
+        ibNext.setVisibility(setting.getNavigation() ? View.VISIBLE : View.GONE);
 
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
@@ -115,14 +123,40 @@ public class ContentActivity extends BaseActivity implements ContentContract.Vie
     }
 
     @Override
-    public void onShowSettings() {
+    public void onShowSettings(Setting setting) {
         SettingsContentFragment fragment = new SettingsContentFragment();
 
+        Bundle bundle = new Bundle();
+        bundle.putInt("font", setting.getFont());
+        bundle.putInt("fontSize", setting.getFontSize());
+        bundle.putBoolean("navigation", setting.getNavigation());
+
+        fragment.setArguments(bundle);
         fragment.show(getSupportFragmentManager(), "settings");
     }
 
     @Override
+    public void onSaveSettings(Setting setting) {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fl_content);
+
+        String[] fonts = getResources().getStringArray(R.array.fonts);
+
+        TextView tvContent = fragment.getView().findViewById(R.id.tv_content);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "font/" + fonts[setting.getFont()] + ".ttf");
+        tvContent.setTypeface(typeface);
+        tvContent.setTextSize(setting.getFontSize());
+
+        ibPrev.setVisibility(setting.getNavigation() ? View.VISIBLE : View.GONE);
+        ibNext.setVisibility(setting.getNavigation() ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
     public void onDataPass(String chapterName, int chapterNumber) {
-        presenter.jumpToChapter(chapterName, chapterNumber);
+        presenter.jumpToChapter(this, chapterName, chapterNumber);
+    }
+
+    @Override
+    public void onDataPass(Setting setting) {
+        presenter.saveSettings(this, setting);
     }
 }
