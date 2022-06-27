@@ -13,6 +13,6 @@ public class ChapterContract {
 
     public interface Presenter {
         void loadContent();
-        void toContentActivity(Context context, int color);
+        void toContentActivity(Context context, int color, int chapterIndex);
     }
 }

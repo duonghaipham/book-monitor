@@ -67,6 +67,6 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
 
     @Override
     public void onChapterClick(int position) {
-        presenter.toContentActivity(this, color);
+        presenter.toContentActivity(this, color, position);
     }
 }

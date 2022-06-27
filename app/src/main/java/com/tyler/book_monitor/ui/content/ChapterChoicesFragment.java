@@ -1,21 +1,17 @@
 package com.tyler.book_monitor.ui.content;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.adapters.ChapterAdapter;
 import com.tyler.book_monitor.adapters.ChapterChoiceAdapter;
 import com.tyler.book_monitor.data.models.Chapter;
-import com.tyler.book_monitor.helpers.IChapterClick;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +19,12 @@ import java.util.Vector;
 
 public class ChapterChoicesFragment extends DialogFragment {
 
-//    private RecyclerView rvChapterChoices;
+    public interface IChapterChoice {
+        void onDataPass(String chapterName, int chapterNumber);
+    }
+
+    private IChapterChoice mChapterChoice;
+
     private ListView lvChapterChoices;
 
     private List<Chapter> mChapterChoices;
@@ -31,7 +32,6 @@ public class ChapterChoicesFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         ArrayList<String> chapterChoices = getArguments().getStringArrayList("chapterChoices");
         mChapterChoices = new Vector<>();
 
@@ -54,9 +54,19 @@ public class ChapterChoicesFragment extends DialogFragment {
         lvChapterChoices.setOnItemClickListener((parent, view1, position, id) -> {
             Chapter chapter = mChapterChoices.get(position);
 
-            Toast.makeText(getActivity(), "You selected " + chapter.getTitle(), Toast.LENGTH_SHORT).show();
+            mChapterChoice.onDataPass(chapter.getTitle(), position);
 
             dismiss();
         });
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mChapterChoice = (IChapterChoice) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context + " must implement IChapterChoice");
+        }
     }
 }

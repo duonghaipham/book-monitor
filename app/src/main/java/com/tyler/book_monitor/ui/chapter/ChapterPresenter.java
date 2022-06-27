@@ -14,6 +14,8 @@ public class ChapterPresenter implements ChapterContract.Presenter {
 
     private ChapterContract.View view;
 
+    private int mChapterIndexTotal = 0;
+
     public ChapterPresenter(ChapterContract.View view) {
         this.view = view;
     }
@@ -30,15 +32,18 @@ public class ChapterPresenter implements ChapterContract.Presenter {
         chapters.add(new Chapter("Chapter 7", "This is chapter 7"));
         chapters.add(new Chapter("Chapter 8", "This is chapter 8"));
         chapters.add(new Chapter("Chapter 9", "This is chapter 9"));
-        chapters.add(new Chapter("Chapter 10", "This is chapter 10"));
+
+        mChapterIndexTotal = chapters.size();
 
         view.onLoadContent(chapters);
     }
 
     @Override
-    public void toContentActivity(Context context, int color) {
+    public void toContentActivity(Context context, int color, int chapterIndex) {
         Bundle bundle = new Bundle();
         bundle.putInt("color", color);
+        bundle.putInt("chapterIndexCurrent", chapterIndex);
+        bundle.putInt("chapterIndexTotal", mChapterIndexTotal);
 
         Intent intent = new Intent(context, ContentActivity.class);
         intent.putExtras(bundle);

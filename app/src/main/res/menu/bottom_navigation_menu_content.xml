@@ -6,8 +6,8 @@
         android:icon="@drawable/ic_round_format_list_bulleted"
         android:title="@string/chapters"/>
     <item
-        android:id="@+id/bnvi_text"
+        android:id="@+id/bnvi_settings"
         android:enabled="true"
-        android:icon="@drawable/ic_round_text_format"
-        android:title="@string/text"/>
+        android:icon="@drawable/ic_round_settings"
+        android:title="@string/settings"/>
 </menu>
