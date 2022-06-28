@@ -1,18 +1,19 @@
 package com.tyler.book_monitor.ui.main;
 
+import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.widget.TextView;
 
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.adapters.AuthorAdapter;
 import com.tyler.book_monitor.adapters.BookAdapter;
-import com.tyler.book_monitor.helpers.IAuthorClick;
-import com.tyler.book_monitor.helpers.IBookClick;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
+import com.tyler.book_monitor.helpers.IAuthorClick;
+import com.tyler.book_monitor.helpers.IBookClick;
 import com.tyler.book_monitor.ui.base.BaseActivity;
 
 import java.util.List;
@@ -21,6 +22,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, IAu
 
     private MainContract.Presenter presenter;
 
+    private ImageButton ibSearch;
+    private ImageButton ibMenu;
     private RecyclerView rvPopularAuthors;
     private RecyclerView rvContinuedBooks;
     private TextView tvViewAllPopularAuthors;
@@ -31,6 +34,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, IAu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ibSearch = findViewById(R.id.ib_search);
+        ibMenu = findViewById(R.id.ib_menu);
         rvPopularAuthors = findViewById(R.id.rv_popular_authors);
         rvContinuedBooks = findViewById(R.id.rv_continued_books);
         tvViewAllPopularAuthors = findViewById(R.id.tv_view_all_popular_authors);
@@ -39,6 +44,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, IAu
         presenter = new MainPresenter(this);
 
         presenter.loadContent();
+
+        ibSearch.setOnClickListener(v -> presenter.toSearchActivity(this));
 
         tvViewAllPopularAuthors.setOnClickListener(v -> presenter.viewAllPopularAuthors(this));
 

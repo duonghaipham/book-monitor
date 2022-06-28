@@ -8,9 +8,9 @@ import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.ui.all_authors.AllAuthorsActivity;
 import com.tyler.book_monitor.ui.all_books.AllBooksActivity;
-import com.tyler.book_monitor.ui.all_books.AllBooksContract;
 import com.tyler.book_monitor.ui.author.AuthorActivity;
 import com.tyler.book_monitor.ui.cover.CoverActivity;
+import com.tyler.book_monitor.ui.search.SearchActivity;
 
 import java.util.List;
 import java.util.Vector;
@@ -36,6 +36,12 @@ public class MainPresenter implements MainContract.Presenter {
         authors.add(new Author("Malcolm Gladwell", ""));
 
         view.onLoadContent(continuedBooks, authors);
+    }
+
+    @Override
+    public void toSearchActivity(Context context) {
+        Intent intent = new Intent(context, SearchActivity.class);
+        context.startActivity(intent);
     }
 
     @Override

@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="175dp"
             android:layout_marginBottom="15dp"
-            android:src="@drawable/asset_banner"/>
+            android:src="@drawable/img_book"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_books"

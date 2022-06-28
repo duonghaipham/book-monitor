@@ -1,6 +1,6 @@
 package com.tyler.book_monitor.data.models;
 
-public class Author {
+public class Author implements IObject {
     private String name;
     private String avatar;
 

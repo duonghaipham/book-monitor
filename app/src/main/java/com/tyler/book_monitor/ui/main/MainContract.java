@@ -14,6 +14,7 @@ public class MainContract {
 
     public interface Presenter {
         void loadContent();
+        void toSearchActivity(Context context);
         void toAuthorActivity(Context context);
         void toCoverActivity(Context context);
         void viewAllPopularAuthors(Context context);

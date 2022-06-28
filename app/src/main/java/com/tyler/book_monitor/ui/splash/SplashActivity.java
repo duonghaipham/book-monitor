@@ -12,7 +12,7 @@ import com.tyler.book_monitor.ui.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 2500;
+    private static int SPLASH_TIME_OUT = 1500;
 
     private LottieAnimationView lavSplash;
 

@@ -1,6 +1,6 @@
 package com.tyler.book_monitor.data.models;
 
-public class Book {
+public class Book implements IObject {
     private String title;
     private String author;
     private int cover;
