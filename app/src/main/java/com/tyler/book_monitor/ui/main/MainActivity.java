@@ -1,9 +1,12 @@
 package com.tyler.book_monitor.ui.main;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,14 +17,14 @@ import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.helpers.IAuthorClick;
 import com.tyler.book_monitor.helpers.IBookClick;
-import com.tyler.book_monitor.ui.base.BaseActivity;
 
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements MainContract.View, IAuthorClick, IBookClick {
+public class MainActivity extends Activity implements MainContract.View, IAuthorClick, IBookClick {
 
     private MainContract.Presenter presenter;
 
+    private DrawerLayout dlConfiguration;
     private ImageButton ibSearch;
     private ImageButton ibMenu;
     private RecyclerView rvPopularAuthors;
@@ -34,6 +37,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, IAu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dlConfiguration = findViewById(R.id.dl_configuration);
         ibSearch = findViewById(R.id.ib_search);
         ibMenu = findViewById(R.id.ib_menu);
         rvPopularAuthors = findViewById(R.id.rv_popular_authors);
@@ -46,6 +50,10 @@ public class MainActivity extends BaseActivity implements MainContract.View, IAu
         presenter.loadContent();
 
         ibSearch.setOnClickListener(v -> presenter.toSearchActivity(this));
+
+        ibMenu.setOnClickListener(v -> {
+            dlConfiguration.openDrawer(Gravity.LEFT);
+        });
 
         tvViewAllPopularAuthors.setOnClickListener(v -> presenter.viewAllPopularAuthors(this));
 
