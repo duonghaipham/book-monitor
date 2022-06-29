@@ -21,7 +21,7 @@ import androidx.fragment.app.DialogFragment;
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.adapters.FontAdapter;
 import com.tyler.book_monitor.data.models.Font;
-import com.tyler.book_monitor.data.models.Setting;
+import com.tyler.book_monitor.data.models.SettingContent;
 
 import java.util.List;
 import java.util.Vector;
@@ -30,7 +30,7 @@ import java.util.Vector;
 public class SettingsContentFragment extends DialogFragment {
 
     public interface ISettingsContent {
-        void onDataPass(Setting setting);
+        void onDataPass(SettingContent setting);
     }
 
     private ISettingsContent mSettingsContent;
@@ -93,9 +93,9 @@ public class SettingsContentFragment extends DialogFragment {
             public void onNothingSelected(AdapterView<?> parent) { }
         });
 
-        builder.setPositiveButton("OK", (dialog, which) -> {
+        builder.setPositiveButton(getResources().getString(R.string.ok), (dialog, which) -> {
             mSettingsContent.onDataPass(
-                    new Setting(
+                    new SettingContent(
                             spnFont.getSelectedItemPosition(),
                             Integer.parseInt(spnFontSize.getSelectedItem().toString()),
                             cbNavigation.isChecked()
@@ -105,7 +105,7 @@ public class SettingsContentFragment extends DialogFragment {
             dismiss();
         });
 
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+        builder.setNegativeButton(getResources().getString(R.string.cancel), (dialog, which) -> dialog.dismiss());
 
         return builder.create();
     }

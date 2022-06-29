@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.tyler.book_monitor.data.models.Chapter;
+import com.tyler.book_monitor.data.prefs.SettingsManager;
 import com.tyler.book_monitor.ui.content.ContentActivity;
 
 import java.util.List;
@@ -18,6 +19,13 @@ public class ChapterPresenter implements ChapterContract.Presenter {
 
     public ChapterPresenter(ChapterContract.View view) {
         this.view = view;
+    }
+
+    @Override
+    public void initialize(Context context) {
+        int themeMode = SettingsManager.getThemeMode(context);
+
+        view.onInitialize(themeMode);
     }
 
     @Override

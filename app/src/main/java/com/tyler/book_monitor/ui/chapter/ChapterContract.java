@@ -8,10 +8,12 @@ import java.util.List;
 
 public class ChapterContract {
     public interface View {
+        void onInitialize(int themeMode);
         void onLoadContent(List<Chapter> chapters);
     }
 
     public interface Presenter {
+        void initialize(Context context);
         void loadContent();
         void toContentActivity(Context context, int color, int chapterIndex);
     }

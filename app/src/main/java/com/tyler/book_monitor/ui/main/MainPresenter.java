@@ -6,6 +6,8 @@ import android.content.Intent;
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
+import com.tyler.book_monitor.data.models.SettingGlobal;
+import com.tyler.book_monitor.data.prefs.SettingsManager;
 import com.tyler.book_monitor.ui.all_authors.AllAuthorsActivity;
 import com.tyler.book_monitor.ui.all_books.AllBooksActivity;
 import com.tyler.book_monitor.ui.author.AuthorActivity;
@@ -66,5 +68,24 @@ public class MainPresenter implements MainContract.Presenter {
     public void viewAllContinueReading(Context context) {
         Intent intent = new Intent(context, AllBooksActivity.class);
         context.startActivity(intent);
+    }
+
+    @Override
+    public void showSettings(Context context) {
+        int language = SettingsManager.getLanguage(context);
+        int themeMode = SettingsManager.getThemeMode(context);
+
+        view.onShowSettings(new SettingGlobal(language, themeMode));
+    }
+
+    @Override
+    public void saveSettings(Context context, SettingGlobal setting) {
+        SettingsManager.setLanguage(context, setting.getLanguage());
+        SettingsManager.setThemeMode(context, setting.getThemeMode());
+    }
+
+    @Override
+    public void showAbout() {
+        view.onShowAbout();
     }
 }

@@ -1,6 +1,7 @@
 package com.tyler.book_monitor.ui.chapter;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -44,17 +45,26 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
 
         presenter.loadContent();
 
-        Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
+        presenter.initialize(this);
+    }
 
-        DominantColor dominantColor = new DominantColor(cover);
-        color = dominantColor.getDominantColor();
-        GradientDrawable gd = dominantColor.getDominantColorGradient();
-
+    @Override
+    public void onInitialize(int themeMode) {
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(color);
 
-        llCover.setBackground(gd);
+        if (themeMode == 1) {
+            window.setStatusBarColor(Color.parseColor("#242527"));
+        }
+        else {
+            Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
+
+            DominantColor dominantColor = new DominantColor(cover);
+            int color = dominantColor.getDominantColor();
+            GradientDrawable gd = dominantColor.getDominantColorGradient();
+
+            llCover.setBackground(gd);
+        }
     }
 
     @Override

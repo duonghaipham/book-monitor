@@ -12,7 +12,7 @@
         android:padding="5dp"
         android:textSize="@dimen/material_text_title"
         android:fontFamily="@font/roboto_condensed_regular"
-        android:textColor="@color/primaryTextColor"
+        android:textColor="@color/secondaryTextColor"
         android:ellipsize="end"
         android:maxLines="1" />
 

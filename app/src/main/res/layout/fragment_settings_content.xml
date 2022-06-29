@@ -18,8 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
             android:text="@string/font"
-            android:textSize="@dimen/material_text_subhead"
-            android:textColor="@color/primaryTextColor" />
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/material_text_subhead" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:textSize="@dimen/material_text_title"
-                android:textColor="@color/primaryTextColor"/>
+                android:textColor="@color/secondaryTextColor"/>
 
             <TextView
                 android:id="@+id/tv_sample"
@@ -41,7 +41,8 @@
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
                 android:textSize="@dimen/material_text_subhead"
-                android:text="@string/sample_text" />
+                android:text="@string/sample_text"
+                android:textColor="@color/primaryTextColor"/>
 
         </LinearLayout>
 
@@ -66,7 +67,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/material_text_title"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/secondaryTextColor"
             android:entries="@array/font_sizes" />
 
     </LinearLayout>
@@ -89,9 +90,7 @@
             android:id="@+id/cb_navigation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="@dimen/material_text_title"
-            android:textColor="@color/primaryTextColor" />
+            android:layout_gravity="center_vertical" />
 
     </LinearLayout>
 

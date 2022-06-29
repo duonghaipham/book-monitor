@@ -48,6 +48,7 @@
             android:gravity="center"
             android:text="Dan Brown"
             android:textSize="@dimen/material_text_button"
+            android:textColor="@color/secondaryTextColor"
             android:fontFamily="@font/roboto_condensed_regular"
             android:ellipsize="end"
             android:maxLines="1" />

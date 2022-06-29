@@ -55,7 +55,8 @@
             android:gravity="center"
             android:textIsSelectable="true"
             android:text="Dan Brown"
-            android:textSize="@dimen/material_text_title"/>
+            android:textSize="@dimen/material_text_title"
+            android:textColor="@color/secondaryTextColor"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -64,6 +65,7 @@
             android:maxLines="5"
             android:ellipsize="end"
             android:text="@string/lorem_ipsum"
+            android:textColor="@color/secondaryTextColor"
             android:textSize="@dimen/material_text_body1"/>
 
     </LinearLayout>
@@ -83,6 +85,9 @@
             android:layout_weight="1"
             android:textSize="@dimen/material_text_button"
             android:text="@string/read_offline"
+            android:backgroundTint="@color/primaryButtonColor"
+            android:textColor="@color/primaryButtonTextColor"
+            app:iconTint="@color/primaryButtonTextColor"
             app:icon="@drawable/ic_round_menu_book"
             app:iconPadding="0dp"
             app:iconGravity="end" />
@@ -100,6 +105,9 @@
             android:layout_weight="1"
             android:textSize="@dimen/material_text_button"
             android:text="@string/read_online"
+            android:backgroundTint="@color/primaryButtonColor"
+            android:textColor="@color/primaryButtonTextColor"
+            app:iconTint="@color/primaryButtonTextColor"
             app:icon="@drawable/ic_round_public"
             app:iconPadding="0dp"
             app:iconGravity="end" />

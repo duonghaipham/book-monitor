@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.tyler.book_monitor.data.models.Chapter;
-import com.tyler.book_monitor.data.models.Setting;
+import com.tyler.book_monitor.data.models.SettingContent;
 import com.tyler.book_monitor.data.prefs.SettingsManager;
 
 import java.util.ArrayList;
@@ -24,11 +24,13 @@ public class ContentPresenter implements ContentContract.Presenter {
 
     @Override
     public void initialize(Activity activity) {
+        int themeMode = SettingsManager.getThemeMode(activity);
+
         int color = activity.getIntent().getExtras().getInt("color");
         mChapterIndexCurrent = activity.getIntent().getExtras().getInt("chapterIndex");
         mChapterIndexTotal = activity.getIntent().getExtras().getInt("chapterIndexTotal");
 
-        view.onInitialize(color);
+        view.onInitialize(themeMode, color);
     }
 
     @Override
@@ -63,14 +65,14 @@ public class ContentPresenter implements ContentContract.Presenter {
 
     @Override
     public void showSettings(Context context) {
-        Setting setting = loadSettings(context);
+        SettingContent setting = loadSettings(context);
 
         view.onShowSettings(setting);
     }
 
     @Override
     public void jumpToChapter(Context context, String chapterName, int chapterIndex) {
-        Setting setting = loadSettings(context);
+        SettingContent setting = loadSettings(context);
 
         mChapterIndexCurrent = chapterIndex;
         view.onLoadContent(setting, chapterName, "This is chapter " + chapterIndex);
@@ -79,7 +81,7 @@ public class ContentPresenter implements ContentContract.Presenter {
     @Override
     public void jumpPreviousChapter(Context context) {
         if (mChapterIndexCurrent > 0) {
-            Setting setting = loadSettings(context);
+            SettingContent setting = loadSettings(context);
 
             mChapterIndexCurrent--;
             view.onLoadContent(setting,"Chapter " + mChapterIndexCurrent, "This is chapter " + mChapterIndexCurrent);
@@ -89,7 +91,7 @@ public class ContentPresenter implements ContentContract.Presenter {
     @Override
     public void jumpNextChapter(Context context) {
         if (mChapterIndexCurrent < mChapterIndexTotal) {
-            Setting setting = loadSettings(context);
+            SettingContent setting = loadSettings(context);
 
             mChapterIndexCurrent++;
             view.onLoadContent(setting,"Chapter " + mChapterIndexCurrent, "This is chapter " + mChapterIndexCurrent);
@@ -97,7 +99,7 @@ public class ContentPresenter implements ContentContract.Presenter {
     }
 
     @Override
-    public void saveSettings(Context context, Setting setting) {
+    public void saveSettings(Context context, SettingContent setting) {
         SettingsManager.setFont(context, setting.getFont());
         SettingsManager.setFontSize(context, setting.getFontSize());
         SettingsManager.setNavigation(context, setting.getNavigation());
@@ -105,11 +107,11 @@ public class ContentPresenter implements ContentContract.Presenter {
         view.onSaveSettings(setting);
     }
 
-    private Setting loadSettings(Context context) {
+    private SettingContent loadSettings(Context context) {
         int font = SettingsManager.getFont(context);
         int fontSize = SettingsManager.getFontSize(context);
         boolean navigation = SettingsManager.getNavigation(context);
 
-        return new Setting(font, fontSize, navigation);
+        return new SettingContent(font, fontSize, navigation);
     }
 }

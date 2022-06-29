@@ -21,7 +21,7 @@
         <entry key="..\:/Books/app/src/main/res/layout/activity_author.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_chapter.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_content.xml" value="0.264" />
-        <entry key="..\:/Books/app/src/main/res/layout/activity_cover.xml" value="0.25416666666666665" />
+        <entry key="..\:/Books/app/src/main/res/layout/activity_cover.xml" value="0.2" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -29,12 +29,14 @@
         <entry key="..\:/Books/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/app_bar_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/content_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Books/app/src/main/res/layout/fragment_about.xml" value="0.264" />
         <entry key="..\:/Books/app/src/main/res/layout/fragment_chapter_choices.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/fragment_content.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/fragment_feeds.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/fragment_gallery.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/fragment_search_result.xml" value="0.24010416666666667" />
+        <entry key="..\:/Books/app/src/main/res/layout/fragment_settings.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/fragment_settings_content.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/fragment_view_authors.xml" value="0.25416666666666665" />

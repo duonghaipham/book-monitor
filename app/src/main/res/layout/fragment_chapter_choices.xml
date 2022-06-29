@@ -8,16 +8,6 @@
     android:orientation="vertical"
     tools:context=".ui.content.ChapterChoicesFragment">
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:text="@string/jump_chapter"-->
-<!--        android:textSize="@dimen/material_text_headline"-->
-<!--        android:fontFamily="@font/roboto_condensed_regular"-->
-<!--        android:textColor="@color/primaryTextColor"/>-->
-
     <ListView
         android:id="@+id/lv_chapter_choices"
         android:layout_width="match_parent"

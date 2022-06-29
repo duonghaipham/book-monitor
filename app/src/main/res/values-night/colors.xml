@@ -7,8 +7,8 @@
     <color name="secondaryLightColor">#ffbb93</color>
     <color name="secondaryDarkColor">#c75b39</color>
 
-    <color name="primaryTextColor">#FF262626</color>
-    <color name="secondaryTextColor">#BB262626</color>
-    <color name="primaryButtonColor">#FF3e3c6e</color>
-    <color name="primaryButtonTextColor">#FFFEF9F3</color>
+    <color name="primaryTextColor">#FFFEF9F3</color>
+    <color name="secondaryTextColor">#BBFEF9F3</color>
+    <color name="primaryButtonColor">#FFFEF9F3</color>
+    <color name="primaryButtonTextColor">#FF3e3c6e</color>
 </resources>

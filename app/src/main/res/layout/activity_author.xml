@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="He is a writer, author, and professor of the English language at Harvard University."
                 android:textSize="@dimen/material_text_body1"
+                android:textColor="@color/secondaryTextColor"
                 android:fontFamily="@font/roboto_condensed_regular"/>
 
         </LinearLayout>

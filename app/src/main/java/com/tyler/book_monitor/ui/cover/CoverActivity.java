@@ -1,6 +1,7 @@
 package com.tyler.book_monitor.ui.cover;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -36,20 +37,28 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
 
         presenter = new CoverPresenter(this);
 
-        Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
-
-        DominantColor dominantColor = new DominantColor(cover);
-        int color = dominantColor.getDominantColor();
-        GradientDrawable gd = dominantColor.getDominantColorGradient();
-
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(color);
-
-        llCover.setBackground(gd);
+        presenter.initialize(this);
 
         btnReadOnline.setOnClickListener(v -> {
             presenter.toChapterActivity(this);
         });
+    }
+
+    @Override
+    public void onInitialize(int themeMode) {
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        if (themeMode == 1) {
+            window.setStatusBarColor(Color.parseColor("#242527"));
+        } else {
+            Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
+
+            DominantColor dominantColor = new DominantColor(cover);
+            int color = dominantColor.getDominantColor();
+            GradientDrawable gd = dominantColor.getDominantColorGradient();
+
+            llCover.setBackground(gd);
+        }
     }
 }

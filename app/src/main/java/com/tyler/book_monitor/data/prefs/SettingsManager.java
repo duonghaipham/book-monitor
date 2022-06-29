@@ -4,22 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SettingsManager {
+
     private static final String APP_SETTINGS = "com.group21.gallery";
 
     private SettingsManager() {}
 
     private static SharedPreferences getSharedPreferences(Context context) {
         return context.getSharedPreferences(APP_SETTINGS, Context.MODE_PRIVATE);
-    }
-
-    public static int getThemeMode(Context context) {
-        return getSharedPreferences(context).getInt("THEME_MODE", 1);
-    }
-
-    public static void setThemeMode(Context context, int themeMode) {
-        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putInt("THEME_MODE", themeMode);
-        editor.apply();
     }
 
     public static int getFont(Context context) {
@@ -49,6 +40,26 @@ public class SettingsManager {
     public static void setNavigation(Context context, boolean navigation) {
         final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         editor.putBoolean("NAVIGATION", navigation);
+        editor.apply();
+    }
+
+    public static int getLanguage(Context context) {
+        return getSharedPreferences(context).getInt("LANGUAGE", 0);
+    }
+
+    public static void setLanguage(Context context, int language) {
+        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putInt("LANGUAGE", language);
+        editor.apply();
+    }
+
+    public static int getThemeMode(Context context) {
+        return getSharedPreferences(context).getInt("THEME_MODE", 0);
+    }
+
+    public static void setThemeMode(Context context, int themeMode) {
+        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putInt("THEME_MODE", themeMode);
         editor.apply();
     }
 }

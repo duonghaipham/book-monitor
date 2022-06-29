@@ -1,7 +1,10 @@
 package com.tyler.book_monitor.ui.content;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -13,12 +16,10 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.data.models.Setting;
+import com.tyler.book_monitor.data.models.SettingContent;
 import com.tyler.book_monitor.helpers.DominantColor;
 import com.tyler.book_monitor.helpers.OnSwipeTouchListener;
 import com.tyler.book_monitor.ui.base.BaseActivity;
@@ -86,18 +87,21 @@ public class ContentActivity extends BaseActivity
     }
 
     @Override
-    public void onInitialize(int color) {
-        GradientDrawable gd = DominantColor.getDominantColorGradient(color);
-
+    public void onInitialize(int themeMode, int color) {
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(color);
 
-        llCover.setBackground(gd);
+        if (themeMode == 1) {
+            window.setStatusBarColor(Color.parseColor("#242527"));
+        }
+        else {
+            GradientDrawable gd = DominantColor.getDominantColorGradient(color);
+            llCover.setBackground(gd);
+        }
     }
 
     @Override
-    public void onLoadContent(Setting setting, String chapter, String content) {
+    public void onLoadContent(SettingContent setting, String chapter, String content) {
         Bundle bundle = new Bundle();
         bundle.putString("chapter", chapter);
         bundle.putString("content", content);
@@ -125,7 +129,7 @@ public class ContentActivity extends BaseActivity
     }
 
     @Override
-    public void onShowSettings(Setting setting) {
+    public void onShowSettings(SettingContent setting) {
         SettingsContentFragment fragment = new SettingsContentFragment();
 
         Bundle bundle = new Bundle();
@@ -138,7 +142,7 @@ public class ContentActivity extends BaseActivity
     }
 
     @Override
-    public void onSaveSettings(Setting setting) {
+    public void onSaveSettings(SettingContent setting) {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fl_content);
 
         String[] fonts = getResources().getStringArray(R.array.fonts);
@@ -158,7 +162,7 @@ public class ContentActivity extends BaseActivity
     }
 
     @Override
-    public void onDataPass(Setting setting) {
+    public void onDataPass(SettingContent setting) {
         presenter.saveSettings(this, setting);
     }
 }

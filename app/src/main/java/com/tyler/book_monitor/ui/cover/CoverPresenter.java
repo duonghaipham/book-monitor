@@ -3,6 +3,7 @@ package com.tyler.book_monitor.ui.cover;
 import android.content.Context;
 import android.content.Intent;
 
+import com.tyler.book_monitor.data.prefs.SettingsManager;
 import com.tyler.book_monitor.ui.chapter.ChapterActivity;
 
 public class CoverPresenter implements CoverContract.Presenter {
@@ -17,5 +18,12 @@ public class CoverPresenter implements CoverContract.Presenter {
     public void toChapterActivity(Context context) {
         Intent intent = new Intent(context, ChapterActivity.class);
         context.startActivity(intent);
+    }
+
+    @Override
+    public void initialize(Context context) {
+        int themeMode = SettingsManager.getThemeMode(context);
+
+        view.onInitialize(themeMode);
     }
 }
