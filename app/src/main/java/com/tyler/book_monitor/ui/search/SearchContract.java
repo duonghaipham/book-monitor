@@ -8,10 +8,12 @@ import java.util.List;
 
 public class SearchContract {
     public interface View {
+        void onInitialize(int themeMode);
         void onSearch(List<IObject> results);
     }
 
     public interface Presenter {
+        void initialize(Context context);
         void search(String query);
         void toObjectActivity(Context context, IObject object);
     }

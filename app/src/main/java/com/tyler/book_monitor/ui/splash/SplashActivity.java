@@ -21,7 +21,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
 
         lavSplash = findViewById(R.id.lav_splash);
 
-        lavSplash.animate().setDuration(SplashPresenter.SPLASH_TIME_OUT);
+//        lavSplash.animate().setDuration(SplashPresenter.SPLASH_TIME_OUT);
 
         presenter.toMainActivity(this);
     }

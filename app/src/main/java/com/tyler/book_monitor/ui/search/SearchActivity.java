@@ -1,11 +1,14 @@
 package com.tyler.book_monitor.ui.search;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
 
     private SearchView svEverything;
     private RecyclerView rvSearchResults;
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
 
         rvSearchResults = findViewById(R.id.rv_search_results);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(0xffEEEEEE));
+        actionBar = getSupportActionBar();
         svEverything = new SearchView(this);
 
         actionBar.setCustomView(svEverything);
@@ -48,6 +51,8 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         svEverything.setFocusable(true);
         svEverything.setIconified(false);
         svEverything.setQueryHint(getString(R.string.search_hint));
+
+        presenter.initialize(this);
 
         svEverything.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -61,6 +66,23 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onInitialize(int themeMode) {
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        if (themeMode == 1) {
+            window.setStatusBarColor(Color.parseColor("#242527"));
+            svEverything.setBackgroundColor(Color.parseColor("#242527"));
+            actionBar.setBackgroundDrawable(new ColorDrawable(0xff242527));
+        }
+        else {
+            window.setStatusBarColor(Color.parseColor("#AFAFAF"));
+            svEverything.setBackgroundColor(Color.parseColor("#EEEEEE"));
+            actionBar.setBackgroundDrawable(new ColorDrawable(0xffEEEEEE));
+        }
     }
 
     @Override

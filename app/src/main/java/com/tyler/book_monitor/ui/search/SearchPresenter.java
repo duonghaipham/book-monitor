@@ -7,6 +7,7 @@ import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.IObject;
+import com.tyler.book_monitor.data.prefs.SettingsManager;
 import com.tyler.book_monitor.ui.author.AuthorActivity;
 import com.tyler.book_monitor.ui.cover.CoverActivity;
 
@@ -18,6 +19,13 @@ public class SearchPresenter implements SearchContract.Presenter {
 
     public SearchPresenter(SearchContract.View view) {
         this.view = view;
+    }
+
+    @Override
+    public void initialize(Context context) {
+        int themeMode = SettingsManager.getThemeMode(context);
+
+        view.onInitialize(themeMode);
     }
 
     @Override

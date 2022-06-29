@@ -1,10 +1,8 @@
 package com.tyler.book_monitor.ui.content;
 
 import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -97,6 +95,7 @@ public class ContentActivity extends BaseActivity
         else {
             GradientDrawable gd = DominantColor.getDominantColorGradient(color);
             llCover.setBackground(gd);
+            window.setStatusBarColor(color);
         }
     }
 

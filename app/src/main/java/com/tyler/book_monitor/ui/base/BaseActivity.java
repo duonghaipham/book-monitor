@@ -1,13 +1,13 @@
 package com.tyler.book_monitor.ui.base;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.tyler.book_monitor.data.prefs.SettingsManager;
 
@@ -23,12 +23,16 @@ public class BaseActivity extends AppCompatActivity {
 
         int themeMode = SettingsManager.getThemeMode(this);
 
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
         if (themeMode == 1) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.parseColor("#242527"));
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            window.setStatusBarColor(Color.parseColor("#AFAFAF"));
         }
 
         int language = SettingsManager.getLanguage(this);

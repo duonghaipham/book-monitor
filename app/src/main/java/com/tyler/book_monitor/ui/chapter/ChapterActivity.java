@@ -60,9 +60,11 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
             Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
 
             DominantColor dominantColor = new DominantColor(cover);
-            int color = dominantColor.getDominantColor();
-            GradientDrawable gd = dominantColor.getDominantColorGradient();
 
+            color = dominantColor.getDominantColor();
+            window.setStatusBarColor(color);
+
+            GradientDrawable gd = dominantColor.getDominantColorGradient();
             llCover.setBackground(gd);
         }
     }
