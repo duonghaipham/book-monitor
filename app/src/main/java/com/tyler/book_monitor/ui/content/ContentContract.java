@@ -1,8 +1,5 @@
 package com.tyler.book_monitor.ui.content;
 
-import android.app.Activity;
-import android.content.Context;
-
 import com.tyler.book_monitor.data.models.SettingContent;
 
 import java.util.ArrayList;
@@ -17,13 +14,13 @@ public class ContentContract {
     }
 
     public interface Presenter {
-        void initialize(Activity activity);
-        void loadContent(Context context);
+        void initialize();
+        void loadContent();
         void showChapterChoices();
-        void showSettings(Context context);
-        void jumpToChapter(Context context, String chapterName, int chapterIndex);
-        void jumpPreviousChapter(Context context);
-        void jumpNextChapter(Context context);
-        void saveSettings(Context context, SettingContent setting);
+        void showSettings();
+        void jumpToChapter(String chapterName, int chapterIndex);
+        void jumpPreviousChapter();
+        void jumpNextChapter();
+        void saveSettings(SettingContent setting);
     }
 }

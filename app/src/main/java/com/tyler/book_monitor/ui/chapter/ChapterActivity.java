@@ -1,7 +1,6 @@
 package com.tyler.book_monitor.ui.chapter;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -17,12 +16,11 @@ import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.adapters.ChapterAdapter;
 import com.tyler.book_monitor.data.models.Chapter;
 import com.tyler.book_monitor.helpers.DominantColor;
-import com.tyler.book_monitor.helpers.IChapterClick;
 import com.tyler.book_monitor.ui.base.BaseActivity;
 
 import java.util.List;
 
-public class ChapterActivity extends BaseActivity implements ChapterContract.View, IChapterClick {
+public class ChapterActivity extends BaseActivity implements ChapterContract.View, ChapterAdapter.IChapterClick {
 
     private ChapterContract.Presenter presenter;
 
@@ -41,11 +39,11 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
         ivCover = findViewById(R.id.iv_cover);
         rvChapters = findViewById(R.id.rv_chapters);
 
-        presenter = new ChapterPresenter(this);
+        presenter = new ChapterPresenter(this, this);
 
         presenter.loadContent();
 
-        presenter.initialize(this);
+        presenter.initialize();
     }
 
     @Override
@@ -78,6 +76,6 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
 
     @Override
     public void onChapterClick(int position) {
-        presenter.toContentActivity(this, color, position);
+        presenter.toContentActivity(color, position);
     }
 }

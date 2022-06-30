@@ -1,7 +1,6 @@
 package com.tyler.book_monitor.ui.base;
 
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;

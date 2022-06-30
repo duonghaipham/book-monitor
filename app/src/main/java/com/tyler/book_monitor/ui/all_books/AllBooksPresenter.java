@@ -12,9 +12,11 @@ import java.util.Vector;
 
 public class AllBooksPresenter implements AllBooksContract.Presenter {
 
+    private Context context;
     private AllBooksContract.View view;
 
-    public AllBooksPresenter(AllBooksContract.View view) {
+    public AllBooksPresenter(Context context, AllBooksContract.View view) {
+        this.context = context;
         this.view = view;
     }
 
@@ -32,7 +34,7 @@ public class AllBooksPresenter implements AllBooksContract.Presenter {
     }
 
     @Override
-    public void toCoverActivity(Context context) {
+    public void toCoverActivity() {
         Intent intent = new Intent(context, CoverActivity.class);
         context.startActivity(intent);
     }

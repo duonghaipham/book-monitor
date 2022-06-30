@@ -6,10 +6,8 @@ import android.view.Gravity;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,20 +18,19 @@ import com.tyler.book_monitor.adapters.BookAdapter;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.SettingGlobal;
-import com.tyler.book_monitor.helpers.IAuthorClick;
-import com.tyler.book_monitor.helpers.IBookClick;
 import com.tyler.book_monitor.ui.base.BaseActivity;
 
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends BaseActivity implements MainContract.View, IAuthorClick, IBookClick, SettingsFragment.ISettingsGlobal {
+public class MainActivity extends BaseActivity implements MainContract.View, AuthorAdapter.IAuthorClick, BookAdapter.IBookClick, SettingsFragment.ISettingsGlobal {
 
     private MainContract.Presenter presenter;
 
     private DrawerLayout dlConfiguration;
     private NavigationView nvConfiguration;
     private ImageButton ibSearch;
+    private ImageButton ibArchive;
     private ImageButton ibMenu;
     private RecyclerView rvPopularAuthors;
     private RecyclerView rvContinuedBooks;
@@ -48,30 +45,31 @@ public class MainActivity extends BaseActivity implements MainContract.View, IAu
         dlConfiguration = findViewById(R.id.dl_configuration);
         nvConfiguration = findViewById(R.id.nv_configuration);
         ibSearch = findViewById(R.id.ib_search);
+        ibArchive = findViewById(R.id.ib_archive);
         ibMenu = findViewById(R.id.ib_menu);
         rvPopularAuthors = findViewById(R.id.rv_popular_authors);
         rvContinuedBooks = findViewById(R.id.rv_continued_books);
         tvViewAllPopularAuthors = findViewById(R.id.tv_view_all_popular_authors);
         tvViewAllContinueReading = findViewById(R.id.tv_view_all_continue_reading);
 
-        presenter = new MainPresenter(this);
+        presenter = new MainPresenter(this, this);
 
         presenter.loadContent();
 
-        ibSearch.setOnClickListener(v -> presenter.toSearchActivity(this));
+        ibSearch.setOnClickListener(v -> presenter.toSearchActivity());
 
-        ibMenu.setOnClickListener(v -> {
-            dlConfiguration.openDrawer(Gravity.LEFT);
-        });
+        ibArchive.setOnClickListener(v -> presenter.toArchiveActivity());
 
-        tvViewAllPopularAuthors.setOnClickListener(v -> presenter.viewAllPopularAuthors(this));
+        ibMenu.setOnClickListener(v -> dlConfiguration.openDrawer(Gravity.LEFT));
 
-        tvViewAllContinueReading.setOnClickListener(v -> presenter.viewAllContinueReading(this));
+        tvViewAllPopularAuthors.setOnClickListener(v -> presenter.viewAllPopularAuthors());
+
+        tvViewAllContinueReading.setOnClickListener(v -> presenter.viewAllContinueReading());
 
         nvConfiguration.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.action_settings:
-                    presenter.showSettings(this);
+                    presenter.showSettings();
                     break;
                 case R.id.action_about:
                     presenter.showAbout();
@@ -115,12 +113,12 @@ public class MainActivity extends BaseActivity implements MainContract.View, IAu
 
     @Override
     public void onAuthorClick(int position) {
-        presenter.toAuthorActivity(this);
+        presenter.toAuthorActivity();
     }
 
     @Override
     public void onBookClick(int position) {
-        presenter.toCoverActivity(this);
+        presenter.toCoverActivity();
     }
 
     @Override
@@ -130,7 +128,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, IAu
                 AppCompatDelegate.MODE_NIGHT_NO;
         AppCompatDelegate.setDefaultNightMode(modeNight);
 
-        String[] languageCodes = { "en", "vi", "fr" };
+        String[] languageCodes = getResources().getStringArray(R.array.language_codes);
 
         Locale locale = new Locale(languageCodes[setting.getLanguage()]);
         Locale.setDefault(locale);
@@ -140,6 +138,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, IAu
 
         recreate();
 
-        presenter.saveSettings(this, setting);
+        presenter.saveSettings(setting);
     }
 }

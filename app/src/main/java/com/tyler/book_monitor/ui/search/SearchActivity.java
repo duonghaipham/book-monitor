@@ -1,16 +1,9 @@
 package com.tyler.book_monitor.ui.search;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.adapters.SearchResultAdapter;
 import com.tyler.book_monitor.data.models.IObject;
-import com.tyler.book_monitor.helpers.IObjectClick;
 
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity implements SearchContract.View, IObjectClick {
+public class SearchActivity extends AppCompatActivity implements SearchContract.View, SearchResultAdapter.IObjectClick {
 
     private SearchContract.Presenter presenter;
 
@@ -38,7 +30,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        presenter = new SearchPresenter(this);
+        presenter = new SearchPresenter(this, this);
 
         rvSearchResults = findViewById(R.id.rv_search_results);
 
@@ -52,7 +44,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         svEverything.setIconified(false);
         svEverything.setQueryHint(getString(R.string.search_hint));
 
-        presenter.initialize(this);
+        presenter.initialize();
 
         svEverything.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -73,16 +65,12 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-        if (themeMode == 1) {
-            window.setStatusBarColor(Color.parseColor("#242527"));
-            svEverything.setBackgroundColor(Color.parseColor("#242527"));
-            actionBar.setBackgroundDrawable(new ColorDrawable(0xff242527));
-        }
-        else {
-            window.setStatusBarColor(Color.parseColor("#AFAFAF"));
-            svEverything.setBackgroundColor(Color.parseColor("#EEEEEE"));
-            actionBar.setBackgroundDrawable(new ColorDrawable(0xffEEEEEE));
-        }
+        int statusBarColor = getColor(R.color.statusBarColor);
+        ColorDrawable actionBarDrawable = new ColorDrawable(statusBarColor);
+
+        window.setStatusBarColor(statusBarColor);
+        svEverything.setBackgroundColor(statusBarColor);
+        actionBar.setBackgroundDrawable(actionBarDrawable);
     }
 
     @Override
@@ -95,6 +83,6 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
 
     @Override
     public void onObjectClick(IObject object) {
-        presenter.toObjectActivity(this, object);
+        presenter.toObjectActivity(object);
     }
 }

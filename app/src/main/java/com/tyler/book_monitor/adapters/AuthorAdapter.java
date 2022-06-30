@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Author;
-import com.tyler.book_monitor.helpers.IAuthorClick;
 
 import java.util.List;
 
 public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder> {
+
+    public interface IAuthorClick {
+        void onAuthorClick(int position);
+    }
 
     private LayoutInflater inflater;
     private List<Author> authors;

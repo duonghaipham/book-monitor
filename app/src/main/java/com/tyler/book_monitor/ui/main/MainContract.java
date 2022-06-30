@@ -1,7 +1,5 @@
 package com.tyler.book_monitor.ui.main;
 
-import android.content.Context;
-
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.SettingGlobal;
@@ -17,13 +15,14 @@ public class MainContract {
 
     public interface Presenter {
         void loadContent();
-        void toSearchActivity(Context context);
-        void toAuthorActivity(Context context);
-        void toCoverActivity(Context context);
-        void viewAllPopularAuthors(Context context);
-        void viewAllContinueReading(Context context);
-        void showSettings(Context context);
-        void saveSettings(Context context, SettingGlobal setting);
+        void toArchiveActivity();
+        void toSearchActivity();
+        void toAuthorActivity();
+        void toCoverActivity();
+        void viewAllPopularAuthors();
+        void viewAllContinueReading();
+        void showSettings();
+        void saveSettings(SettingGlobal setting);
         void showAbout();
     }
 }

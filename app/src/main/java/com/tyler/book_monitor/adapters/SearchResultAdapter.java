@@ -15,11 +15,14 @@ import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.IObject;
-import com.tyler.book_monitor.helpers.IObjectClick;
 
 import java.util.List;
 
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.ViewHolder> {
+
+    public interface IObjectClick {
+        void onObjectClick(IObject object);
+    }
 
     private final LayoutInflater inflater;
     private final List<IObject> results;

@@ -15,14 +15,17 @@ import java.util.List;
 import java.util.Vector;
 
 public class SearchPresenter implements SearchContract.Presenter {
+
+    private Context context;
     private SearchContract.View view;
 
-    public SearchPresenter(SearchContract.View view) {
+    public SearchPresenter(Context context, SearchContract.View view) {
+        this.context = context;
         this.view = view;
     }
 
     @Override
-    public void initialize(Context context) {
+    public void initialize() {
         int themeMode = SettingsManager.getThemeMode(context);
 
         view.onInitialize(themeMode);
@@ -41,20 +44,14 @@ public class SearchPresenter implements SearchContract.Presenter {
         authors.add(new Author("F. Scott Fitzgerald", ""));
 
         List<IObject> results = new Vector<>();
-
-        for (Book book : books) {
-            results.add(book);
-        }
-
-        for (Author author : authors) {
-            results.add(author);
-        }
+        results.addAll(books);
+        results.addAll(authors);
 
         view.onSearch(results);
     }
 
     @Override
-    public void toObjectActivity(Context context, IObject object) {
+    public void toObjectActivity(IObject object) {
         Intent intent;
 
         if (object instanceof Book) {

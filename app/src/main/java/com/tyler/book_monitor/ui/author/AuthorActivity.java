@@ -11,12 +11,11 @@ import com.google.android.flexbox.JustifyContent;
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.adapters.BookAdapter;
 import com.tyler.book_monitor.data.models.Book;
-import com.tyler.book_monitor.helpers.IBookClick;
 import com.tyler.book_monitor.ui.base.BaseActivity;
 
 import java.util.List;
 
-public class AuthorActivity extends BaseActivity implements AuthorContract.View, IBookClick {
+public class AuthorActivity extends BaseActivity implements AuthorContract.View, BookAdapter.IBookClick {
 
     private AuthorContract.Presenter presenter;
 
@@ -29,7 +28,7 @@ public class AuthorActivity extends BaseActivity implements AuthorContract.View,
 
         rvAuthorBooks = findViewById(R.id.rv_author_books);
 
-        presenter = new AuthorPresenter(this);
+        presenter = new AuthorPresenter(this, this);
 
         presenter.loadContent();
     }
@@ -50,6 +49,6 @@ public class AuthorActivity extends BaseActivity implements AuthorContract.View,
 
     @Override
     public void onBookClick(int position) {
-        presenter.toCoverActivity(this);
+        presenter.toCoverActivity();
     }
 }

@@ -40,7 +40,7 @@ public class ContentActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
         
-        presenter = new ContentPresenter(this);
+        presenter = new ContentPresenter(this, this);
 
         clContent = findViewById(R.id.cl_content);
         llCover = findViewById(R.id.ll_cover);
@@ -50,20 +50,20 @@ public class ContentActivity extends BaseActivity
 
         clContent.setOnTouchListener(new OnSwipeTouchListener(this) {
             public void onSwipeLeft() {
-                presenter.jumpNextChapter(ContentActivity.this);
+                presenter.jumpNextChapter();
             }
 
             public void onSwipeRight() {
-                presenter.jumpPreviousChapter(ContentActivity.this);
+                presenter.jumpPreviousChapter();
             }
         });
 
         ibPrev.setOnClickListener(v -> {
-            presenter.jumpPreviousChapter(this);
+            presenter.jumpPreviousChapter();
         });
 
         ibNext.setOnClickListener(v -> {
-            presenter.jumpNextChapter(this);
+            presenter.jumpNextChapter();
         });
 
         bnvAdjustment.setOnItemSelectedListener(v -> {
@@ -72,15 +72,15 @@ public class ContentActivity extends BaseActivity
                     presenter.showChapterChoices();
                     return true;
                 case R.id.bnvi_settings:
-                    presenter.showSettings(this);
+                    presenter.showSettings();
                     return true;
             }
 
             return false;
         });
 
-        presenter.initialize(this);
-        presenter.loadContent(this);
+        presenter.initialize();
+        presenter.loadContent();
     }
 
     @Override
@@ -156,11 +156,11 @@ public class ContentActivity extends BaseActivity
 
     @Override
     public void onDataPass(String chapterName, int chapterNumber) {
-        presenter.jumpToChapter(this, chapterName, chapterNumber);
+        presenter.jumpToChapter(chapterName, chapterNumber);
     }
 
     @Override
     public void onDataPass(SettingContent setting) {
-        presenter.saveSettings(this, setting);
+        presenter.saveSettings(setting);
     }
 }

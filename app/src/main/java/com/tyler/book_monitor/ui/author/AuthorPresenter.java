@@ -12,9 +12,11 @@ import java.util.Vector;
 
 public class AuthorPresenter implements AuthorContract.Presenter {
 
+    private Context context;
     private AuthorContract.View view;
 
-    public AuthorPresenter(AuthorContract.View view) {
+    public AuthorPresenter(Context context, AuthorContract.View view) {
+        this.context = context;
         this.view = view;
     }
 
@@ -32,7 +34,7 @@ public class AuthorPresenter implements AuthorContract.Presenter {
     }
 
     @Override
-    public void toCoverActivity(Context context) {
+    public void toCoverActivity() {
         Intent intent = new Intent(context, CoverActivity.class);
         context.startActivity(intent);
     }

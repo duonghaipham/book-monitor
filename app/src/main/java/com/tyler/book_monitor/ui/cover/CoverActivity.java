@@ -34,12 +34,16 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
         btnReadOffline = findViewById(R.id.btn_read_offline);
         btnReadOnline = findViewById(R.id.btn_read_online);
 
-        presenter = new CoverPresenter(this);
+        presenter = new CoverPresenter(this, this);
 
-        presenter.initialize(this);
+        presenter.initialize();
+
+        btnReadOffline.setOnClickListener(v -> {
+//            presenter.readOffline(this);
+        });
 
         btnReadOnline.setOnClickListener(v -> {
-            presenter.toChapterActivity(this);
+            presenter.toChapterActivity();
         });
     }
 

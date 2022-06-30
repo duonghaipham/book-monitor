@@ -8,20 +8,22 @@ import com.tyler.book_monitor.ui.chapter.ChapterActivity;
 
 public class CoverPresenter implements CoverContract.Presenter {
 
+    private Context context;
     private CoverContract.View view;
 
-    public CoverPresenter(CoverContract.View view) {
+    public CoverPresenter(Context context, CoverContract.View view) {
+        this.context = context;
         this.view = view;
     }
 
     @Override
-    public void toChapterActivity(Context context) {
+    public void toChapterActivity() {
         Intent intent = new Intent(context, ChapterActivity.class);
         context.startActivity(intent);
     }
 
     @Override
-    public void initialize(Context context) {
+    public void initialize() {
         int themeMode = SettingsManager.getThemeMode(context);
 
         view.onInitialize(themeMode);

@@ -10,6 +10,7 @@ import com.tyler.book_monitor.data.models.SettingGlobal;
 import com.tyler.book_monitor.data.prefs.SettingsManager;
 import com.tyler.book_monitor.ui.all_authors.AllAuthorsActivity;
 import com.tyler.book_monitor.ui.all_books.AllBooksActivity;
+import com.tyler.book_monitor.ui.archive.ArchiveActivity;
 import com.tyler.book_monitor.ui.author.AuthorActivity;
 import com.tyler.book_monitor.ui.cover.CoverActivity;
 import com.tyler.book_monitor.ui.search.SearchActivity;
@@ -18,9 +19,12 @@ import java.util.List;
 import java.util.Vector;
 
 public class MainPresenter implements MainContract.Presenter {
+
+    private Context context;
     private MainContract.View view;
 
-    public MainPresenter(MainContract.View view) {
+    public MainPresenter(Context context, MainContract.View view) {
+        this.context = context;
         this.view = view;
     }
 
@@ -41,37 +45,43 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void toSearchActivity(Context context) {
+    public void toArchiveActivity() {
+        Intent intent = new Intent(context, ArchiveActivity.class);
+        context.startActivity(intent);
+    }
+
+    @Override
+    public void toSearchActivity() {
         Intent intent = new Intent(context, SearchActivity.class);
         context.startActivity(intent);
     }
 
     @Override
-    public void toAuthorActivity(Context context) {
+    public void toAuthorActivity() {
         Intent intent = new Intent(context, AuthorActivity.class);
         context.startActivity(intent);
     }
 
     @Override
-    public void toCoverActivity(Context context) {
+    public void toCoverActivity() {
         Intent intent = new Intent(context, CoverActivity.class);
         context.startActivity(intent);
     }
 
     @Override
-    public void viewAllPopularAuthors(Context context) {
+    public void viewAllPopularAuthors() {
         Intent intent = new Intent(context, AllAuthorsActivity.class);
         context.startActivity(intent);
     }
 
     @Override
-    public void viewAllContinueReading(Context context) {
+    public void viewAllContinueReading() {
         Intent intent = new Intent(context, AllBooksActivity.class);
         context.startActivity(intent);
     }
 
     @Override
-    public void showSettings(Context context) {
+    public void showSettings() {
         int language = SettingsManager.getLanguage(context);
         int themeMode = SettingsManager.getThemeMode(context);
 
@@ -79,7 +89,7 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void saveSettings(Context context, SettingGlobal setting) {
+    public void saveSettings(SettingGlobal setting) {
         SettingsManager.setLanguage(context, setting.getLanguage());
         SettingsManager.setThemeMode(context, setting.getThemeMode());
     }

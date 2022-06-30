@@ -13,16 +13,18 @@ import java.util.Vector;
 
 public class ChapterPresenter implements ChapterContract.Presenter {
 
+    private Context context;
     private ChapterContract.View view;
 
     private int mChapterIndexTotal = 0;
 
-    public ChapterPresenter(ChapterContract.View view) {
+    public ChapterPresenter(Context context, ChapterContract.View view) {
+        this.context = context;
         this.view = view;
     }
 
     @Override
-    public void initialize(Context context) {
+    public void initialize() {
         int themeMode = SettingsManager.getThemeMode(context);
 
         view.onInitialize(themeMode);
@@ -47,7 +49,7 @@ public class ChapterPresenter implements ChapterContract.Presenter {
     }
 
     @Override
-    public void toContentActivity(Context context, int color, int chapterIndex) {
+    public void toContentActivity(int color, int chapterIndex) {
         Bundle bundle = new Bundle();
         bundle.putInt("color", color);
         bundle.putInt("chapterIndexCurrent", chapterIndex);

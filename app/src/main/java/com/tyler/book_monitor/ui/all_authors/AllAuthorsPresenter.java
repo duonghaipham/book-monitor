@@ -11,9 +11,11 @@ import java.util.Vector;
 
 public class AllAuthorsPresenter implements AllAuthorsContract.Presenter {
 
+    private Context context;
     private AllAuthorsContract.View view;
 
-    public AllAuthorsPresenter(AllAuthorsContract.View view) {
+    public AllAuthorsPresenter(Context context, AllAuthorsContract.View view) {
+        this.context = context;
         this.view = view;
     }
 
@@ -34,7 +36,7 @@ public class AllAuthorsPresenter implements AllAuthorsContract.Presenter {
     }
 
     @Override
-    public void toAuthorActivity(Context context) {
+    public void toAuthorActivity() {
         Intent intent = new Intent(context, AuthorActivity.class);
         context.startActivity(intent);
     }

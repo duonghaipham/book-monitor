@@ -13,6 +13,6 @@ public class AllBooksContract {
 
     public interface Presenter {
         void loadContent();
-        void toCoverActivity(Context context);
+        void toCoverActivity();
     }
 }

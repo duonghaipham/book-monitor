@@ -23,6 +23,7 @@
     <string name="view_continued_books">Dive into your preferred ones again</string>
     <string name="view_trending_books">See what are on trending now</string>
     <string name="jump_chapter">Jump to another chapter</string>
+    <string name="empty_archive">Your archive is empty</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="version">Version %1$s</string>

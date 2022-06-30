@@ -10,19 +10,17 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
 
     private SplashPresenter presenter;
 
-    private LottieAnimationView lavSplash;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        presenter = new SplashPresenter(this);
+        presenter = new SplashPresenter(this, this);
 
-        lavSplash = findViewById(R.id.lav_splash);
+        LottieAnimationView lavSplash = findViewById(R.id.lav_splash);
 
 //        lavSplash.animate().setDuration(SplashPresenter.SPLASH_TIME_OUT);
 
-        presenter.toMainActivity(this);
+        presenter.toMainActivity();
     }
 }

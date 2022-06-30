@@ -10,21 +10,20 @@ public class SplashPresenter implements SplashContract.Presenter {
 
     public static final int SPLASH_TIME_OUT = 1250;
 
+    private Activity activity;
     private SplashContract.View view;
 
-    public SplashPresenter(SplashContract.View view) {
+    public SplashPresenter(Activity activity, SplashContract.View view) {
+        this.activity = activity;
         this.view = view;
     }
 
     @Override
-    public void toMainActivity(Activity activity) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(activity, MainActivity.class);
-                activity.startActivity(intent);
-                activity.finish();
-            }
+    public void toMainActivity() {
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(activity, MainActivity.class);
+            activity.startActivity(intent);
+            activity.finish();
         }, SPLASH_TIME_OUT);
     }
 }

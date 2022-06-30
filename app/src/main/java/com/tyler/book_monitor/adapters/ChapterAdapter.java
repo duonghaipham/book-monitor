@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Chapter;
-import com.tyler.book_monitor.helpers.IChapterClick;
 
 import java.util.List;
 
 public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder> {
+
+    public interface IChapterClick {
+        void onChapterClick(int position);
+    }
 
     private LayoutInflater inflater;
     private List<Chapter> chapters;

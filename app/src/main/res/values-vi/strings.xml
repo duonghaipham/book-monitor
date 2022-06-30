@@ -23,6 +23,7 @@
     <string name="view_continued_books">Đọc tiếp</string>
     <string name="view_trending_books">Các đầu sách thịnh hành</string>
     <string name="jump_chapter">Đến phần khác</string>
+    <string name="empty_archive">Bạn chưa lưu sách nào</string>
     <string name="ok">OK</string>
     <string name="cancel">Hủy</string>
     <string name="version">Phiên bản %1$s</string>
