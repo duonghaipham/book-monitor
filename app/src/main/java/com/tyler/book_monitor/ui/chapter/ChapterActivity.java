@@ -54,13 +54,12 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         if (themeMode == 1) {
-            window.setStatusBarColor(Color.parseColor("#242527"));
+            window.setStatusBarColor(getColor(R.color.statusBarColor));
         }
         else {
             Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
 
             DominantColor dominantColor = new DominantColor(cover);
-
             color = dominantColor.getDominantColor();
             window.setStatusBarColor(color);
 

@@ -11,4 +11,5 @@
     <color name="secondaryTextColor">#BBFEF9F3</color>
     <color name="primaryButtonColor">#FFFEF9F3</color>
     <color name="primaryButtonTextColor">#FF3e3c6e</color>
+    <color name="statusBarColor">#FF242527</color>
 </resources>

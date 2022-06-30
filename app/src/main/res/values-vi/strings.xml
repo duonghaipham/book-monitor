@@ -1,13 +1,11 @@
 <resources>
     <string name="app_name">Book</string>
-
     <string name="hello">Xin chào!</string>
-    <string name="search_hint">Search by Title, Author, Genre…</string>
+    <string name="search_hint">Tìm theo tên sách, tác giả, thể loại...</string>
     <string name="popular_authors">Tác giả phổ biến</string>
     <string name="continue_reading">Tiếp tục đọc</string>
     <string name="trending_books">Sách thịnh hành</string>
     <string name="view_all">Xem tất cả</string>
-
     <string name="download">Tải xuống</string>
     <string name="read_online">Đọc trực tuyến</string>
     <string name="read_offline">Đọc ngoại tuyến</string>
@@ -21,15 +19,14 @@
     <string name="navigation">Điều hướng</string>
     <string name="language">Ngôn ngữ</string>
     <string name="dark_mode">Chế độ tối</string>
-
-    <string name="view_authors">Những tác giả nổi tiếng nhất</string>
+    <string name="view_authors">Tác giả nổi tiếng nhất</string>
     <string name="view_continued_books">Đọc tiếp</string>
     <string name="view_trending_books">Các đầu sách thịnh hành</string>
-    <string name="jump_chapter">Chuyển sang chương khác</string>
-
+    <string name="jump_chapter">Đến phần khác</string>
     <string name="ok">OK</string>
     <string name="cancel">Hủy</string>
-
+    <string name="version">Phiên bản %1$s</string>
+    <string name="developer">Phát triển bởi %1$s</string>
     <string-array name="fonts">
         <item name="roboto">roboto_condensed_regular</item>
         <item name="nunito">nunito</item>
@@ -37,7 +34,6 @@
         <item name="noto_serif">noto_serif</item>
         <item name="patrick_hand">patrick_hand</item>
     </string-array>
-
     <string-array name="font_sizes">
         <item name="font_size_18">18</item>
         <item name="font_size_20">20</item>
@@ -47,21 +43,18 @@
         <item name="font_size_36">36</item>
         <item name="font_size_48">48</item>
     </string-array>
-
     <string-array name="languages">
         <item name="en">Tiếng Anh</item>
         <item name="vi">Tiếng Việt</item>
         <item name="fr">Tiếng Pháp</item>
     </string-array>
-
+    <string-array name="language_codes">
+        <item name="en">en</item>
+        <item name="vi">vi</item>
+        <item name="fr">fr</item>
+    </string-array>
     <string-array name="theme_modes">
         <item name="light">Sáng</item>
         <item name="dark">Tối</item>
     </string-array>
-
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet mi, in consectetur dui. Vivamus nisl dui, consequat vitae dictum ac, dignissim et ipsum. Nunc pellentesque volutpat tincidunt. Vivamus a felis pharetra, vulputate mi eget, fringilla odio. Nunc ut nisl ac sapien eleifend egestas et in ligula. Pellentesque fringilla, lectus id condimentum suscipit, lacus risus mollis sem, in dictum lectus mi quis massa. Suspendisse et elit sodales, convallis felis sed, vehicula risus. Praesent ac sem ultrices, porta justo sit amet, rhoncus nunc. Nunc nec dignissim lorem, eget condimentum lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet mi, in consectetur dui. Vivamus nisl dui, consequat vitae dictum ac, dignissim et ipsum. Nunc pellentesque volutpat tincidunt. Vivamus a felis pharetra, vulputate mi eget, fringilla odio. Nunc ut nisl ac sapien eleifend egestas et in ligula. Pellentesque fringilla, lectus id condimentum suscipit, lacus risus mollis sem, in dictum lectus mi quis massa. Suspendisse et elit sodales, convallis felis sed, vehicula risus. Praesent ac sem ultrices, porta justo sit amet, rhoncus nunc. Nunc nec dignissim lorem, eget condimentum lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet mi, in consectetur dui. Vivamus nisl dui, consequat vitae dictum ac, dignissim et ipsum. Nunc pellentesque volutpat tincidunt. Vivamus a felis pharetra, vulputate mi eget, fringilla odio. Nunc ut nisl ac sapien eleifend egestas et in ligula. Pellentesque fringilla, lectus id condimentum suscipit, lacus risus mollis sem, in dictum lectus mi quis massa. Suspendisse et elit sodales, convallis felis sed, vehicula risus. Praesent ac sem ultrices, porta justo sit amet, rhoncus nunc. Nunc nec dignissim lorem, eget condimentum lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet mi, in consectetur dui. Vivamus nisl dui, consequat vitae dictum ac, dignissim et ipsum. Nunc pellentesque volutpat tincidunt. Vivamus a felis pharetra, vulputate mi eget, fringilla odio. Nunc ut nisl ac sapien eleifend egestas et in ligula. Pellentesque fringilla, lectus id condimentum suscipit, lacus risus mollis sem, in dictum lectus mi quis massa. Suspendisse et elit sodales, convallis felis sed, vehicula risus. Praesent ac sem ultrices, porta justo sit amet, rhoncus nunc. Nunc nec dignissim lorem, eget condimentum lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet mi, in consectetur dui. Vivamus nisl dui, consequat vitae dictum ac, dignissim et ipsum. Nunc pellentesque volutpat tincidunt. Vivamus a felis pharetra, vulputate mi eget, fringilla odio. Nunc ut nisl ac sapien eleifend egestas et in ligula. Pellentesque fringilla, lectus id condimentum suscipit, lacus risus mollis sem, in dictum lectus mi quis massa. Suspendisse et elit sodales, convallis felis sed, vehicula risus. Praesent ac sem ultrices, porta justo sit amet, rhoncus nunc. Nunc nec dignissim lorem, eget condimentum lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet mi, in consectetur dui. Vivamus nisl dui, consequat vitae dictum ac, dignissim et ipsum. Nunc pellentesque volutpat tincidunt. Vivamus a felis pharetra, vulputate mi eget, fringilla odio. Nunc ut nisl ac sapien eleifend egestas et in ligula. Pellentesque fringilla, lectus id condimentum suscipit, lacus risus mollis sem, in dictum lectus mi quis massa. Suspendisse et elit sodales, convallis felis sed, vehicula risus. Praesent ac sem ultrices, porta justo sit amet, rhoncus nunc. Nunc nec dignissim lorem, eget condimentum lacus.</string>
-
-    <string name="version">Phiên bản %1$s</string>
-    <string name="developer">Phát triển bởi %1$s</string>
-
 </resources>

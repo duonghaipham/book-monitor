@@ -1,7 +1,6 @@
 package com.tyler.book_monitor.ui.cover;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -50,12 +49,12 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         if (themeMode == 1) {
-            window.setStatusBarColor(Color.parseColor("#242527"));
-        } else {
+            window.setStatusBarColor(getColor(R.color.statusBarColor));
+        }
+        else {
             Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
 
             DominantColor dominantColor = new DominantColor(cover);
-
             int color = dominantColor.getDominantColor();
             window.setStatusBarColor(color);
 

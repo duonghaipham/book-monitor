@@ -1,7 +1,6 @@
 package com.tyler.book_monitor.ui.content;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -90,7 +89,7 @@ public class ContentActivity extends BaseActivity
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         if (themeMode == 1) {
-            window.setStatusBarColor(Color.parseColor("#242527"));
+            window.setStatusBarColor(getColor(R.color.statusBarColor));
         }
         else {
             GradientDrawable gd = DominantColor.getDominantColorGradient(color);
