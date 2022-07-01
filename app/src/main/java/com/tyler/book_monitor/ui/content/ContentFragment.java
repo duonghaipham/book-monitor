@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class ContentFragment extends Fragment {
         Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "font/" + fonts[mFont] + ".ttf");
         tvContent.setTypeface(typeface);
         tvContent.setTextSize(mFontSize);
+        tvContent.setMovementMethod(new ScrollingMovementMethod());
 
         tvChapterName.setText(mChapter);
         tvContent.setText(mContent);

@@ -2,6 +2,7 @@ package com.tyler.book_monitor.ui.content;
 
 import android.app.Activity;
 
+import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Chapter;
 import com.tyler.book_monitor.data.models.SettingContent;
 import com.tyler.book_monitor.data.prefs.SettingsManager;
@@ -37,7 +38,7 @@ public class ContentPresenter implements ContentContract.Presenter {
     @Override
     public void loadContent() {
         String chapter = "The first avenger";
-        String content = "Hello world";
+        String content = addMoreLines(activity.getString(R.string.lorem_ipsum));
 
         view.onLoadContent(loadSettings(), chapter, content);
     }
@@ -76,7 +77,7 @@ public class ContentPresenter implements ContentContract.Presenter {
         SettingContent setting = loadSettings();
 
         mChapterIndexCurrent = chapterIndex;
-        view.onLoadContent(setting, chapterName, "This is chapter " + chapterIndex);
+        view.onLoadContent(setting, chapterName, "This is chapter " + activity.getResources().getString(R.string.lorem_ipsum));
     }
 
     @Override
@@ -114,5 +115,14 @@ public class ContentPresenter implements ContentContract.Presenter {
         boolean navigation = SettingsManager.getNavigation(activity);
 
         return new SettingContent(font, fontSize, navigation);
+    }
+
+    private String addMoreLines(String content) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(content);
+        sb.append("\n\n\n\n\n\n\n");
+
+        return sb.toString();
     }
 }

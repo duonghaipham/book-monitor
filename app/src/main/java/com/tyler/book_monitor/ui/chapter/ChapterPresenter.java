@@ -1,51 +1,55 @@
 package com.tyler.book_monitor.ui.chapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.Chapter;
 import com.tyler.book_monitor.data.prefs.SettingsManager;
 import com.tyler.book_monitor.ui.content.ContentActivity;
 
 import java.util.List;
-import java.util.Vector;
 
 public class ChapterPresenter implements ChapterContract.Presenter {
 
-    private Context context;
+    private Activity activity;
     private ChapterContract.View view;
+    private ChapterContract.Model model;
 
     private int mChapterIndexTotal = 0;
 
-    public ChapterPresenter(Context context, ChapterContract.View view) {
-        this.context = context;
+    public ChapterPresenter(Activity activity, ChapterContract.View view) {
+        this.activity = activity;
         this.view = view;
+        this.model = new ChapterModel();
     }
 
     @Override
     public void initialize() {
-        int themeMode = SettingsManager.getThemeMode(context);
+        int themeMode = SettingsManager.getThemeMode(activity);
 
         view.onInitialize(themeMode);
     }
 
     @Override
     public void loadContent() {
-        List<Chapter> chapters = new Vector<>();
-        chapters.add(new Chapter("Chapter 1", "This is chapter 1"));
-        chapters.add(new Chapter("Chapter 2", "This is chapter 2"));
-        chapters.add(new Chapter("Chapter 3", "This is chapter 3"));
-        chapters.add(new Chapter("Chapter 4", "This is chapter 4"));
-        chapters.add(new Chapter("Chapter 5", "This is chapter 5"));
-        chapters.add(new Chapter("Chapter 6", "This is chapter 6"));
-        chapters.add(new Chapter("Chapter 7", "This is chapter 7"));
-        chapters.add(new Chapter("Chapter 8", "This is chapter 8"));
-        chapters.add(new Chapter("Chapter 9", "This is chapter 9"));
+//        Intent intent = activity.getIntent();
+//        String bookId = intent.getStringExtra("bookId");
+        String bookId = "y6xBJBtnXHZtBcdO4RzB";
 
-        mChapterIndexTotal = chapters.size();
+        model.loadContent(bookId, new ChapterModel.OnLoadContentListener() {
+            @Override
+            public void onSuccess(Book book, List<Chapter> chapters) {
+                view.onLoadContent(book, chapters);
+            }
 
-        view.onLoadContent(chapters);
+            @Override
+            public void onFailure(String message) {
+                Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -55,8 +59,8 @@ public class ChapterPresenter implements ChapterContract.Presenter {
         bundle.putInt("chapterIndexCurrent", chapterIndex);
         bundle.putInt("chapterIndexTotal", mChapterIndexTotal);
 
-        Intent intent = new Intent(context, ContentActivity.class);
+        Intent intent = new Intent(activity, ContentActivity.class);
         intent.putExtras(bundle);
-        context.startActivity(intent);
+        activity.startActivity(intent);
     }
 }

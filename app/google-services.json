@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "562463865094",
+    "firebase_url": "https://monitor-books-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "monitor-books",
     "storage_bucket": "monitor-books.appspot.com"
   },
@@ -10,6 +11,35 @@
         "mobilesdk_app_id": "1:562463865094:android:80918572dd1c3891220687",
         "android_client_info": {
           "package_name": "com.example.book_monitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562463865094-i1d5kdp4qviihepib8df0mdcmpd4pvu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmSbg7cjjlkXQIpiF_tT57bp9_pjksDwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562463865094-i1d5kdp4qviihepib8df0mdcmpd4pvu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562463865094:android:1bba1cdb4f016db5220687",
+        "android_client_info": {
+          "package_name": "com.tyler.book_monitor"
         }
       },
       "oauth_client": [

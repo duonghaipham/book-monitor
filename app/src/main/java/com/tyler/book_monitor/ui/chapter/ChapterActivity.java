@@ -2,18 +2,23 @@ package com.tyler.book_monitor.ui.chapter;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.adapters.ChapterAdapter;
+import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.Chapter;
 import com.tyler.book_monitor.helpers.DominantColor;
 import com.tyler.book_monitor.ui.base.BaseActivity;
@@ -28,6 +33,7 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
 
     private LinearLayout llCover;
     private ImageView ivCover;
+    private TextView tvBookName;
     private RecyclerView rvChapters;
 
     @Override
@@ -37,6 +43,7 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
 
         llCover = findViewById(R.id.ll_cover);
         ivCover = findViewById(R.id.iv_cover);
+        tvBookName = findViewById(R.id.tv_book_name);
         rvChapters = findViewById(R.id.rv_chapters);
 
         presenter = new ChapterPresenter(this, this);
@@ -48,28 +55,49 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
 
     @Override
     public void onInitialize(int themeMode) {
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//        Window window = getWindow();
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-        if (themeMode == 1) {
-            window.setStatusBarColor(getColor(R.color.statusBarColor));
-        }
-        else {
-            Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
-
-            DominantColor dominantColor = new DominantColor(cover);
-            color = dominantColor.getDominantColor();
-            window.setStatusBarColor(color);
-
-            GradientDrawable gd = dominantColor.getDominantColorGradient();
-            llCover.setBackground(gd);
-        }
+//        if (themeMode == 1) {
+//            window.setStatusBarColor(getColor(R.color.statusBarColor));
+//        }
+//        else {
+//            Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
+//
+//            DominantColor dominantColor = new DominantColor(cover);
+//            color = dominantColor.getDominantColor();
+//            window.setStatusBarColor(color);
+//
+//            GradientDrawable gd = dominantColor.getDominantColorGradient();
+//            llCover.setBackground(gd);
+//        }
     }
 
     @Override
-    public void onLoadContent(List<Chapter> chapters) {
-        ChapterAdapter adapter = new ChapterAdapter(this, chapters, this);
+    public void onLoadContent(Book book, List<Chapter> chapters) {
+        Target target = new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                DominantColor dominantColor = new DominantColor(bitmap);
+                color = dominantColor.getDominantColor();
 
+                GradientDrawable gd = dominantColor.getDominantColorGradient();
+                llCover.setBackground(gd);
+                ivCover.setImageBitmap(bitmap);
+            }
+
+            @Override
+            public void onBitmapFailed(Exception e, Drawable errorDrawable) { }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) { }
+        };
+
+        Picasso.get().load(book.getCover()).into(target);
+        
+        tvBookName.setText(book.getTitle());
+
+        ChapterAdapter adapter = new ChapterAdapter(this, chapters, this);
         rvChapters.setAdapter(adapter);
         rvChapters.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }

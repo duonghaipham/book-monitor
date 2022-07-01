@@ -111,6 +111,7 @@ public class ContentActivity extends BaseActivity
 
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right)
                 .replace(R.id.fl_content, ContentFragment.class, bundle)
                 .commit();
     }

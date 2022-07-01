@@ -3,9 +3,9 @@ package com.tyler.book_monitor.data.models;
 public class Book implements IObject {
     private String title;
     private String author;
-    private int cover;
+    private String cover;
 
-    public Book(String title, String author, int cover) {
+    public Book(String title, String author, String cover) {
         this.title = title;
         this.author = author;
         this.cover = cover;
@@ -19,7 +19,7 @@ public class Book implements IObject {
         return author;
     }
 
-    public int getCover() {
+    public String getCover() {
         return cover;
     }
 }

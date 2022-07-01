@@ -2,18 +2,18 @@ package com.tyler.book_monitor.data.models;
 
 public class Chapter {
     private String title;
-    private String additionalInfo;
+    private String content;
 
-    public Chapter(String title, String additionalInfo) {
+    public Chapter(String title, String content) {
         this.title = title;
-        this.additionalInfo = additionalInfo;
+        this.content = content;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getAdditionalInfo() {
-        return additionalInfo;
+    public String getContent() {
+        return content;
     }
 }

@@ -34,11 +34,20 @@ public class SearchPresenter implements SearchContract.Presenter {
     @Override
     public void search(String query) {
         List<Book> books = new Vector<>();
-        books.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", R.drawable.mock_book_cover));
-        books.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", R.drawable.mock_book_cover));
-        books.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", R.drawable.mock_book_cover));
+        books.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", null));
+        books.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", null));
+        books.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", null));
 
         List<Author> authors = new Vector<>();
+        authors.add(new Author("F. Scott Fitzgerald", ""));
+        authors.add(new Author("F. Scott Fitzgerald", ""));
+        authors.add(new Author("F. Scott Fitzgerald", ""));
+        authors.add(new Author("F. Scott Fitzgerald", ""));
+        authors.add(new Author("F. Scott Fitzgerald", ""));
+        authors.add(new Author("F. Scott Fitzgerald", ""));
+        authors.add(new Author("F. Scott Fitzgerald", ""));
+        authors.add(new Author("F. Scott Fitzgerald", ""));
+        authors.add(new Author("F. Scott Fitzgerald", ""));
         authors.add(new Author("F. Scott Fitzgerald", ""));
         authors.add(new Author("F. Scott Fitzgerald", ""));
         authors.add(new Author("F. Scott Fitzgerald", ""));

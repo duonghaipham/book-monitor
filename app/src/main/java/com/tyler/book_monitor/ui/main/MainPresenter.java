@@ -31,9 +31,9 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void loadContent() {
         List<Book> continuedBooks = new Vector<>();
-        continuedBooks.add(new Book("The Da Vinci Code", "Dan Brown", R.drawable.mock_book_cover));
-        continuedBooks.add(new Book("Harry Potter and the chamber of secrets", "J.K Rowling", R.drawable.mock_book_cover_1));
-        continuedBooks.add(new Book("Harry Potter and the stone", "J.K Rowling", R.drawable.mock_book_cover_2));
+        continuedBooks.add(new Book("The Da Vinci Code", "Dan Brown", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
+        continuedBooks.add(new Book("Harry Potter and the chamber of secrets", "J.K Rowling", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
+        continuedBooks.add(new Book("Harry Potter and the stone", "J.K Rowling", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
 
         List<Author> authors = new Vector<>();
         authors.add(new Author("Dan Brown", ""));
