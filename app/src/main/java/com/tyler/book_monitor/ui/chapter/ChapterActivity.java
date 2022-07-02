@@ -1,12 +1,9 @@
 package com.tyler.book_monitor.ui.chapter;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -49,28 +46,6 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
         presenter = new ChapterPresenter(this, this);
 
         presenter.loadContent();
-
-        presenter.initialize();
-    }
-
-    @Override
-    public void onInitialize(int themeMode) {
-//        Window window = getWindow();
-//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-//        if (themeMode == 1) {
-//            window.setStatusBarColor(getColor(R.color.statusBarColor));
-//        }
-//        else {
-//            Bitmap cover = ((BitmapDrawable) ivCover.getDrawable()).getBitmap();
-//
-//            DominantColor dominantColor = new DominantColor(cover);
-//            color = dominantColor.getDominantColor();
-//            window.setStatusBarColor(color);
-//
-//            GradientDrawable gd = dominantColor.getDominantColorGradient();
-//            llCover.setBackground(gd);
-//        }
     }
 
     @Override
@@ -93,7 +68,7 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
             public void onPrepareLoad(Drawable placeHolderDrawable) { }
         };
 
-        Picasso.get().load(book.getCover()).into(target);
+        Picasso.get().load(book.getCover()).resize(480, 720).into(target);
         
         tvBookName.setText(book.getTitle());
 

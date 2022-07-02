@@ -20,7 +20,7 @@ import java.util.Vector;
 public class ChapterChoicesFragment extends DialogFragment {
 
     public interface IChapterChoice {
-        void onDataPass(String chapterName, int chapterNumber);
+        void onDataPass(int chapterIndex);
     }
 
     private IChapterChoice mChapterChoice;
@@ -54,7 +54,7 @@ public class ChapterChoicesFragment extends DialogFragment {
         lvChapterChoices.setOnItemClickListener((parent, view1, position, id) -> {
             Chapter chapter = mChapterChoices.get(position);
 
-            mChapterChoice.onDataPass(chapter.getTitle(), position);
+            mChapterChoice.onDataPass(position);
 
             dismiss();
         });

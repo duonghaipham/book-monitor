@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.Chapter;
-import com.tyler.book_monitor.data.prefs.SettingsManager;
 import com.tyler.book_monitor.ui.content.ContentActivity;
 
 import java.util.List;
@@ -18,7 +18,9 @@ public class ChapterPresenter implements ChapterContract.Presenter {
     private ChapterContract.View view;
     private ChapterContract.Model model;
 
-    private int mChapterIndexTotal = 0;
+    private String mBookId;
+    private String jsonBook;
+    private String jsonChapters;
 
     public ChapterPresenter(Activity activity, ChapterContract.View view) {
         this.activity = activity;
@@ -27,21 +29,18 @@ public class ChapterPresenter implements ChapterContract.Presenter {
     }
 
     @Override
-    public void initialize() {
-        int themeMode = SettingsManager.getThemeMode(activity);
-
-        view.onInitialize(themeMode);
-    }
-
-    @Override
     public void loadContent() {
 //        Intent intent = activity.getIntent();
 //        String bookId = intent.getStringExtra("bookId");
-        String bookId = "y6xBJBtnXHZtBcdO4RzB";
+        mBookId = "y6xBJBtnXHZtBcdO4RzB";
 
-        model.loadContent(bookId, new ChapterModel.OnLoadContentListener() {
+        model.loadContent(mBookId, new ChapterModel.OnLoadContentListener() {
             @Override
             public void onSuccess(Book book, List<Chapter> chapters) {
+                Gson gson = new Gson();
+                jsonBook = gson.toJson(book);
+                jsonChapters = gson.toJson(chapters);
+
                 view.onLoadContent(book, chapters);
             }
 
@@ -57,7 +56,8 @@ public class ChapterPresenter implements ChapterContract.Presenter {
         Bundle bundle = new Bundle();
         bundle.putInt("color", color);
         bundle.putInt("chapterIndexCurrent", chapterIndex);
-        bundle.putInt("chapterIndexTotal", mChapterIndexTotal);
+        bundle.putString("jsonBook", jsonBook);
+        bundle.putString("jsonChapters", jsonChapters);
 
         Intent intent = new Intent(activity, ContentActivity.class);
         intent.putExtras(bundle);

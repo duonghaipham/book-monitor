@@ -2,22 +2,25 @@ package com.tyler.book_monitor.ui.content;
 
 import android.app.Activity;
 
-import com.tyler.book_monitor.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.Chapter;
 import com.tyler.book_monitor.data.models.SettingContent;
 import com.tyler.book_monitor.data.prefs.SettingsManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class ContentPresenter implements ContentContract.Presenter {
 
-    private Activity activity;
-    private ContentContract.View view;
+    private final Activity activity;
+    private final ContentContract.View view;
 
     private int mChapterIndexCurrent = 0;
     private int mChapterIndexTotal = 0;
+    private Book mBook;
+    private List<Chapter> mChapters;
 
     public ContentPresenter(Activity activity, ContentContract.View view) {
         this.activity = activity;
@@ -29,36 +32,31 @@ public class ContentPresenter implements ContentContract.Presenter {
         int themeMode = SettingsManager.getThemeMode(activity);
 
         int color = activity.getIntent().getExtras().getInt("color");
-        mChapterIndexCurrent = activity.getIntent().getExtras().getInt("chapterIndex");
-        mChapterIndexTotal = activity.getIntent().getExtras().getInt("chapterIndexTotal");
+        mChapterIndexCurrent = activity.getIntent().getExtras().getInt("chapterIndexCurrent");
+        String jsonBook = activity.getIntent().getExtras().getString("jsonBook");
+        String jsonChapters = activity.getIntent().getExtras().getString("jsonChapters");
 
-        view.onInitialize(themeMode, color);
+        Gson gson = new Gson();
+        mBook = gson.fromJson(jsonBook, Book.class);
+        mChapters = gson.fromJson(jsonChapters, new TypeToken<List<Chapter>>(){}.getType());
+        mChapterIndexTotal = mChapters.size();
+
+        view.onInitialize(themeMode, color, mBook);
     }
 
     @Override
     public void loadContent() {
-        String chapter = "The first avenger";
-        String content = addMoreLines(activity.getString(R.string.lorem_ipsum));
+        String chapter = mChapters.get(mChapterIndexCurrent).getTitle();
+        String content = standardize(mChapters.get(mChapterIndexCurrent).getContent());
 
         view.onLoadContent(loadSettings(), chapter, content);
     }
 
     @Override
     public void showChapterChoices() {
-        List<Chapter> chapters = new Vector<>();
-        chapters.add(new Chapter("Chapter 1", "This is chapter 1"));
-        chapters.add(new Chapter("Chapter 2", "This is chapter 2"));
-        chapters.add(new Chapter("Chapter 3", "This is chapter 3"));
-        chapters.add(new Chapter("Chapter 4", "This is chapter 4"));
-        chapters.add(new Chapter("Chapter 5", "This is chapter 5"));
-        chapters.add(new Chapter("Chapter 6", "This is chapter 6"));
-        chapters.add(new Chapter("Chapter 7", "This is chapter 7"));
-        chapters.add(new Chapter("Chapter 8", "This is chapter 8"));
-        chapters.add(new Chapter("Chapter 9", "This is chapter 9"));
-
         ArrayList<String> chapterChoices = new ArrayList<>();
 
-        for (Chapter chapter : chapters) {
+        for (Chapter chapter : mChapters) {
             chapterChoices.add(chapter.getTitle());
         }
 
@@ -73,11 +71,15 @@ public class ContentPresenter implements ContentContract.Presenter {
     }
 
     @Override
-    public void jumpToChapter(String chapterName, int chapterIndex) {
+    public void jumpToChapter(int chapterIndex) {
         SettingContent setting = loadSettings();
 
         mChapterIndexCurrent = chapterIndex;
-        view.onLoadContent(setting, chapterName, "This is chapter " + activity.getResources().getString(R.string.lorem_ipsum));
+
+        String title = mChapters.get(chapterIndex).getTitle();
+        String content = standardize(mChapters.get(chapterIndex).getContent());
+
+        view.onLoadContent(setting, title, content);
     }
 
     @Override
@@ -86,17 +88,25 @@ public class ContentPresenter implements ContentContract.Presenter {
             SettingContent setting = loadSettings();
 
             mChapterIndexCurrent--;
-            view.onLoadContent(setting,"Chapter " + mChapterIndexCurrent, "This is chapter " + mChapterIndexCurrent);
+
+            String title = mChapters.get(mChapterIndexCurrent).getTitle();
+            String content = standardize(mChapters.get(mChapterIndexCurrent).getContent());
+
+            view.onLoadContent(setting, title, content);
         }
     }
 
     @Override
     public void jumpNextChapter() {
-        if (mChapterIndexCurrent < mChapterIndexTotal) {
+        if (mChapterIndexCurrent < mChapterIndexTotal - 1) {
             SettingContent setting = loadSettings();
 
             mChapterIndexCurrent++;
-            view.onLoadContent(setting,"Chapter " + mChapterIndexCurrent, "This is chapter " + mChapterIndexCurrent);
+
+            String title = mChapters.get(mChapterIndexCurrent).getTitle();
+            String content = standardize(mChapters.get(mChapterIndexCurrent).getContent());
+
+            view.onLoadContent(setting, title, content);
         }
     }
 
@@ -117,12 +127,10 @@ public class ContentPresenter implements ContentContract.Presenter {
         return new SettingContent(font, fontSize, navigation);
     }
 
-    private String addMoreLines(String content) {
-        StringBuilder sb = new StringBuilder();
+    private String standardize(String text) {
+        String returnText = text;
+        returnText += "\\n\\n\\n\\n\\n\\n\\n";
 
-        sb.append(content);
-        sb.append("\n\n\n\n\n\n\n");
-
-        return sb.toString();
+        return returnText.replace("\\n", "\n");
     }
 }

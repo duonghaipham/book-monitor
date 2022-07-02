@@ -56,13 +56,10 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
 
             tvChapterName = itemView.findViewById(R.id.tv_chapter_name);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (chapterClick != null) {
-                        if (getAdapterPosition() != RecyclerView.NO_POSITION) {
-                            chapterClick.onChapterClick(getAdapterPosition());
-                        }
+            itemView.setOnClickListener(v -> {
+                if (chapterClick != null) {
+                    if (getAdapterPosition() != RecyclerView.NO_POSITION) {
+                        chapterClick.onChapterClick(getAdapterPosition());
                     }
                 }
             });

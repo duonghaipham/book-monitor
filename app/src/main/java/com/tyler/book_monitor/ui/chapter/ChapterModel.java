@@ -12,7 +12,7 @@ import java.util.Vector;
 
 public class ChapterModel implements ChapterContract.Model {
 
-    private FirebaseFirestore db;
+    private final FirebaseFirestore db;
 
     public ChapterModel() {
         db = FirebaseFirestore.getInstance();

@@ -7,12 +7,10 @@ import java.util.List;
 
 public class ChapterContract {
     public interface View {
-        void onInitialize(int themeMode);
         void onLoadContent(Book book, List<Chapter> chapters);
     }
 
     public interface Presenter {
-        void initialize();
         void loadContent();
         void toContentActivity(int color, int chapterIndex);
     }

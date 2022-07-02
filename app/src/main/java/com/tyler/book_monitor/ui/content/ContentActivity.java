@@ -5,8 +5,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tyler.book_monitor.R;
+import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.SettingContent;
 import com.tyler.book_monitor.helpers.DominantColor;
 import com.tyler.book_monitor.helpers.OnSwipeTouchListener;
@@ -33,6 +32,7 @@ public class ContentActivity extends BaseActivity
     private ImageButton ibPrev;
     private ImageButton ibNext;
     private BottomNavigationView bnvAdjustment;
+    private TextView tvBookName;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -47,6 +47,7 @@ public class ContentActivity extends BaseActivity
         ibPrev = findViewById(R.id.ib_prev);
         ibNext = findViewById(R.id.ib_next);
         bnvAdjustment = findViewById(R.id.bnv_adjustment);
+        tvBookName = findViewById(R.id.tv_book_name);
 
         clContent.setOnTouchListener(new OnSwipeTouchListener(this) {
             public void onSwipeLeft() {
@@ -84,18 +85,13 @@ public class ContentActivity extends BaseActivity
     }
 
     @Override
-    public void onInitialize(int themeMode, int color) {
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-        if (themeMode == 1) {
-            window.setStatusBarColor(getColor(R.color.statusBarColor));
-        }
-        else {
+    public void onInitialize(int themeMode, int color, Book book) {
+        if (themeMode == 0) {
             GradientDrawable gd = DominantColor.getDominantColorGradient(color);
             llCover.setBackground(gd);
-            window.setStatusBarColor(color);
         }
+
+        tvBookName.setText(book.getTitle());
     }
 
     @Override
@@ -156,8 +152,8 @@ public class ContentActivity extends BaseActivity
     }
 
     @Override
-    public void onDataPass(String chapterName, int chapterNumber) {
-        presenter.jumpToChapter(chapterName, chapterNumber);
+    public void onDataPass(int chapterIndex) {
+        presenter.jumpToChapter(chapterIndex);
     }
 
     @Override

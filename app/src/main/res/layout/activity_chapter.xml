@@ -19,8 +19,8 @@
             android:id="@+id/iv_cover"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:maxWidth="240dp"
-            android:maxHeight="360dp"
+            android:maxWidth="480dp"
+            android:maxHeight="720dp"
             android:src="@drawable/asset_book_placeholder"/>
 
     </LinearLayout>
