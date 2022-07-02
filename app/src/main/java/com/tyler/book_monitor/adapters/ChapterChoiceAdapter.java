@@ -1,5 +1,6 @@
 package com.tyler.book_monitor.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,8 @@ import java.util.List;
 
 public class ChapterChoiceAdapter extends BaseAdapter {
 
-    private Activity mActivity;
-    private List<Chapter> mChapterChoices;
+    private final Activity mActivity;
+    private final List<Chapter> mChapterChoices;
 
     public ChapterChoiceAdapter(Activity activity, List<Chapter> chapterChoices) {
         mActivity = activity;
@@ -37,13 +38,17 @@ public class ChapterChoiceAdapter extends BaseAdapter {
         return position;
     }
 
+    @SuppressLint({"ViewHolder", "InflateParams"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = mActivity.getLayoutInflater();
         convertView = inflater.inflate(R.layout.item_chapter, null);
 
         TextView tvChapterName= convertView.findViewById(R.id.tv_chapter_name);
-        tvChapterName.setText(mChapterChoices.get(position).getTitle());
+
+        String title = (position + 1) + ". " + mChapterChoices.get(position).getTitle();
+
+        tvChapterName.setText(title);
 
         return convertView;
     }

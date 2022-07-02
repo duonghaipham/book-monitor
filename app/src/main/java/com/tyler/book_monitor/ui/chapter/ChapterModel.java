@@ -29,6 +29,7 @@ public class ChapterModel implements ChapterContract.Model {
 
                         if (document.exists()) {
                             Book book = new Book(
+                                    document.getId(),
                                     document.get("name").toString(),
                                     document.get("author").toString(),
                                     document.get("avatar").toString()

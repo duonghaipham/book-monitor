@@ -1,5 +1,6 @@
 package com.tyler.book_monitor.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +21,9 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
         void onChapterClick(int position);
     }
 
-    private LayoutInflater inflater;
-    private List<Chapter> chapters;
-    private IChapterClick chapterClick;
+    private final LayoutInflater inflater;
+    private final List<Chapter> chapters;
+    private final IChapterClick chapterClick;
 
     public ChapterAdapter(Context context, List<Chapter> chapters, IChapterClick chapterClick) {
         this.inflater = LayoutInflater.from(context);
@@ -37,9 +38,12 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
         return new ChapterViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ChapterViewHolder holder, int position) {
-        holder.tvChapterName.setText(chapters.get(position).getTitle());
+        String title = (position + 1) + ". " + chapters.get(position).getTitle();
+
+        holder.tvChapterName.setText(title);
     }
 
     @Override
@@ -49,7 +53,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
 
     public class ChapterViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvChapterName;
+        private final TextView tvChapterName;
 
         public ChapterViewHolder(@NonNull View itemView) {
             super(itemView);

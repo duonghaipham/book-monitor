@@ -1,5 +1,6 @@
 package com.tyler.book_monitor.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -37,6 +38,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Aut
     private TextView tvViewAllPopularAuthors;
     private TextView tvViewAllContinueReading;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,7 +120,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Aut
 
     @Override
     public void onBookClick(int position) {
-        presenter.toCoverActivity();
+        presenter.toCoverActivity(position);
     }
 
     @Override

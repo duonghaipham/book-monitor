@@ -2,8 +2,9 @@ package com.tyler.book_monitor.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
 
-import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.SettingGlobal;
@@ -16,32 +17,38 @@ import com.tyler.book_monitor.ui.cover.CoverActivity;
 import com.tyler.book_monitor.ui.search.SearchActivity;
 
 import java.util.List;
-import java.util.Vector;
 
 public class MainPresenter implements MainContract.Presenter {
 
-    private Context context;
-    private MainContract.View view;
+    private final Context context;
+    private final MainContract.View view;
+    private final MainContract.Model model;
+
+    private List<Book> mContinuedBooks;
+    private List<Author> mAuthors;
 
     public MainPresenter(Context context, MainContract.View view) {
         this.context = context;
         this.view = view;
+        this.model = new MainModel();
     }
 
     @Override
     public void loadContent() {
-        List<Book> continuedBooks = new Vector<>();
-        continuedBooks.add(new Book("The Da Vinci Code", "Dan Brown", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
-        continuedBooks.add(new Book("Harry Potter and the chamber of secrets", "J.K Rowling", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
-        continuedBooks.add(new Book("Harry Potter and the stone", "J.K Rowling", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
+        model.loadContent(new MainModel.OnLoadContentListener() {
+            @Override
+            public void onSuccess(List<Book> continuedBooks, List<Author> authors) {
+                mContinuedBooks = continuedBooks;
+                mAuthors = authors;
 
-        List<Author> authors = new Vector<>();
-        authors.add(new Author("Dan Brown", ""));
-        authors.add(new Author("J.K Rowling", ""));
-        authors.add(new Author("Issac Newton", ""));
-        authors.add(new Author("Malcolm Gladwell", ""));
+                view.onLoadContent(continuedBooks, authors);
+            }
 
-        view.onLoadContent(continuedBooks, authors);
+            @Override
+            public void onFailure(String message) {
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -63,8 +70,12 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void toCoverActivity() {
+    public void toCoverActivity(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("bookId", mContinuedBooks.get(position).getId());
+
         Intent intent = new Intent(context, CoverActivity.class);
+        intent.putExtras(bundle);
         context.startActivity(intent);
     }
 

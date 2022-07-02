@@ -2,12 +2,11 @@ package com.tyler.book_monitor.ui.content;
 
 import android.app.Activity;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.Chapter;
 import com.tyler.book_monitor.data.models.SettingContent;
 import com.tyler.book_monitor.data.prefs.SettingsManager;
+import com.tyler.book_monitor.utils.DataHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +32,9 @@ public class ContentPresenter implements ContentContract.Presenter {
 
         int color = activity.getIntent().getExtras().getInt("color");
         mChapterIndexCurrent = activity.getIntent().getExtras().getInt("chapterIndexCurrent");
-        String jsonBook = activity.getIntent().getExtras().getString("jsonBook");
-        String jsonChapters = activity.getIntent().getExtras().getString("jsonChapters");
 
-        Gson gson = new Gson();
-        mBook = gson.fromJson(jsonBook, Book.class);
-        mChapters = gson.fromJson(jsonChapters, new TypeToken<List<Chapter>>(){}.getType());
+        mBook = DataHolder.getInstance().getBook();
+        mChapters = DataHolder.getInstance().getChapters();
         mChapterIndexTotal = mChapters.size();
 
         view.onInitialize(themeMode, color, mBook);

@@ -49,16 +49,19 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
     }
 
     @Override
-    public void onLoadContent(Book book, List<Chapter> chapters) {
+    public void onLoadContent(int themeMode, Book book, List<Chapter> chapters) {
         Target target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                DominantColor dominantColor = new DominantColor(bitmap);
-                color = dominantColor.getDominantColor();
-
-                GradientDrawable gd = dominantColor.getDominantColorGradient();
-                llCover.setBackground(gd);
                 ivCover.setImageBitmap(bitmap);
+
+                if (themeMode == 0) {
+                    DominantColor dominantColor = new DominantColor(bitmap);
+                    color = dominantColor.getDominantColor();
+
+                    GradientDrawable gd = dominantColor.getDominantColorGradient();
+                    llCover.setBackground(gd);
+                }
             }
 
             @Override

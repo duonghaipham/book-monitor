@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="7dp"
-        android:text="Dan Brown"
         android:textSize="@dimen/material_text_subhead"
         android:fontFamily="@font/roboto_condensed_regular"
         android:textColor="@color/secondaryTextColor"

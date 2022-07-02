@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ChapterContract {
     public interface View {
-        void onLoadContent(Book book, List<Chapter> chapters);
+        void onLoadContent(int themeMode, Book book, List<Chapter> chapters);
     }
 
     public interface Presenter {

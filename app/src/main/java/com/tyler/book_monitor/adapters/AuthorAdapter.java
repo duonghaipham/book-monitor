@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Author;
 
@@ -20,9 +22,9 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
         void onAuthorClick(int position);
     }
 
-    private LayoutInflater inflater;
-    private List<Author> authors;
-    private IAuthorClick authorClick;
+    private final LayoutInflater inflater;
+    private final List<Author> authors;
+    private final IAuthorClick authorClick;
 
     public AuthorAdapter(Context context, List<Author> authors, IAuthorClick authorClick) {
         this.inflater = LayoutInflater.from(context);
@@ -40,7 +42,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull AuthorAdapter.ViewHolder holder, int position) {
         holder.tvName.setText(authors.get(position).getName());
-//        holder.ivCover.setImageResource(R.drawable.mock_book_cover);
+        Picasso.get().load(authors.get(position).getAvatar()).into(holder.ivAvatar);
     }
 
     @Override
@@ -50,24 +52,21 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvName;
-//        private ImageView ivAvatar;
+        private final TextView tvName;
+        private final ImageView ivAvatar;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.tv_name);
-//            ivAvatar = itemView.findViewById(R.id.iv_avatar);
+            ivAvatar = itemView.findViewById(R.id.iv_avatar);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (authorClick != null) {
-                        int position = getAdapterPosition();
+            itemView.setOnClickListener(v -> {
+                if (authorClick != null) {
+                    int position = getAdapterPosition();
 
-                        if (position != RecyclerView.NO_POSITION) {
-                            authorClick.onAuthorClick(position);
-                        }
+                    if (position != RecyclerView.NO_POSITION) {
+                        authorClick.onAuthorClick(position);
                     }
                 }
             });

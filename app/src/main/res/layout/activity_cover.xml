@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:maxWidth="240dp"
             android:maxHeight="360dp"
-            android:src="@drawable/mock_book_cover"/>
+            android:src="@drawable/asset_book_placeholder"/>
 
     </LinearLayout>
 
@@ -43,7 +43,6 @@
             android:fontFamily="@font/roboto_condensed_regular"
             android:textIsSelectable="true"
             android:textStyle="bold"
-            android:text="Mật mã Da Vinci"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/material_text_headline"/>
 
@@ -54,7 +53,6 @@
             android:layout_marginBottom="22dp"
             android:gravity="center"
             android:textIsSelectable="true"
-            android:text="Dan Brown"
             android:textSize="@dimen/material_text_title"
             android:textColor="@color/secondaryTextColor"/>
 

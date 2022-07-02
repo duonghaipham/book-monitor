@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Book;
 
@@ -21,9 +22,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         void onBookClick(int position);
     }
 
-    private LayoutInflater inflater;
-    private List<Book> books;
-    private IBookClick bookClick;
+    private final LayoutInflater inflater;
+    private final List<Book> books;
+    private final IBookClick bookClick;
 
     public BookAdapter(Context context, List<Book> books, IBookClick bookClick) {
         this.inflater = LayoutInflater.from(context);
@@ -40,11 +41,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Picasso.get().load(books.get(position).getCover()).into(holder.ivCover);
         holder.tvTitle.setText(books.get(position).getTitle());
         if (books.get(position).getAuthor() != null) {
             holder.tvAuthor.setText(books.get(position).getAuthor());
         }
-//        holder.ivCover.setImageResource(R.drawable.mock_book_cover);
     }
 
     @Override
@@ -54,9 +55,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvTitle;
-        private TextView tvAuthor;
-        private ImageView ivCover;
+        private final TextView tvTitle;
+        private final TextView tvAuthor;
+        private final ImageView ivCover;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -65,13 +66,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             tvAuthor = itemView.findViewById(R.id.tv_author);
             ivCover = itemView.findViewById(R.id.iv_cover);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (bookClick != null) {
-                        if (getAdapterPosition() != RecyclerView.NO_POSITION) {
-                            bookClick.onBookClick(getAdapterPosition());
-                        }
+            itemView.setOnClickListener(v -> {
+                if (bookClick != null) {
+                    if (getAdapterPosition() != RecyclerView.NO_POSITION) {
+                        bookClick.onBookClick(getAdapterPosition());
                     }
                 }
             });

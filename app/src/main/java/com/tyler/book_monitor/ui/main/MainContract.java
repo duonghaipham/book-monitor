@@ -18,11 +18,19 @@ public class MainContract {
         void toArchiveActivity();
         void toSearchActivity();
         void toAuthorActivity();
-        void toCoverActivity();
+        void toCoverActivity(int position);
         void viewAllPopularAuthors();
         void viewAllContinueReading();
         void showSettings();
         void saveSettings(SettingGlobal setting);
         void showAbout();
+    }
+
+    public interface Model {
+        interface OnLoadContentListener {
+            void onSuccess(List<Book> continuedBooks, List<Author> authors);
+            void onFailure(String message);
+        }
+        void loadContent(OnLoadContentListener listener);
     }
 }
