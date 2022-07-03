@@ -8,6 +8,7 @@ import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Vector;
 
 public class MainModel implements MainContract.Model {
@@ -20,7 +21,9 @@ public class MainModel implements MainContract.Model {
 
     @Override
     public void loadContent(OnLoadContentListener listener) {
-        Task<QuerySnapshot> task1 = db.collection("books").get();
+        Task<QuerySnapshot> task1 = db.collection("books")
+                .whereEqualTo("isPublished", true)
+                .get();
         Task<QuerySnapshot> task2 = db.collection("authors").get();
 
         Tasks.whenAllSuccess(task1, task2).addOnSuccessListener(objects -> {
@@ -28,9 +31,11 @@ public class MainModel implements MainContract.Model {
             ((QuerySnapshot)objects.get(0)).getDocuments().forEach(document -> {
                 books.add(new Book(
                         document.getId(),
-                        document.get("name").toString(),
+                        Objects.requireNonNull(document.get("name")).toString(),
                         document.get("author").toString(),
-                        document.get("avatar").toString()
+                        document.get("avatar").toString(),
+                        document.get("introduction").toString(),
+                        (List<String>)document.get("categories")
                 ));
             });
 

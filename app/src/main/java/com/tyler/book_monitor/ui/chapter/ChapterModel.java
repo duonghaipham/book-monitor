@@ -28,11 +28,14 @@ public class ChapterModel implements ChapterContract.Model {
                         DocumentSnapshot document = task.getResult();
 
                         if (document.exists()) {
+                            List<String> categories = new ArrayList<>();
                             Book book = new Book(
                                     document.getId(),
                                     document.get("name").toString(),
                                     document.get("author").toString(),
-                                    document.get("avatar").toString()
+                                    document.get("avatar").toString(),
+                                    document.get("introduction").toString(),
+                                    categories
                             );
 
                             List<HashMap<String, String>> mapChapters = (ArrayList<HashMap<String, String>>) document.get("chapters");

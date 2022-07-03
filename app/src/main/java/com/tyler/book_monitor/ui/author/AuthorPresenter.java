@@ -7,6 +7,7 @@ import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.ui.cover.CoverActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -23,12 +24,13 @@ public class AuthorPresenter implements AuthorContract.Presenter {
     @Override
     public void loadContent() {
         List<Book> books = new Vector<>();
-        books.add(new Book("", "The Da Vinci Code", "Dan Brown", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
-        books.add(new Book("", "Harry Potter and the chamber of secrets", "J.K Rowling", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
-        books.add(new Book("", "Harry Potter and the stone", "J.K Rowling", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
-        books.add(new Book("", "Harry Potter and the Dead Hallow", "J.K Rowling", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
-        books.add(new Book("", "Harry Potter and the half blood price", "J.K Rowling", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
-        books.add(new Book("", "Harry Potter and the cursed child", "J.K Rowling", "https://firebasestorage.googleapis.com/v0/b/monitor-books.appspot.com/o/book%2Fmock_book_cover.jpg?alt=media&token=badfa394-407a-44f0-98bc-74fe355c9d80"));
+        List<String> categories = new ArrayList<>();
+        books.add(new Book("", "The Da Vinci Code", "Dan Brown", "", "", categories));
+        books.add(new Book("", "Harry Potter and the chamber of secrets", "J.K Rowling", "", "", categories));
+        books.add(new Book("", "Harry Potter and the stone", "J.K Rowling", "", "", categories));
+        books.add(new Book("", "Harry Potter and the Dead Hallow", "J.K Rowling", "", "", categories));
+        books.add(new Book("", "Harry Potter and the half blood price", "J.K Rowling", "", "", categories));
+        books.add(new Book("", "Harry Potter and the cursed child", "J.K Rowling", "", "", categories));
 
         view.onLoadContent(books);
     }

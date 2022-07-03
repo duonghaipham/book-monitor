@@ -11,6 +11,7 @@ import com.tyler.book_monitor.data.prefs.SettingsManager;
 import com.tyler.book_monitor.ui.author.AuthorActivity;
 import com.tyler.book_monitor.ui.cover.CoverActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -34,9 +35,10 @@ public class SearchPresenter implements SearchContract.Presenter {
     @Override
     public void search(String query) {
         List<Book> books = new Vector<>();
-        books.add(new Book("", "The Great Gatsby", "F. Scott Fitzgerald", null));
-        books.add(new Book("", "The Great Gatsby", "F. Scott Fitzgerald", null));
-        books.add(new Book("", "The Great Gatsby", "F. Scott Fitzgerald", null));
+        List<String> categories = new ArrayList<>();
+        books.add(new Book("", "The Great Gatsby", "F. Scott Fitzgerald", null, "", categories));
+        books.add(new Book("", "The Great Gatsby", "F. Scott Fitzgerald", null, "", categories));
+        books.add(new Book("", "The Great Gatsby", "F. Scott Fitzgerald", null, "", categories));
 
         List<Author> authors = new Vector<>();
         authors.add(new Author("F. Scott Fitzgerald", ""));
