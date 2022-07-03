@@ -49,6 +49,6 @@ public class AllBooksActivity extends BaseActivity implements AllBooksContract.V
 
     @Override
     public void onBookClick(int position) {
-        presenter.toCoverActivity();
+        presenter.toCoverActivity(position);
     }
 }

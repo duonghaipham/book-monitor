@@ -1,7 +1,5 @@
 package com.tyler.book_monitor.ui.all_books;
 
-import android.content.Context;
-
 import com.tyler.book_monitor.data.models.Book;
 
 import java.util.List;
@@ -13,6 +11,14 @@ public class AllBooksContract {
 
     public interface Presenter {
         void loadContent();
-        void toCoverActivity();
+        void toCoverActivity(int position);
+    }
+
+    public interface Model {
+        interface OnLoadContentListener {
+            void onSuccess(List<Book> books);
+            void onFailure(String message);
+        }
+        void loadContent(OnLoadContentListener listener);
     }
 }

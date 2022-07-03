@@ -11,6 +11,14 @@ public class AllAuthorsContract {
 
     public interface Presenter {
         void loadContent();
-        void toAuthorActivity();
+        void toAuthorActivity(int position);
+    }
+
+    public interface Model {
+        interface OnLoadContentListener {
+            void onSuccess(List<Author> authors);
+            void onFailure(String message);
+        }
+        void loadContent(OnLoadContentListener listener);
     }
 }

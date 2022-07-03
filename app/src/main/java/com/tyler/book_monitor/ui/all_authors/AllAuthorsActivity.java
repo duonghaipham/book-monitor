@@ -49,6 +49,6 @@ public class AllAuthorsActivity extends BaseActivity implements AllAuthorsContra
 
     @Override
     public void onAuthorClick(int position) {
-        presenter.toAuthorActivity();
+        presenter.toAuthorActivity(position);
     }
 }

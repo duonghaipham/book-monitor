@@ -6,6 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
+import com.tyler.book_monitor.utils.Constants;
 
 import java.util.List;
 import java.util.Vector;
@@ -22,8 +23,12 @@ public class MainModel implements MainContract.Model {
     public void loadContent(OnLoadContentListener listener) {
         Task<QuerySnapshot> task1 = db.collection("books")
                 .whereEqualTo("isPublished", true)
+                .limit(Constants.AUTHOR_LIMIT)
                 .get();
-        Task<QuerySnapshot> task2 = db.collection("authors").get();
+
+        Task<QuerySnapshot> task2 = db.collection("authors")
+                .limit(Constants.BOOK_LIMIT)
+                .get();
 
         Tasks.whenAllSuccess(task1, task2).addOnSuccessListener(objects -> {
             List<Book> books = new Vector<>();
