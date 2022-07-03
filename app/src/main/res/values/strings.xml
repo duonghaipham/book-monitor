@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Book</string>
     <string name="hello">Hello!</string>
-    <string name="search_hint">Search by Title, Author, Genre…</string>
+    <string name="search_hint">Search by Title, Author…</string>
     <string name="popular_authors">Popular Authors</string>
     <string name="continue_reading">Continue Reading</string>
     <string name="trending_books">Trending Books</string>

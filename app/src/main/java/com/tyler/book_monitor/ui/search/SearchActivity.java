@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tyler.book_monitor.R;
+import com.tyler.book_monitor.data.models.GeneralObject;
 import com.tyler.book_monitor.ui.adapters.SearchResultAdapter;
-import com.tyler.book_monitor.data.models.IObject;
 
 import java.util.List;
 
@@ -74,7 +74,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     }
 
     @Override
-    public void onSearch(List<IObject> results) {
+    public void onSearch(List<GeneralObject> results) {
         SearchResultAdapter adapter = new SearchResultAdapter(this, results, this);
         rvSearchResults.setAdapter(adapter);
 
@@ -82,7 +82,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     }
 
     @Override
-    public void onObjectClick(IObject object) {
-        presenter.toObjectActivity(object);
+    public void onObjectClick(int position) {
+        presenter.toObjectActivity(position);
     }
 }

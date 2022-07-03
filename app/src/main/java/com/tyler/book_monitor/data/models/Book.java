@@ -2,8 +2,7 @@ package com.tyler.book_monitor.data.models;
 
 import java.util.List;
 
-public class Book implements IObject {
-    private final String id;
+public class Book extends GeneralObject {
     private final String title;
     private final String author;
     private final String cover;
@@ -11,16 +10,12 @@ public class Book implements IObject {
     private final List<String> categories;
 
     public Book(String id, String title, String author, String cover, String introduction, List<String> categories) {
-        this.id = id;
+        super(id);
         this.title = title;
         this.author = author;
         this.cover = cover;
         this.introduction = introduction;
         this.categories = categories;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getTitle() {

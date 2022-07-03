@@ -14,21 +14,21 @@ import com.squareup.picasso.Picasso;
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
-import com.tyler.book_monitor.data.models.IObject;
+import com.tyler.book_monitor.data.models.GeneralObject;
 
 import java.util.List;
 
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.ViewHolder> {
 
     public interface IObjectClick {
-        void onObjectClick(IObject object);
+        void onObjectClick(int position);
     }
 
     private final LayoutInflater inflater;
-    private final List<IObject> results;
+    private final List<GeneralObject> results;
     private final IObjectClick objectClick;
 
-    public SearchResultAdapter(Context context, List<IObject> results, IObjectClick objectClick) {
+    public SearchResultAdapter(Context context, List<GeneralObject> results, IObjectClick objectClick) {
         this.inflater = LayoutInflater.from(context);
         this.results = results;
         this.objectClick = objectClick;
@@ -47,15 +47,16 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             Author author = (Author) results.get(position);
             holder.tvName.setText(author.getName());
             Picasso.get()
-                    .load(R.drawable.mock_book_cover)
+                    .load(author.getAvatar())
                     .resize(150, 150)
+                    .centerCrop()
                     .into(holder.ivFigure);
         } else  {
             Book book = (Book) results.get(position);
             holder.tvName.setText(book.getTitle());
             holder.tvAddition.setText(book.getAuthor());
             Picasso.get()
-                    .load(R.drawable.mock_book_cover)
+                    .load(book.getCover())
                     .resize(150, 225)
                     .into(holder.ivFigure);
         }
@@ -84,7 +85,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
                     int position = getAdapterPosition();
 
                     if (position != RecyclerView.NO_POSITION) {
-                        objectClick.onObjectClick(results.get(position));
+                        objectClick.onObjectClick(position);
                     }
                 }
             });

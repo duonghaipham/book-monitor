@@ -1,20 +1,15 @@
 package com.tyler.book_monitor.data.models;
 
-public class Author implements IObject {
-    private final String id;
+public class Author extends GeneralObject {
     private final String name;
     private final String avatar;
     private final String introduction;
 
     public Author(String id, String name, String avatar, String introduction) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.avatar = avatar;
         this.introduction = introduction;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getName() {

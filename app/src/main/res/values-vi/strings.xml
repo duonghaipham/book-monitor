@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Book</string>
     <string name="hello">Xin chào!</string>
-    <string name="search_hint">Tìm theo tên sách, tác giả, thể loại…</string>
+    <string name="search_hint">Tìm theo tên sách, tác giả…</string>
     <string name="popular_authors">Tác giả phổ biến</string>
     <string name="continue_reading">Tiếp tục đọc</string>
     <string name="trending_books">Sách thịnh hành</string>
