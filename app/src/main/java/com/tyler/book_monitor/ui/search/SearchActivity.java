@@ -2,8 +2,10 @@ package com.tyler.book_monitor.ui.search;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     private SearchContract.Presenter presenter;
 
     private SearchView svEverything;
+    private TextView tvNoResults;
     private RecyclerView rvSearchResults;
     private ActionBar actionBar;
 
@@ -33,9 +36,11 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         presenter = new SearchPresenter(this, this);
 
         rvSearchResults = findViewById(R.id.rv_search_results);
+        tvNoResults = findViewById(R.id.tv_no_results);
 
         actionBar = getSupportActionBar();
         svEverything = new SearchView(this);
+
 
         actionBar.setCustomView(svEverything);
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -75,10 +80,15 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
 
     @Override
     public void onSearch(List<GeneralObject> results) {
-        SearchResultAdapter adapter = new SearchResultAdapter(this, results, this);
-        rvSearchResults.setAdapter(adapter);
-
-        rvSearchResults.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        if (results.size() > 0) {
+            rvSearchResults.setVisibility(View.VISIBLE);
+            tvNoResults.setVisibility(View.GONE);
+            rvSearchResults.setAdapter(new SearchResultAdapter(this, results, this));
+            rvSearchResults.setLayoutManager(new LinearLayoutManager(this));
+        } else {
+            rvSearchResults.setVisibility(View.GONE);
+            tvNoResults.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

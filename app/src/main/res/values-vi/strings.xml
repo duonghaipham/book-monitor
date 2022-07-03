@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Book</string>
     <string name="hello">Xin chào!</string>
-    <string name="search_hint">Tìm theo tên sách, tác giả…</string>
+    <string name="search_hint">Tìm kiếm bằng từ khóa, tác giả…</string>
     <string name="popular_authors">Tác giả phổ biến</string>
     <string name="continue_reading">Tiếp tục đọc</string>
     <string name="trending_books">Sách thịnh hành</string>
@@ -13,7 +13,7 @@
     <string name="chapters">Danh sách chương</string>
     <string name="text">Văn bản</string>
     <string name="settings">Cài đặt</string>
-    <string name="about">Về ứng dụng</string>
+    <string name="about">Giới thiệu</string>
     <string name="font">Phông chữ</string>
     <string name="font_size">Cỡ chữ</string>
     <string name="sample_text">Văn bản mẫu</string>
@@ -22,9 +22,10 @@
     <string name="dark_mode">Chế độ tối</string>
     <string name="view_authors">Tác giả nổi tiếng nhất</string>
     <string name="view_continued_books">Đọc tiếp</string>
-    <string name="view_trending_books">Các đầu sách thịnh hành</string>
+    <string name="view_trending_books">Sách thịnh hành</string>
     <string name="jump_chapter">Đến phần khác</string>
-    <string name="empty_archive">Bạn chưa lưu sách nào</string>
+    <string name="empty_archive">Không có sách nào được lưu trữ</string>
+    <string name="empty_search">Không tìm thấy kết quả nào</string>
     <string name="ok">OK</string>
     <string name="cancel">Hủy</string>
     <string name="version">Phiên bản %1$s</string>
@@ -45,14 +46,16 @@
         <item name="font_size_36">36</item>
     </string-array>
     <string-array name="languages">
-        <item name="en">Tiếng Anh</item>
-        <item name="vi">Tiếng Việt</item>
-        <item name="fr">Tiếng Pháp</item>
+        <item name="english">Tiếng Anh</item>
+        <item name="vietnamese">Tiếng Việt</item>
+        <item name="french">Tiếng Pháp</item>
+        <item name="chinese">Tiếng Trung</item>
     </string-array>
     <string-array name="language_codes">
         <item name="en">en</item>
         <item name="vi">vi</item>
         <item name="fr">fr</item>
+        <item name="zh">zh</item>
     </string-array>
     <string-array name="theme_modes">
         <item name="light">Sáng</item>

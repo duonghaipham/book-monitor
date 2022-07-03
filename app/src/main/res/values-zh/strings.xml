@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Book</string>
+    <string name="hello">你好</string>
+    <string name="search_hint">搜索</string>
+    <string name="popular_authors">热门作者</string>
+    <string name="continue_reading">继续阅读</string>
+    <string name="trending_books">热门图书</string>
+    <string name="his_her_books">他的图书</string>
+    <string name="view_all">查看全部</string>
+    <string name="read_online">在线阅读</string>
+    <string name="download">下载</string>
+    <string name="read_offline">离线阅读</string>
+    <string name="chapters">章节</string>
+    <string name="text">文字</string>
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+    <string name="font">字体</string>
+    <string name="font_size">字体大小</string>
+    <string name="sample_text">这是一个示例文本</string>
+    <string name="navigation">导航</string>
+    <string name="language">语言</string>
+    <string name="dark_mode">夜间模式</string>
+    <string name="view_authors">查看作者</string>
+    <string name="view_continued_books">查看继续阅读</string>
+    <string name="view_trending_books">查看热门图书</string>
+    <string name="jump_chapter">跳转章节</string>
+    <string name="empty_archive">您的图书架还没有图书。</string>
+    <string name="empty_search">没有搜索到相关内容。</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="version">版本 %1$s</string>
+    <string name="developer">开发者 %1$s</string>
+    <string-array name="fonts">
+        <item name="roboto">roboto_condensed_regular</item>
+        <item name="nunito">nunito</item>
+        <item name="eb_garamond">eb_garamond</item>
+        <item name="noto_serif">noto_serif</item>
+        <item name="patrick_hand">patrick_hand</item>
+    </string-array>
+    <string-array name="font_sizes">
+        <item name="font_size_18">18</item>
+        <item name="font_size_20">20</item>
+        <item name="font_size_24">24</item>
+        <item name="font_size_28">28</item>
+        <item name="font_size_32">32</item>
+        <item name="font_size_36">36</item>
+    </string-array>
+    <string-array name="languages">
+        <item name="english">英语</item>
+        <item name="vietnamese">越南语</item>
+        <item name="french">法语</item>
+        <item name="chinese">中文</item>
+    </string-array>
+    <string-array name="language_codes">
+        <item name="en">en</item>
+        <item name="vi">vi</item>
+        <item name="fr">fr</item>
+        <item name="zh">zh</item>
+    </string-array>
+    <string-array name="theme_modes">
+        <item name="light">浅色</item>
+        <item name="dark">深色</item>
+    </string-array>
+</resources>

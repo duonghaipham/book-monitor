@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Book</string>
+    <string name="hello">Bonjour!</string>
+    <string name="search_hint">Rechercher…</string>
+    <string name="popular_authors">Auteurs populaires</string>
+    <string name="continue_reading">Continuer à lire</string>
+    <string name="trending_books">Livres tendance</string>
+    <string name="his_her_books">Ses livres</string>
+    <string name="view_all">Voir tout</string>
+    <string name="read_online">Lire en ligne</string>
+    <string name="download">Télécharger</string>
+    <string name="read_offline">Lire hors ligne</string>
+    <string name="chapters">Chapitres</string>
+    <string name="text">Texte</string>
+    <string name="settings">Paramètres</string>
+    <string name="about">À propos</string>
+    <string name="font">Police</string>
+    <string name="font_size">Taille de police</string>
+    <string name="sample_text">Texte d\'exemple</string>
+    <string name="navigation">Navigation</string>
+    <string name="language">Langue</string>
+    <string name="dark_mode">Mode sombre</string>
+    <string name="view_authors">Voir les auteurs les plus connus</string>
+    <string name="view_continued_books">Découvrir les livres que vous aimez</string>
+    <string name="view_trending_books">Voir les livres les plus populaires</string>
+    <string name="jump_chapter">Aller à un chapitre</string>
+    <string name="empty_archive">Votre archive est vide</string>
+    <string name="empty_search">Aucun résultat</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
+    <string name="version">Version %1$s</string>
+    <string name="developer">Dévelopé par %1$s</string>
+    <string-array name="fonts">
+        <item name="roboto">roboto_condensed_regular</item>
+        <item name="nunito">nunito</item>
+        <item name="eb_garamond">eb_garamond</item>
+        <item name="noto_serif">noto_serif</item>
+        <item name="patrick_hand">patrick_hand</item>
+    </string-array>
+    <string-array name="font_sizes">
+        <item name="font_size_18">18</item>
+        <item name="font_size_20">20</item>
+        <item name="font_size_24">24</item>
+        <item name="font_size_28">28</item>
+        <item name="font_size_32">32</item>
+        <item name="font_size_36">36</item>
+    </string-array>
+    <string-array name="languages">
+        <item name="english">Anglais</item>
+        <item name="vietnamese">Vietnamien</item>
+        <item name="french">Français</item>
+        <item name="chinese">Chinois</item>
+    </string-array>
+    <string-array name="language_codes">
+        <item name="en">en</item>
+        <item name="vi">vi</item>
+        <item name="fr">fr</item>
+        <item name="zh">zh</item>
+    </string-array>
+    <string-array name="theme_modes">
+        <item name="light">Clair</item>
+        <item name="dark">Sombre</item>
+    </string-array>
+</resources>
