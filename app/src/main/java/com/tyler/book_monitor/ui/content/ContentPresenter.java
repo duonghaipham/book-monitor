@@ -18,7 +18,6 @@ public class ContentPresenter implements ContentContract.Presenter {
 
     private int mChapterIndexCurrent = 0;
     private int mChapterIndexTotal = 0;
-    private Book mBook;
     private List<Chapter> mChapters;
 
     public ContentPresenter(Activity activity, ContentContract.View view) {
@@ -33,7 +32,7 @@ public class ContentPresenter implements ContentContract.Presenter {
         int color = activity.getIntent().getExtras().getInt("color");
         mChapterIndexCurrent = activity.getIntent().getExtras().getInt("chapterIndexCurrent");
 
-        mBook = DataHolder.getInstance().getBook();
+        Book mBook = DataHolder.getInstance().getBook();
         mChapters = DataHolder.getInstance().getChapters();
         mChapterIndexTotal = mChapters.size();
 

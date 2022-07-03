@@ -26,6 +26,7 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
     private ImageView ivCover;
     private TextView tvBookName;
     private TextView tvBookAuthor;
+    private TextView tvBookIntroduction;
     private Button btnReadOffline;
     private Button btnReadOnline;
 
@@ -38,6 +39,7 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
         ivCover = findViewById(R.id.iv_cover);
         tvBookName = findViewById(R.id.tv_book_name);
         tvBookAuthor = findViewById(R.id.tv_book_author);
+        tvBookIntroduction = findViewById(R.id.tv_book_introduction);
         btnReadOffline = findViewById(R.id.btn_read_offline);
         btnReadOnline = findViewById(R.id.btn_read_online);
 
@@ -82,5 +84,6 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
 
         tvBookName.setText(book.getTitle());
         tvBookAuthor.setText(book.getAuthor());
+        tvBookIntroduction.setText(book.getIntroduction().replace("\\n", "\n"));
     }
 }

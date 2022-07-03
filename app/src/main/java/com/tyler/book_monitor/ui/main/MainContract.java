@@ -17,7 +17,7 @@ public class MainContract {
         void loadContent();
         void toArchiveActivity();
         void toSearchActivity();
-        void toAuthorActivity();
+        void toAuthorActivity(int position);
         void toCoverActivity(int position);
         void viewAllPopularAuthors();
         void viewAllContinueReading();

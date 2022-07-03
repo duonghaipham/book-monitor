@@ -25,12 +25,17 @@
             android:fontFamily="@font/roboto_condensed_regular"
             android:textColor="@color/primaryTextColor"/>
 
-        <TextView
-            android:id="@+id/tv_content"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:textColor="@color/secondaryTextColor"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/secondaryTextColor"/>
+
+        </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 

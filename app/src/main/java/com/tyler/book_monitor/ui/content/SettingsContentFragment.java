@@ -19,7 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.adapters.FontAdapter;
+import com.tyler.book_monitor.ui.adapters.FontAdapter;
 import com.tyler.book_monitor.data.models.Font;
 import com.tyler.book_monitor.data.models.SettingContent;
 

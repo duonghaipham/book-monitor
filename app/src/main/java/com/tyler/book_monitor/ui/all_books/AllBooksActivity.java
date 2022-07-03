@@ -9,7 +9,7 @@ import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.adapters.BookAdapter;
+import com.tyler.book_monitor.ui.adapters.BookAdapter;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.ui.base.BaseActivity;
 

@@ -1,43 +1,56 @@
 package com.tyler.book_monitor.ui.author;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
-import com.tyler.book_monitor.R;
+import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.ui.cover.CoverActivity;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class AuthorPresenter implements AuthorContract.Presenter {
 
-    private Context context;
-    private AuthorContract.View view;
+    private final Activity activity;
+    private final AuthorContract.View view;
+    private final AuthorContract.Model model;
 
-    public AuthorPresenter(Context context, AuthorContract.View view) {
-        this.context = context;
+    private List<Book> mAuthorizedBooks;
+
+    public AuthorPresenter(Activity activity, AuthorContract.View view) {
+        this.activity = activity;
         this.view = view;
+        this.model = new AuthorModel();
     }
 
     @Override
     public void loadContent() {
-        List<Book> books = new Vector<>();
-        List<String> categories = new ArrayList<>();
-        books.add(new Book("", "The Da Vinci Code", "Dan Brown", "", "", categories));
-        books.add(new Book("", "Harry Potter and the chamber of secrets", "J.K Rowling", "", "", categories));
-        books.add(new Book("", "Harry Potter and the stone", "J.K Rowling", "", "", categories));
-        books.add(new Book("", "Harry Potter and the Dead Hallow", "J.K Rowling", "", "", categories));
-        books.add(new Book("", "Harry Potter and the half blood price", "J.K Rowling", "", "", categories));
-        books.add(new Book("", "Harry Potter and the cursed child", "J.K Rowling", "", "", categories));
+        String authorId = activity.getIntent().getStringExtra("authorId");
+        String authorName = activity.getIntent().getStringExtra("authorName");
 
-        view.onLoadContent(books);
+        model.loadContent(authorId, authorName, new AuthorModel.OnLoadContentListener() {
+            @Override
+            public void onSuccess(Author author, List<Book> books) {
+                mAuthorizedBooks = books;
+
+                view.onLoadContent(author, books);
+            }
+
+            @Override
+            public void onFailure(String message) {
+                view.onLoadContent(null, null);
+            }
+        });
     }
 
     @Override
-    public void toCoverActivity() {
-        Intent intent = new Intent(context, CoverActivity.class);
-        context.startActivity(intent);
+    public void toCoverActivity(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("bookId", mAuthorizedBooks.get(position).getId());
+
+        Intent intent = new Intent(activity, CoverActivity.class);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
     }
 }

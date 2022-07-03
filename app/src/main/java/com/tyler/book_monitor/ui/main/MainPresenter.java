@@ -64,8 +64,13 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void toAuthorActivity() {
+    public void toAuthorActivity(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("authorId", mAuthors.get(position).getId());
+        bundle.putString("authorName", mAuthors.get(position).getName());
+
         Intent intent = new Intent(context, AuthorActivity.class);
+        intent.putExtras(bundle);
         context.startActivity(intent);
     }
 

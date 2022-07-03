@@ -1,4 +1,4 @@
-package com.tyler.book_monitor.adapters;
+package com.tyler.book_monitor.ui.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

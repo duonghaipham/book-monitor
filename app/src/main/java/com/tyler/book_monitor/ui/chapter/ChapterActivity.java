@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.adapters.ChapterAdapter;
+import com.tyler.book_monitor.ui.adapters.ChapterAdapter;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.Chapter;
 import com.tyler.book_monitor.helpers.DominantColor;

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.adapters.ArchivedBookAdapter;
+import com.tyler.book_monitor.ui.adapters.ArchivedBookAdapter;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.ui.base.BaseActivity;
 

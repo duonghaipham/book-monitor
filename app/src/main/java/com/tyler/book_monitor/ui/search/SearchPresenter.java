@@ -3,7 +3,6 @@ package com.tyler.book_monitor.ui.search;
 import android.content.Context;
 import android.content.Intent;
 
-import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.IObject;
@@ -17,8 +16,8 @@ import java.util.Vector;
 
 public class SearchPresenter implements SearchContract.Presenter {
 
-    private Context context;
-    private SearchContract.View view;
+    private final Context context;
+    private final SearchContract.View view;
 
     public SearchPresenter(Context context, SearchContract.View view) {
         this.context = context;
@@ -41,18 +40,18 @@ public class SearchPresenter implements SearchContract.Presenter {
         books.add(new Book("", "The Great Gatsby", "F. Scott Fitzgerald", null, "", categories));
 
         List<Author> authors = new Vector<>();
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
-        authors.add(new Author("F. Scott Fitzgerald", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
+        authors.add(new Author("","F. Scott Fitzgerald", "", ""));
 
         List<IObject> results = new Vector<>();
         results.addAll(books);

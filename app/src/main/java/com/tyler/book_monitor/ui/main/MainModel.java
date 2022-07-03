@@ -8,7 +8,6 @@ import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Vector;
 
 public class MainModel implements MainContract.Model {
@@ -31,7 +30,7 @@ public class MainModel implements MainContract.Model {
             ((QuerySnapshot)objects.get(0)).getDocuments().forEach(document -> {
                 books.add(new Book(
                         document.getId(),
-                        Objects.requireNonNull(document.get("name")).toString(),
+                        document.get("name").toString(),
                         document.get("author").toString(),
                         document.get("avatar").toString(),
                         document.get("introduction").toString(),
@@ -42,8 +41,10 @@ public class MainModel implements MainContract.Model {
             List<Author> authors = new Vector<>();
             ((QuerySnapshot)objects.get(1)).getDocuments().forEach(document -> {
                 authors.add(new Author(
+                        document.getId(),
                         document.get("name").toString(),
-                        document.get("avatar").toString()
+                        document.get("avatar").toString(),
+                        document.get("introduction").toString()
                 ));
             });
 

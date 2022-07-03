@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">Book</string>
     <string name="hello">Xin chào!</string>
-    <string name="search_hint">Tìm theo tên sách, tác giả, thể loại...</string>
+    <string name="search_hint">Tìm theo tên sách, tác giả, thể loại…</string>
     <string name="popular_authors">Tác giả phổ biến</string>
     <string name="continue_reading">Tiếp tục đọc</string>
     <string name="trending_books">Sách thịnh hành</string>
+    <string name="all_books">Tất cả sách</string>
     <string name="view_all">Xem tất cả</string>
     <string name="download">Tải xuống</string>
     <string name="read_online">Đọc trực tuyến</string>
@@ -57,14 +58,4 @@
         <item name="light">Sáng</item>
         <item name="dark">Tối</item>
     </string-array>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mollis elit luctus feugiat condimentum. Vestibulum vel metus convallis, fringilla arcu at, vestibulum lorem. Vivamus ullamcorper commodo felis ut sollicitudin. Donec ut massa finibus, aliquam tellus quis, luctus purus. Donec in gravida mauris. Vivamus efficitur, leo ut cursus tincidunt, est sem lobortis tortor, et condimentum dolor enim nec purus. Morbi iaculis, justo sed finibus eleifend, urna leo dignissim ipsum, quis dignissim erat diam a nulla. Aenean auctor dolor eget orci ultrices, ac porta neque auctor. Fusce id ornare libero. Fusce sit amet sollicitudin odio, id lobortis quam. Phasellus quam lacus, mattis et turpis eu, elementum placerat arcu. Aliquam non porttitor sem. Pellentesque sapien enim, laoreet sed ex id, bibendum laoreet metus. Duis cursus diam lectus, ac pellentesque tortor facilisis vitae. Nullam cursus metus at mollis venenatis. Vestibulum nec ipsum consectetur, congue ipsum ut, rutrum justo.
-
-In lobortis volutpat commodo. Donec dolor mi, lacinia vitae dolor a, sollicitudin tempor elit. Mauris commodo at lacus id laoreet. Sed fringilla mauris porta ligula consequat suscipit. Aenean vel nibh eget lorem accumsan tincidunt. Sed a sapien sit amet dolor fringilla condimentum. Aliquam erat volutpat. Morbi sagittis felis id odio consectetur feugiat. Pellentesque nibh justo, mattis ut viverra consequat, tristique id massa. Ut fermentum eget ligula accumsan egestas. Donec urna est, congue non varius a, dictum eget est. Vivamus eu elit diam.
-
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed pretium tellus. Proin condimentum orci sem, eget pellentesque lacus scelerisque sed. Nulla tempor, libero non ornare pharetra, erat ex lacinia nisi, vitae blandit ex justo ut felis. Integer scelerisque condimentum lacus quis placerat. Donec vel cursus elit. Nunc tristique ex egestas ultricies tincidunt. Aliquam id arcu quis elit lacinia mollis eu non tellus. Ut nec orci viverra, convallis turpis pellentesque, cursus arcu. In non tincidunt ipsum, in blandit lectus. Phasellus eu elit condimentum, interdum eros sit amet, bibendum dui. In fringilla sapien ac faucibus mattis. Quisque quis rhoncus magna. Phasellus et semper nulla.
-
-Aenean facilisis cursus placerat. Mauris quam ante, maximus eu elementum vel, mattis sed nisi. Cras in velit suscipit, eleifend neque blandit, commodo risus. Ut nisi urna, mattis non odio et, accumsan tincidunt mi. Aliquam mollis mauris arcu, ut porttitor urna euismod vitae. Duis neque turpis, vestibulum eu nisl id, gravida condimentum nisi. Ut faucibus justo vitae nisl tincidunt, sit amet tristique est interdum. Integer bibendum lorem diam, sit amet auctor nulla blandit id. Nulla facilisi. Duis maximus pretium vestibulum. Suspendisse potenti. Morbi vel mauris libero. Maecenas eu enim nec lectus rhoncus porttitor. Quisque auctor condimentum ligula, vel facilisis est facilisis et.
-
-Sed velit risus, posuere ac finibus nec, luctus id nibh. Nam dui ante, congue eget malesuada eu, eleifend non ligula. Aenean arcu enim, sagittis ut sodales sit amet, cursus eu lorem. Aenean varius tempus ante nec aliquam. Donec fringilla bibendum lectus quis elementum. Donec eu molestie ex. Mauris ac enim non quam aliquam lacinia. Fusce et risus placerat, mattis augue ac, dignissim felis. Sed id feugiat est, sit amet dignissim est. Fusce quis quam sapien. Quisque semper, diam eget maximus tristique, augue leo dictum nisi, sollicitudin euismod eros dolor eget nisl.</string>
-
 </resources>

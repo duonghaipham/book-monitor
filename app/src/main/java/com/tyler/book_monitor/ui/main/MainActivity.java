@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.adapters.AuthorAdapter;
-import com.tyler.book_monitor.adapters.BookAdapter;
+import com.tyler.book_monitor.ui.adapters.AuthorAdapter;
+import com.tyler.book_monitor.ui.adapters.BookAdapter;
 import com.tyler.book_monitor.data.models.Author;
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.data.models.SettingGlobal;
@@ -115,7 +115,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Aut
 
     @Override
     public void onAuthorClick(int position) {
-        presenter.toAuthorActivity();
+        presenter.toAuthorActivity(position);
     }
 
     @Override

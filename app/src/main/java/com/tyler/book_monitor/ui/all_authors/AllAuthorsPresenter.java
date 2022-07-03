@@ -22,15 +22,15 @@ public class AllAuthorsPresenter implements AllAuthorsContract.Presenter {
     @Override
     public void loadContent() {
         List<Author> authors = new Vector<>();
-        authors.add(new Author("Dan Brown", ""));
-        authors.add(new Author("J.K Rowling", ""));
-        authors.add(new Author("Issac Newton", ""));
-        authors.add(new Author("Malcolm Gladwell", ""));
-        authors.add(new Author("Dale", ""));
-        authors.add(new Author("Chip", ""));
-        authors.add(new Author("Donald Duck", ""));
-        authors.add(new Author("Tom", ""));
-        authors.add(new Author("Jerry", ""));
+        authors.add(new Author("", "Dan Brown", "", ""));
+        authors.add(new Author("", "J.K Rowling", "", ""));
+        authors.add(new Author("", "Issac Newton", "", ""));
+        authors.add(new Author("", "Malcolm Gladwell", "", ""));
+        authors.add(new Author("", "Dale", "", ""));
+        authors.add(new Author("", "Chip", "", ""));
+        authors.add(new Author("", "Donald Duck", "", ""));
+        authors.add(new Author("", "Tom", "", ""));
+        authors.add(new Author("", "Jerry", "", ""));
 
         view.onLoadContent(authors);
     }

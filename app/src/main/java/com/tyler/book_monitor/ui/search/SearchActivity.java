@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.adapters.SearchResultAdapter;
+import com.tyler.book_monitor.ui.adapters.SearchResultAdapter;
 import com.tyler.book_monitor.data.models.IObject;
 
 import java.util.List;

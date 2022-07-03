@@ -10,7 +10,7 @@ import android.widget.ListView;
 import androidx.fragment.app.DialogFragment;
 
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.adapters.ChapterChoiceAdapter;
+import com.tyler.book_monitor.ui.adapters.ChapterChoiceAdapter;
 import com.tyler.book_monitor.data.models.Chapter;
 
 import java.util.ArrayList;
