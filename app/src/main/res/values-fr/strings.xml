@@ -24,9 +24,12 @@
     <string name="view_authors">Voir les auteurs les plus connus</string>
     <string name="view_continued_books">Découvrir les livres que vous aimez</string>
     <string name="view_trending_books">Voir les livres les plus populaires</string>
+    <string name="archived_books">Livres archivés</string>
+    <string name="downloaded_books">Livres téléchargés</string>
     <string name="jump_chapter">Aller à un chapitre</string>
     <string name="empty_archive">Votre archive est vide</string>
     <string name="empty_search">Aucun résultat</string>
+    <string name="empty_download">Vous n\'avez pas encore téléchargé de livres</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
     <string name="version">Version %1$s</string>

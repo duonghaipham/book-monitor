@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    tools:context=".ui.archive.ArchiveActivity">
+    tools:context=".ui.download.DownloadActivity">
 
     <TextView
-        android:id="@+id/tv_archive_title"
+        android:id="@+id/tv_download_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/archived_books"
+        android:text="@string/downloaded_books"
         android:textSize="@dimen/material_text_headline"
         android:fontFamily="@font/roboto_condensed_regular"
         android:textColor="@color/primaryTextColor"
@@ -19,19 +19,19 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_archived_books"
+        android:id="@+id/rv_downloaded_books"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_archive_title" />
+        app:layout_constraintTop_toBottomOf="@id/tv_download_title" />
 
     <TextView
-        android:id="@+id/tv_no_archived_books"
+        android:id="@+id/tv_no_downloaded_books"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:text="@string/empty_archive"
+        android:text="@string/empty_download"
         android:textSize="@dimen/material_text_title"
         android:textColor="@color/primaryTextColor"
         app:layout_constraintLeft_toLeftOf="parent"

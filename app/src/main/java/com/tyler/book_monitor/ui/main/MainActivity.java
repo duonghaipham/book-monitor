@@ -32,6 +32,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Aut
     private NavigationView nvConfiguration;
     private ImageButton ibSearch;
     private ImageButton ibArchive;
+    private ImageButton ibDownload;
     private ImageButton ibMenu;
     private RecyclerView rvPopularAuthors;
     private RecyclerView rvContinuedBooks;
@@ -48,6 +49,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Aut
         nvConfiguration = findViewById(R.id.nv_configuration);
         ibSearch = findViewById(R.id.ib_search);
         ibArchive = findViewById(R.id.ib_archive);
+        ibDownload = findViewById(R.id.ib_download);
         ibMenu = findViewById(R.id.ib_menu);
         rvPopularAuthors = findViewById(R.id.rv_popular_authors);
         rvContinuedBooks = findViewById(R.id.rv_continued_books);
@@ -61,6 +63,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, Aut
         ibSearch.setOnClickListener(v -> presenter.toSearchActivity());
 
         ibArchive.setOnClickListener(v -> presenter.toArchiveActivity());
+
+        ibDownload.setOnClickListener(v -> presenter.toDownloadActivity());
 
         ibMenu.setOnClickListener(v -> dlConfiguration.openDrawer(Gravity.LEFT));
 

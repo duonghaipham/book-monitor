@@ -23,9 +23,12 @@
     <string name="view_authors">Tác giả nổi tiếng nhất</string>
     <string name="view_continued_books">Đọc tiếp</string>
     <string name="view_trending_books">Sách thịnh hành</string>
+    <string name="archived_books">Sách đã lưu</string>
+    <string name="downloaded_books">Sách đã tải xuống</string>
     <string name="jump_chapter">Đến phần khác</string>
     <string name="empty_archive">Không có sách nào được lưu trữ</string>
     <string name="empty_search">Không tìm thấy kết quả nào</string>
+    <string name="empty_download">Không có sách nào được tải xuống</string>
     <string name="ok">OK</string>
     <string name="cancel">Hủy</string>
     <string name="version">Phiên bản %1$s</string>

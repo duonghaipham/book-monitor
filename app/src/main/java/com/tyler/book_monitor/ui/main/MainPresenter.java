@@ -14,6 +14,7 @@ import com.tyler.book_monitor.ui.all_books.AllBooksActivity;
 import com.tyler.book_monitor.ui.archive.ArchiveActivity;
 import com.tyler.book_monitor.ui.author.AuthorActivity;
 import com.tyler.book_monitor.ui.cover.CoverActivity;
+import com.tyler.book_monitor.ui.download.DownloadActivity;
 import com.tyler.book_monitor.ui.search.SearchActivity;
 
 import java.util.List;
@@ -54,6 +55,12 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void toArchiveActivity() {
         Intent intent = new Intent(context, ArchiveActivity.class);
+        context.startActivity(intent);
+    }
+
+    @Override
+    public void toDownloadActivity() {
+        Intent intent = new Intent(context, DownloadActivity.class);
         context.startActivity(intent);
     }
 

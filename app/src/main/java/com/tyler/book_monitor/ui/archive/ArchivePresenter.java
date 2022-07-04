@@ -13,8 +13,8 @@ import java.util.Vector;
 
 public class ArchivePresenter implements ArchiveContract.Presenter {
 
-    private Context context;
-    private ArchiveContract.View view;
+    private final Context context;
+    private final ArchiveContract.View view;
 
     public ArchivePresenter(Context context, ArchiveContract.View view) {
         this.context = context;

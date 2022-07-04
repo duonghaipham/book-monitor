@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tyler.book_monitor.R;
-import com.tyler.book_monitor.ui.adapters.ArchivedBookAdapter;
 import com.tyler.book_monitor.data.models.Book;
+import com.tyler.book_monitor.ui.adapters.PersonalBookAdapter;
 import com.tyler.book_monitor.ui.base.BaseActivity;
 
 import java.util.List;
 
-public class ArchiveActivity extends BaseActivity implements ArchiveContract.View, ArchivedBookAdapter.IArchivedBookClick {
+public class ArchiveActivity extends BaseActivity implements ArchiveContract.View, PersonalBookAdapter.IPersonalBookClick {
 
     private ArchivePresenter presenter;
 
@@ -40,7 +40,7 @@ public class ArchiveActivity extends BaseActivity implements ArchiveContract.Vie
             rvArchivedBooks.setVisibility(View.VISIBLE);
             tvNoArchivedBooks.setVisibility(View.GONE);
 
-            ArchivedBookAdapter adapter = new ArchivedBookAdapter(this, archivedBooks, this);
+            PersonalBookAdapter adapter = new PersonalBookAdapter(this, archivedBooks, this);
 
             rvArchivedBooks.setAdapter(adapter);
             rvArchivedBooks.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

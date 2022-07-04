@@ -16,32 +16,32 @@ import com.tyler.book_monitor.data.models.Book;
 
 import java.util.List;
 
-public class ArchivedBookAdapter extends RecyclerView.Adapter<ArchivedBookAdapter.ViewHolder> {
+public class PersonalBookAdapter extends RecyclerView.Adapter<PersonalBookAdapter.ViewHolder> {
 
-    public interface IArchivedBookClick {
+    public interface IPersonalBookClick {
         void onRemoveClick(String bookId);
         void onViewClick(String bookId);
     }
 
-    private LayoutInflater inflater;
-    private List<Book> books;
-    private IArchivedBookClick archivedBookClick;
+    private final LayoutInflater inflater;
+    private final List<Book> books;
+    private final IPersonalBookClick personalBookClick;
 
-    public ArchivedBookAdapter(Context context, List<Book> books, IArchivedBookClick archivedBookClick) {
+    public PersonalBookAdapter(Context context, List<Book> books, IPersonalBookClick personalBookClick) {
         this.inflater = LayoutInflater.from(context);
         this.books = books;
-        this.archivedBookClick = archivedBookClick;
+        this.personalBookClick = personalBookClick;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item_archived_book, parent, false);
+        View view = inflater.inflate(R.layout.item_personal_book, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ArchivedBookAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PersonalBookAdapter.ViewHolder holder, int position) {
         holder.tvTitle.setText(books.get(position).getTitle());
         if (books.get(position).getAuthor() != null) {
             holder.tvAuthor.setText(books.get(position).getAuthor());
@@ -56,10 +56,10 @@ public class ArchivedBookAdapter extends RecyclerView.Adapter<ArchivedBookAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvTitle;
-        private TextView tvAuthor;
-        private ImageView ivCover;
-        private ImageButton ibRemove;
+        private final TextView tvTitle;
+        private final TextView tvAuthor;
+        private final ImageView ivCover;
+        private final ImageButton ibRemove;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -70,17 +70,17 @@ public class ArchivedBookAdapter extends RecyclerView.Adapter<ArchivedBookAdapte
             ibRemove = itemView.findViewById(R.id.ib_remove);
 
             itemView.setOnClickListener(v -> {
-                if (archivedBookClick != null) {
+                if (personalBookClick != null) {
                     if (getAdapterPosition() != RecyclerView.NO_POSITION) {
-                        archivedBookClick.onViewClick("Nhan vao nut view");
+                        personalBookClick.onViewClick("Nhan vao nut view");
                     }
                 }
             });
 
             ibRemove.setOnClickListener(v -> {
-                if (archivedBookClick != null) {
+                if (personalBookClick != null) {
                     if (getAdapterPosition() != RecyclerView.NO_POSITION) {
-                        archivedBookClick.onRemoveClick("Nhan vao nut remove");
+                        personalBookClick.onRemoveClick("Nhan vao nut remove");
                     }
                 }
             });

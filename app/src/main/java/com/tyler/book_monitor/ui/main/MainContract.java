@@ -16,6 +16,7 @@ public class MainContract {
     public interface Presenter {
         void loadContent();
         void toArchiveActivity();
+        void toDownloadActivity();
         void toSearchActivity();
         void toAuthorActivity(int position);
         void toCoverActivity(int position);
