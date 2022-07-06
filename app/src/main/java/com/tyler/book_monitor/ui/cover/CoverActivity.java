@@ -27,7 +27,7 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
     private TextView tvBookName;
     private TextView tvBookAuthor;
     private TextView tvBookIntroduction;
-    private Button btnReadOffline;
+    private Button btnToggleDownload;
     private Button btnReadOnline;
 
     @Override
@@ -40,15 +40,15 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
         tvBookName = findViewById(R.id.tv_book_name);
         tvBookAuthor = findViewById(R.id.tv_book_author);
         tvBookIntroduction = findViewById(R.id.tv_book_introduction);
-        btnReadOffline = findViewById(R.id.btn_read_offline);
+        btnToggleDownload= findViewById(R.id.btn_toggle_download);
         btnReadOnline = findViewById(R.id.btn_read_online);
 
         presenter = new CoverPresenter(this, this);
 
         presenter.loadContent();
 
-        btnReadOffline.setOnClickListener(v -> {
-//            presenter.readOffline(this);
+        btnToggleDownload.setOnClickListener(v -> {
+            presenter.toggleDownload();
         });
 
         btnReadOnline.setOnClickListener(v -> {
@@ -57,16 +57,14 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
     }
 
     @Override
-    public void onLoadContent(int themeMode, Book book) {
+    public void onLoadContent(int themeMode, Book book, boolean isDownloaded) {
         Target target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 ivCover.setImageBitmap(bitmap);
 
-                if (themeMode == 0) {
+                if (themeMode == 0) { // light mode
                     DominantColor dominantColor = new DominantColor(bitmap);
-                    int color = dominantColor.getDominantColor();
-
                     GradientDrawable gd = dominantColor.getDominantColorGradient();
                     llCover.setBackground(gd);
                 }
@@ -85,5 +83,20 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
         tvBookName.setText(book.getTitle());
         tvBookAuthor.setText(book.getAuthor());
         tvBookIntroduction.setText(book.getIntroduction().replace("\\n", "\n"));
+
+        setBtnToggleDownloadText(isDownloaded);
+    }
+
+    @Override
+    public void toggleDownload(boolean isDownloaded) {
+        setBtnToggleDownloadText(isDownloaded);
+    }
+
+    // for not repeated block of code
+    private void setBtnToggleDownloadText(boolean isDownloaded) {
+        if (isDownloaded)
+            btnToggleDownload.setText(R.string.delete_download);
+        else
+            btnToggleDownload.setText(R.string.download);
     }
 }

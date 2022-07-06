@@ -11,9 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.tyler.book_monitor.R;
 import com.tyler.book_monitor.data.models.Book;
 
+import java.io.File;
 import java.util.List;
 
 public class PersonalBookAdapter extends RecyclerView.Adapter<PersonalBookAdapter.ViewHolder> {
@@ -43,10 +45,8 @@ public class PersonalBookAdapter extends RecyclerView.Adapter<PersonalBookAdapte
     @Override
     public void onBindViewHolder(@NonNull PersonalBookAdapter.ViewHolder holder, int position) {
         holder.tvTitle.setText(books.get(position).getTitle());
-        if (books.get(position).getAuthor() != null) {
-            holder.tvAuthor.setText(books.get(position).getAuthor());
-        }
-//        holder.ivCover.setImageResource(R.drawable.mock_book_cover);
+        holder.tvAuthor.setText(books.get(position).getAuthor());
+        Picasso.get().load(new File(books.get(position).getCover())).into(holder.ivCover);
     }
 
     @Override

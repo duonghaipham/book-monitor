@@ -10,6 +10,7 @@
     <string name="view_all">Voir tout</string>
     <string name="read_online">Lire en ligne</string>
     <string name="download">Télécharger</string>
+    <string name="delete_download">Supprimer le téléchargement</string>
     <string name="read_offline">Lire hors ligne</string>
     <string name="chapters">Chapitres</string>
     <string name="text">Texte</string>

@@ -1,5 +1,6 @@
 package com.tyler.book_monitor.data.db;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -50,8 +51,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + COLUMN_ARCHIVE_BOOK_ID + " TEXT PRIMARY KEY"
                     + ")";
 
-    public DatabaseHelper() {
-        super(null, DATABASE_NAME, null, DATABASE_VERSION);
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override

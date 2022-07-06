@@ -79,12 +79,12 @@
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.Material3.Button.ElevatedButton"
-                android:id="@+id/btn_read_offline"
+                android:id="@+id/btn_toggle_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="@dimen/material_text_button"
-                android:text="@string/read_offline"
+                android:text="@string/download"
                 android:backgroundTint="@color/primaryButtonColor"
                 android:textColor="@color/primaryButtonTextColor"
                 app:iconTint="@color/primaryButtonTextColor"

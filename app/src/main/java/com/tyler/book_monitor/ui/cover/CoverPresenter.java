@@ -14,10 +14,13 @@ public class CoverPresenter implements CoverContract.Presenter {
     private final CoverContract.View view;
     private final CoverContract.Model model;
 
+    private Book mBook;
+    private boolean mIsDownloaded;
+
     public CoverPresenter(Activity activity, CoverContract.View view) {
         this.activity = activity;
         this.view = view;
-        this.model = new CoverModel();
+        this.model = new CoverModel(activity);
     }
 
     @Override
@@ -31,6 +34,19 @@ public class CoverPresenter implements CoverContract.Presenter {
     }
 
     @Override
+    public void toggleDownload() {
+        if (mIsDownloaded) {
+            model.deleteDownload(mBook.getId());
+            mIsDownloaded = false;
+        } else {
+            model.download(mBook);
+            mIsDownloaded = true;
+        }
+
+        view.toggleDownload(mIsDownloaded);
+    }
+
+    @Override
     public void loadContent() {
         int themeMode = SettingsManager.getThemeMode(activity);
 
@@ -38,13 +54,16 @@ public class CoverPresenter implements CoverContract.Presenter {
 
         model.loadContent(bookId, new CoverModel.OnLoadContentListener() {
             @Override
-            public void onSuccess(Book book) {
-                view.onLoadContent(themeMode, book);
+            public void onSuccess(Book book, boolean isDownloaded) {
+                mBook = book;
+                mIsDownloaded = isDownloaded;
+
+                view.onLoadContent(themeMode, book, isDownloaded);
             }
 
             @Override
             public void onFailure(String message) {
-                view.onLoadContent(0, null);
+                view.onLoadContent(0, null, false);
             }
         });
     }

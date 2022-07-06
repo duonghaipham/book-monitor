@@ -14,4 +14,12 @@ public class DownloadContract {
         void toCoverActivity(String bookId);
         void removeBookFromDownload(String bookId);
     }
+
+    public interface Model {
+        interface OnLoadContentListener {
+            void onSuccess(List<Book> downloadedBooks);
+            void onFailure(String message);
+        }
+        void loadContent(OnLoadContentListener listener);
+    }
 }
