@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.tyler.book_monitor.data.models.Book;
+import com.tyler.book_monitor.data.models.Chapter;
 import com.tyler.book_monitor.data.prefs.SettingsManager;
 import com.tyler.book_monitor.ui.chapter.ChapterActivity;
+
+import java.util.List;
 
 public class CoverPresenter implements CoverContract.Presenter {
 
@@ -15,6 +18,7 @@ public class CoverPresenter implements CoverContract.Presenter {
     private final CoverContract.Model model;
 
     private Book mBook;
+    private List<Chapter> mChapters;
     private boolean mIsDownloaded;
 
     public CoverPresenter(Activity activity, CoverContract.View view) {
@@ -36,10 +40,10 @@ public class CoverPresenter implements CoverContract.Presenter {
     @Override
     public void toggleDownload() {
         if (mIsDownloaded) {
-            model.deleteDownload(mBook.getId());
+            model.deleteDownload(mBook);
             mIsDownloaded = false;
         } else {
-            model.download(mBook);
+            model.download(mBook, mChapters);
             mIsDownloaded = true;
         }
 
@@ -54,8 +58,9 @@ public class CoverPresenter implements CoverContract.Presenter {
 
         model.loadContent(bookId, new CoverModel.OnLoadContentListener() {
             @Override
-            public void onSuccess(Book book, boolean isDownloaded) {
+            public void onSuccess(Book book, List<Chapter> chapters, boolean isDownloaded) {
                 mBook = book;
+                mChapters = chapters;
                 mIsDownloaded = isDownloaded;
 
                 view.onLoadContent(themeMode, book, isDownloaded);

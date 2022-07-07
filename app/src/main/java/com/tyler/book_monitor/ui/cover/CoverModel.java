@@ -4,18 +4,26 @@ import android.content.Context;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.tyler.book_monitor.data.db.BookService;
+import com.tyler.book_monitor.data.db.ChapterService;
 import com.tyler.book_monitor.data.models.Book;
+import com.tyler.book_monitor.data.models.Chapter;
+import com.tyler.book_monitor.utils.ImageHandler;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Vector;
 
 public class CoverModel implements CoverContract.Model {
 
     private final FirebaseFirestore db;
     private final BookService bookService;
+    private final ChapterService chapterService;
 
     public CoverModel(Context context) {
         db = FirebaseFirestore.getInstance();
         bookService = new BookService(context);
+        chapterService = new ChapterService(context);
     }
 
     @Override
@@ -36,7 +44,16 @@ public class CoverModel implements CoverContract.Model {
                                 (List<String>)document.get("categories")
                         );
 
-                        listener.onSuccess(book, isDownloaded);
+                        List<HashMap<String, String>> mapChapters = (ArrayList<HashMap<String, String>>) document.get("chapters");
+                        List<Chapter> chapters = new Vector<>();
+                        for (HashMap<String, String> mapChapter : mapChapters) {
+                            chapters.add(new Chapter(
+                                    mapChapter.get("title"),
+                                    mapChapter.get("content")
+                            ));
+                        }
+
+                        listener.onSuccess(book, chapters, isDownloaded);
                     } else {
                         listener.onFailure("Document does not exist!");
                     }
@@ -44,12 +61,15 @@ public class CoverModel implements CoverContract.Model {
     }
 
     @Override
-    public void download(Book book) {
+    public void download(Book book, List<Chapter> chapters) {
         bookService.insert(book);
+        chapterService.insertChaptersWithBookId(chapters, book.getId());
     }
 
     @Override
-    public void deleteDownload(String bookId) {
-        bookService.delete(bookId);
+    public void deleteDownload(Book book) {
+        ImageHandler.getInstance().deleteImage(book.getCover());
+        bookService.delete(book);
+        chapterService.deleteAllChaptersByBookId(book.getId());
     }
 }

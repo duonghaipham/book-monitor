@@ -21,6 +21,6 @@ public class ChapterContract {
             void onFailure(String message);
         }
 
-        void loadContent(String bookId, OnLoadContentListener listener);
+        void loadContent(String bookId, boolean isOffline, OnLoadContentListener listener);
     }
 }

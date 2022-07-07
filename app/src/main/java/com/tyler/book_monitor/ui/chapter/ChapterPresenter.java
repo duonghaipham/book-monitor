@@ -22,7 +22,7 @@ public class ChapterPresenter implements ChapterContract.Presenter {
     public ChapterPresenter(Activity activity, ChapterContract.View view) {
         this.activity = activity;
         this.view = view;
-        this.model = new ChapterModel();
+        this.model = new ChapterModel(activity);
     }
 
     @Override
@@ -31,8 +31,9 @@ public class ChapterPresenter implements ChapterContract.Presenter {
 
         Intent intent = activity.getIntent();
         String bookId = intent.getStringExtra("bookId");
+        boolean isOffline = intent.getBooleanExtra("isOffline", false);
 
-        model.loadContent(bookId, new ChapterModel.OnLoadContentListener() {
+        model.loadContent(bookId, isOffline, new ChapterModel.OnLoadContentListener() {
             @Override
             public void onSuccess(Book book, List<Chapter> chapters) {
                 DataHolder.getInstance().setBook(book);

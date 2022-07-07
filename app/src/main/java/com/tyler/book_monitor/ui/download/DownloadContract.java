@@ -11,8 +11,8 @@ public class DownloadContract {
 
     public interface Presenter {
         void loadContent();
-        void toCoverActivity(String bookId);
-        void removeBookFromDownload(String bookId);
+        void toChapterActivity(String bookId);
+        void removeBookFromDownload(Book book);
     }
 
     public interface Model {
@@ -21,5 +21,6 @@ public class DownloadContract {
             void onFailure(String message);
         }
         void loadContent(OnLoadContentListener listener);
+        void removeBookFromDownload(Book book);
     }
 }

@@ -18,6 +18,9 @@ public class DownloadActivity extends BaseActivity implements DownloadContract.V
 
     private DownloadPresenter presenter;
 
+    private PersonalBookAdapter mAdapter;
+    private List<Book> mBooks;
+
     private RecyclerView rvDownloadedBooks;
     private TextView tvNoDownloadedBooks;
 
@@ -36,13 +39,15 @@ public class DownloadActivity extends BaseActivity implements DownloadContract.V
 
     @Override
     public void onLoadContent(List<Book> downloadedBooks) {
-        if (downloadedBooks.size() > 0) {
+        mBooks = downloadedBooks;
+
+        if (mBooks.size() > 0) {
             rvDownloadedBooks.setVisibility(View.VISIBLE);
             tvNoDownloadedBooks.setVisibility(View.GONE);
 
-            PersonalBookAdapter adapter = new PersonalBookAdapter(this, downloadedBooks, this);
+            mAdapter = new PersonalBookAdapter(this, mBooks, this);
 
-            rvDownloadedBooks.setAdapter(adapter);
+            rvDownloadedBooks.setAdapter(mAdapter);
             rvDownloadedBooks.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         } else {
             rvDownloadedBooks.setVisibility(View.GONE);
@@ -51,12 +56,15 @@ public class DownloadActivity extends BaseActivity implements DownloadContract.V
     }
 
     @Override
-    public void onRemoveClick(String bookId) {
-        presenter.removeBookFromDownload(bookId);
+    public void onRemoveClick(int position, Book book) {
+        presenter.removeBookFromDownload(book);
+
+        mBooks.remove(position);
+        mAdapter.notifyItemRemoved(position);
     }
 
     @Override
     public void onViewClick(String bookId) {
-        presenter.toCoverActivity(bookId);
+        presenter.toChapterActivity(bookId);
     }
 }

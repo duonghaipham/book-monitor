@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.tyler.book_monitor.data.models.Book;
+import com.tyler.book_monitor.ui.chapter.ChapterActivity;
 import com.tyler.book_monitor.ui.cover.CoverActivity;
 
 import java.util.List;
@@ -38,16 +39,18 @@ public class DownloadPresenter implements DownloadContract.Presenter {
     }
 
     @Override
-    public void toCoverActivity(String bookId) {
+    public void toChapterActivity(String bookId) {
         Bundle bundle = new Bundle();
         bundle.putString("bookId", bookId);
+        bundle.putBoolean("isOffline", true);
 
-        Intent intent = new Intent(activity, CoverActivity.class);
+        Intent intent = new Intent(activity, ChapterActivity.class);
         intent.putExtras(bundle);
         activity.startActivity(intent);
     }
 
     @Override
-    public void removeBookFromDownload(String bookId) {
+    public void removeBookFromDownload(Book book) {
+        model.removeBookFromDownload(book);
     }
 }

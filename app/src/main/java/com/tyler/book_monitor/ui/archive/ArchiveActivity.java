@@ -51,8 +51,8 @@ public class ArchiveActivity extends BaseActivity implements ArchiveContract.Vie
     }
 
     @Override
-    public void onRemoveClick(String bookId) {
-        presenter.removeBookFromArchive(bookId);
+    public void onRemoveClick(int position, Book book) {
+        presenter.removeBookFromArchive(book.getId());
     }
 
     @Override

@@ -9,14 +9,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
-public class ImageDownloader {
-    private static ImageDownloader mInstance;
+public class ImageHandler {
+    private static ImageHandler mInstance;
 
-    private ImageDownloader() {}
+    private ImageHandler() {}
 
-    public static ImageDownloader getInstance() {
+    public static ImageHandler getInstance() {
         if (mInstance == null) {
-            mInstance = new ImageDownloader();
+            mInstance = new ImageHandler();
         }
         return mInstance;
     }
@@ -42,5 +42,10 @@ public class ImageDownloader {
         }
 
         return file.getAbsolutePath();
+    }
+
+    public void deleteImage(String path) {
+        File file = new File(path);
+        file.delete();
     }
 }

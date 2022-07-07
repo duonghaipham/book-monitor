@@ -21,7 +21,7 @@ import java.util.List;
 public class PersonalBookAdapter extends RecyclerView.Adapter<PersonalBookAdapter.ViewHolder> {
 
     public interface IPersonalBookClick {
-        void onRemoveClick(String bookId);
+        void onRemoveClick(int position, Book book);
         void onViewClick(String bookId);
     }
 
@@ -72,7 +72,7 @@ public class PersonalBookAdapter extends RecyclerView.Adapter<PersonalBookAdapte
             itemView.setOnClickListener(v -> {
                 if (personalBookClick != null) {
                     if (getAdapterPosition() != RecyclerView.NO_POSITION) {
-                        personalBookClick.onViewClick("Nhan vao nut view");
+                        personalBookClick.onViewClick(books.get(getAdapterPosition()).getId());
                     }
                 }
             });
@@ -80,7 +80,7 @@ public class PersonalBookAdapter extends RecyclerView.Adapter<PersonalBookAdapte
             ibRemove.setOnClickListener(v -> {
                 if (personalBookClick != null) {
                     if (getAdapterPosition() != RecyclerView.NO_POSITION) {
-                        personalBookClick.onRemoveClick("Nhan vao nut remove");
+                        personalBookClick.onRemoveClick(getAdapterPosition(), books.get(getAdapterPosition()));
                     }
                 }
             });

@@ -20,6 +20,7 @@ import com.tyler.book_monitor.data.models.Chapter;
 import com.tyler.book_monitor.helpers.DominantColor;
 import com.tyler.book_monitor.ui.base.BaseActivity;
 
+import java.io.File;
 import java.util.List;
 
 public class ChapterActivity extends BaseActivity implements ChapterContract.View, ChapterAdapter.IChapterClick {
@@ -71,8 +72,12 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
             public void onPrepareLoad(Drawable placeHolderDrawable) { }
         };
 
-        Picasso.get().load(book.getCover()).resize(480, 720).into(target);
-        
+        if (book.getCover().contains("http")) {
+            Picasso.get().load(book.getCover()).resize(480, 720).into(target);
+        }
+        else {
+            Picasso.get().load(new File(book.getCover())).resize(480, 720).into(target);
+        }
         tvBookName.setText(book.getTitle());
 
         ChapterAdapter adapter = new ChapterAdapter(this, chapters, this);

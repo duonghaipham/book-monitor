@@ -1,6 +1,9 @@
 package com.tyler.book_monitor.ui.cover;
 
 import com.tyler.book_monitor.data.models.Book;
+import com.tyler.book_monitor.data.models.Chapter;
+
+import java.util.List;
 
 public class CoverContract {
     public interface View {
@@ -16,11 +19,11 @@ public class CoverContract {
 
     public interface Model {
         interface OnLoadContentListener {
-            void onSuccess(Book book, boolean isDownloaded);
+            void onSuccess(Book book, List<Chapter> chapters, boolean isDownloaded);
             void onFailure(String message);
         }
         void loadContent(String bookId, OnLoadContentListener listener);
-        void download(Book book);
-        void deleteDownload(String bookId);
+        void download(Book book, List<Chapter> chapters);
+        void deleteDownload(Book book);
     }
 }

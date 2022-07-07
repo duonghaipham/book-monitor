@@ -11,7 +11,7 @@ import android.util.Log;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import com.tyler.book_monitor.data.models.Book;
-import com.tyler.book_monitor.utils.ImageDownloader;
+import com.tyler.book_monitor.utils.ImageHandler;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +31,7 @@ public class BookService {
         Picasso.get().load(book.getCover()).into(new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                String localCover = ImageDownloader.getInstance().saveToInternalStorage(bitmap, mContext);
+                String localCover = ImageHandler.getInstance().saveToInternalStorage(bitmap, mContext);
 
                 ContentValues values = new ContentValues();
 
@@ -90,6 +90,41 @@ public class BookService {
         return books;
     }
 
+    public Book getById(String id) {
+        String[] columns = {
+                DatabaseHelper.COLUMN_ID,
+                DatabaseHelper.COLUMN_NAME,
+                DatabaseHelper.COLUMN_AUTHOR,
+                DatabaseHelper.COLUMN_INTRODUCTION,
+                DatabaseHelper.COLUMN_AVATAR,
+                DatabaseHelper.COLUMN_CATEGORIES
+        };
+
+        String selection = DatabaseHelper.COLUMN_ID + " = ?";
+        String[] selectionArgs = { id };
+
+        Cursor cursor = db.query(DatabaseHelper.TABLE_BOOK, columns, selection, selectionArgs, null, null, null);
+
+        Book book = null;
+
+        if (cursor.moveToNext()) {
+            book = new Book(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(4),
+                    cursor.getString(3),
+                    Arrays.asList(cursor.getString(5).split(", "))
+            );
+
+            cursor.close();
+        }
+
+        cursor.close();
+
+        return book;
+    }
+
     public boolean isDownloaded(String bookId) {
         String[] columns = {
                 DatabaseHelper.COLUMN_ID
@@ -107,12 +142,12 @@ public class BookService {
         return exists;
     }
 
-    public void delete(String id) {
+    public void delete(Book book) {
         String selection = DatabaseHelper.COLUMN_ID + " = ?";
-        String[] selectionArgs = { id };
+        String[] selectionArgs = { book.getId() };
+
+        ImageHandler.getInstance().deleteImage(book.getCover());
 
         db.delete(DatabaseHelper.TABLE_BOOK, selection, selectionArgs);
-
-        db.close();
     }
 }
