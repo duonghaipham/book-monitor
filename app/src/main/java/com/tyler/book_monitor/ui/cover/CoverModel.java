@@ -3,6 +3,7 @@ package com.tyler.book_monitor.ui.cover;
 import android.content.Context;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.tyler.book_monitor.data.db.ArchiveBookService;
 import com.tyler.book_monitor.data.db.BookService;
 import com.tyler.book_monitor.data.db.ChapterService;
 import com.tyler.book_monitor.data.models.Book;
@@ -19,16 +20,19 @@ public class CoverModel implements CoverContract.Model {
     private final FirebaseFirestore db;
     private final BookService bookService;
     private final ChapterService chapterService;
+    private final ArchiveBookService archiveBookService;
 
     public CoverModel(Context context) {
         db = FirebaseFirestore.getInstance();
         bookService = new BookService(context);
         chapterService = new ChapterService(context);
+        archiveBookService = new ArchiveBookService(context);
     }
 
     @Override
     public void loadContent(String bookId, OnLoadContentListener listener) {
         boolean isDownloaded = bookService.isDownloaded(bookId);
+        boolean isArchived = archiveBookService.isArchived(bookId);
 
         db.collection("books")
                 .document(bookId)
@@ -53,7 +57,7 @@ public class CoverModel implements CoverContract.Model {
                             ));
                         }
 
-                        listener.onSuccess(book, chapters, isDownloaded);
+                        listener.onSuccess(book, chapters, isDownloaded, isArchived);
                     } else {
                         listener.onFailure("Document does not exist!");
                     }
@@ -71,5 +75,15 @@ public class CoverModel implements CoverContract.Model {
         ImageHandler.getInstance().deleteImage(book.getCover());
         bookService.delete(book);
         chapterService.deleteAllChaptersByBookId(book.getId());
+    }
+
+    @Override
+    public void archive(Book book) {
+        archiveBookService.insert(book);
+    }
+
+    @Override
+    public void deleteArchive(String bookId) {
+        archiveBookService.delete(bookId);
     }
 }

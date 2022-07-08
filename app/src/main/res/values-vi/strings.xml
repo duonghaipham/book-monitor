@@ -9,6 +9,8 @@
     <string name="view_all">Xem tất cả</string>
     <string name="download">Tải xuống</string>
     <string name="delete_download">Xóa tải xuống</string>
+    <string name="archive">Lưu trữ</string>
+    <string name="delete_archive">Xóa lưu trữ</string>
     <string name="read_online">Đọc trực tuyến</string>
     <string name="read_offline">Đọc ngoại tuyến</string>
     <string name="chapters">Danh sách chương</string>

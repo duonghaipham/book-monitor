@@ -14,4 +14,12 @@ public class ArchiveContract {
         void toCoverActivity(String bookId);
         void removeBookFromArchive(String bookId);
     }
+
+    public interface Model {
+        interface OnLoadContentListener {
+            void onLoadContent(List<Book> archivedBooks);
+        }
+        void loadContent(OnLoadContentListener listener);
+        void removeBookFromArchive(String bookId);
+    }
 }

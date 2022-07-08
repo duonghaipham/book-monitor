@@ -26,6 +26,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_ARCHIVE_BOOK = "ArchiveBook";
     public static final String COLUMN_ARCHIVE_BOOK_ID = "id";
+    public static final String COLUMN_ARCHIVE_BOOK_NAME = "name";
+    public static final String COLUMN_ARCHIVE_BOOK_AUTHOR = "author";
+    public static final String COLUMN_ARCHIVE_BOOK_AVATAR = "avatar";
 
     private static final String CREATE_TABLE_BOOK =
             "CREATE TABLE " + TABLE_BOOK + "("
@@ -48,7 +51,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_ARCHIVE_BOOK =
             "CREATE TABLE " + TABLE_ARCHIVE_BOOK + "("
-                    + COLUMN_ARCHIVE_BOOK_ID + " TEXT PRIMARY KEY"
+                    + COLUMN_ARCHIVE_BOOK_ID + " TEXT PRIMARY KEY, "
+                    + COLUMN_ARCHIVE_BOOK_NAME + " TEXT, "
+                    + COLUMN_ARCHIVE_BOOK_AUTHOR + " TEXT, "
+                    + COLUMN_ARCHIVE_BOOK_AVATAR + " TEXT"
                     + ")";
 
     public DatabaseHelper(Context context) {

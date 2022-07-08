@@ -11,6 +11,8 @@
     <string name="read_online">在线阅读</string>
     <string name="download">下载</string>
     <string name="delete_download">删除下载</string>
+    <string name="archive">归档</string>
+    <string name="delete_archive">删除归档</string>
     <string name="read_offline">离线阅读</string>
     <string name="chapters">章节</string>
     <string name="text">文字</string>

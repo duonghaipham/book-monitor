@@ -21,6 +21,9 @@ public class ArchiveActivity extends BaseActivity implements ArchiveContract.Vie
     private RecyclerView rvArchivedBooks;
     private TextView tvNoArchivedBooks;
 
+    private PersonalBookAdapter mAdapter;
+    private List<Book> mBooks;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +43,10 @@ public class ArchiveActivity extends BaseActivity implements ArchiveContract.Vie
             rvArchivedBooks.setVisibility(View.VISIBLE);
             tvNoArchivedBooks.setVisibility(View.GONE);
 
-            PersonalBookAdapter adapter = new PersonalBookAdapter(this, archivedBooks, this);
+            mBooks = archivedBooks;
+            mAdapter = new PersonalBookAdapter(this, mBooks, this);
 
-            rvArchivedBooks.setAdapter(adapter);
+            rvArchivedBooks.setAdapter(mAdapter);
             rvArchivedBooks.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         } else {
             rvArchivedBooks.setVisibility(View.GONE);
@@ -53,6 +57,9 @@ public class ArchiveActivity extends BaseActivity implements ArchiveContract.Vie
     @Override
     public void onRemoveClick(int position, Book book) {
         presenter.removeBookFromArchive(book.getId());
+
+        mBooks.remove(position);
+        mAdapter.notifyItemRemoved(position);
     }
 
     @Override

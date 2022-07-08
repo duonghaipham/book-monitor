@@ -46,7 +46,12 @@ public class PersonalBookAdapter extends RecyclerView.Adapter<PersonalBookAdapte
     public void onBindViewHolder(@NonNull PersonalBookAdapter.ViewHolder holder, int position) {
         holder.tvTitle.setText(books.get(position).getTitle());
         holder.tvAuthor.setText(books.get(position).getAuthor());
-        Picasso.get().load(new File(books.get(position).getCover())).into(holder.ivCover);
+
+        if (books.get(position).getCover().contains("http")) {
+            Picasso.get().load(books.get(position).getCover()).into(holder.ivCover);
+        } else {
+            Picasso.get().load(new File(books.get(position).getCover())).into(holder.ivCover);
+        }
     }
 
     @Override

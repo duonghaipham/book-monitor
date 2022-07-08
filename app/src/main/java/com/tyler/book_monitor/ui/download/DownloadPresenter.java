@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.ui.chapter.ChapterActivity;
-import com.tyler.book_monitor.ui.cover.CoverActivity;
 
 import java.util.List;
 

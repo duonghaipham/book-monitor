@@ -9,6 +9,8 @@
     <string name="view_all">View All</string>
     <string name="download">Download</string>
     <string name="delete_download">Delete Download</string>
+    <string name="archive">Archive</string>
+    <string name="delete_archive">Delete Archive</string>
     <string name="read_online">Read Online</string>
     <string name="read_offline">Read Offline</string>
     <string name="chapters">Chapters</string>

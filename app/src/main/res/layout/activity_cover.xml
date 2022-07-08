@@ -79,6 +79,26 @@
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.Material3.Button.ElevatedButton"
+                android:id="@+id/ib_toggle_archive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/material_text_button"
+                android:text="@string/archive"
+                android:backgroundTint="@color/primaryButtonColor"
+                android:textColor="@color/primaryButtonTextColor"
+                app:iconTint="@color/primaryButtonTextColor"
+                app:icon="@drawable/ic_round_bookmark_border"
+                app:iconPadding="0dp"
+                app:iconGravity="end" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:id="@+id/btn_toggle_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

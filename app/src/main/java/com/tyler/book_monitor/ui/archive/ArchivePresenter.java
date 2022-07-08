@@ -2,47 +2,51 @@ package com.tyler.book_monitor.ui.archive;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
+import android.os.Bundle;
 
 import com.tyler.book_monitor.data.models.Book;
 import com.tyler.book_monitor.ui.cover.CoverActivity;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class ArchivePresenter implements ArchiveContract.Presenter {
 
     private final Context context;
     private final ArchiveContract.View view;
+    private final ArchiveContract.Model model;
+
+    private List<Book> mArchivedBooks;
 
     public ArchivePresenter(Context context, ArchiveContract.View view) {
         this.context = context;
         this.view = view;
+        this.model = new ArchiveModel(context);
     }
 
     @Override
     public void loadContent() {
-        List<Book> archivedBooks = new Vector<>();
-        List<String> categories = new ArrayList<>();
-        archivedBooks.add(new Book("", "The Da Vinci Code", "Dan Brown", "", "", categories));
-        archivedBooks.add(new Book("", "Harry Potter and the chamber of secrets", "J.K Rowling", "", "", categories));
-        archivedBooks.add(new Book("", "Harry Potter and the stone", "J.K Rowling", "", "", categories));
-        archivedBooks.add(new Book("", "Harry Potter and the Dead Hallow", "J.K Rowling", "", "", categories));
-        archivedBooks.add(new Book("", "Harry Potter and the half blood price", "J.K Rowling", "", "", categories));
-        archivedBooks.add(new Book("", "Harry Potter and the cursed child", "J.K Rowling", "", "", categories));
+        model.loadContent(new ArchiveModel.OnLoadContentListener() {
+            @Override
+            public void onLoadContent(List<Book> archivedBooks) {
+                mArchivedBooks = archivedBooks;
 
-        view.onLoadContent(archivedBooks);
+                view.onLoadContent(archivedBooks);
+            }
+        });
     }
 
     @Override
     public void toCoverActivity(String bookId) {
+        Bundle bundle = new Bundle();
+        bundle.putString("bookId", bookId);
+
         Intent intent = new Intent(context, CoverActivity.class);
+        intent.putExtras(bundle);
         context.startActivity(intent);
     }
 
     @Override
     public void removeBookFromArchive(String bookId) {
-        Toast.makeText(context, "Book removed from archive", Toast.LENGTH_SHORT).show();
+        model.removeBookFromArchive(bookId);
     }
 }
