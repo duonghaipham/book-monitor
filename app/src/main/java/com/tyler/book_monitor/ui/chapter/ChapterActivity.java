@@ -56,7 +56,7 @@ public class ChapterActivity extends BaseActivity implements ChapterContract.Vie
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 ivCover.setImageBitmap(bitmap);
 
-                if (themeMode == 0) {
+                if (themeMode == 0) { // light mode
                     DominantColor dominantColor = new DominantColor(bitmap);
                     color = dominantColor.getDominantColor();
 

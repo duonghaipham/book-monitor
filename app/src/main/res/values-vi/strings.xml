@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Book</string>
+    <string name="app_name">Livre</string>
     <string name="hello">Xin chào!</string>
     <string name="search_hint">Tìm kiếm bằng từ khóa, tác giả…</string>
     <string name="popular_authors">Tác giả phổ biến</string>

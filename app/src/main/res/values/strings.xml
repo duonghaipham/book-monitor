@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Book</string>
+    <string name="app_name">Livre</string>
     <string name="hello">Hello!</string>
     <string name="search_hint">Search by Title, Author…</string>
     <string name="popular_authors">Popular Authors</string>

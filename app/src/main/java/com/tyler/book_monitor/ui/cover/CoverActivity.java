@@ -23,6 +23,7 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
     private CoverContract.Presenter presenter;
 
     private String bookId;
+    private int color;
 
     private LinearLayout llCover;
     private ImageView ivCover;
@@ -32,7 +33,6 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
     private MaterialButton btnToggleArchive;
     private MaterialButton btnToggleDownload;
     private Button btnReadOnline;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +74,10 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
 
                 if (themeMode == 0) { // light mode
                     DominantColor dominantColor = new DominantColor(bitmap);
+                    color = dominantColor.getDominantColor();
+
                     GradientDrawable gd = dominantColor.getDominantColorGradient();
-                    llCover.setBackgroundResource(R.drawable.mock_author);
+                    llCover.setBackground(gd);
                 }
             }
 
@@ -109,20 +111,26 @@ public class CoverActivity extends BaseActivity implements CoverContract.View {
 
     // for not repeated block of code
     private void setBtnToggleDownloadText(boolean isDownloaded) {
-        if (isDownloaded)
+        if (isDownloaded) {
+            btnToggleDownload.setBackgroundColor(getResources().getColor(R.color.secondaryButtonColor));
             btnToggleDownload.setText(R.string.delete_download);
-        else
+        }
+        else {
+            btnToggleDownload.setBackgroundColor(getResources().getColor(R.color.primaryButtonColor));
             btnToggleDownload.setText(R.string.download);
+        }
     }
 
     // for not repeated block of code
     @SuppressLint("UseCompatLoadingForDrawables")
     private void setImgBtnToggleArchiveText(boolean isArchived) {
         if (isArchived) {
+            btnToggleArchive.setBackgroundColor(getResources().getColor(R.color.secondaryButtonColor));
             btnToggleArchive.setText(R.string.delete_archive);
             btnToggleArchive.setIcon(getResources().getDrawable(R.drawable.ic_round_bookmark));
         }
         else {
+            btnToggleArchive.setBackgroundColor(getResources().getColor(R.color.primaryButtonColor));
             btnToggleArchive.setText(R.string.archive);
             btnToggleArchive.setIcon(getResources().getDrawable(R.drawable.ic_round_bookmark_border));
         }

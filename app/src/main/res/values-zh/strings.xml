@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Book</string>
+    <string name="app_name">Livre</string>
     <string name="hello">你好</string>
     <string name="search_hint">搜索</string>
     <string name="popular_authors">热门作者</string>

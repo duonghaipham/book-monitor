@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Book</string>
+    <string name="app_name">Livre</string>
     <string name="hello">Bonjour!</string>
     <string name="search_hint">Rechercher…</string>
     <string name="popular_authors">Auteurs populaires</string>

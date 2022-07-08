@@ -7,32 +7,39 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/view_authors"
-            android:textSize="@dimen/material_text_headline"
-            android:fontFamily="@font/roboto_condensed_regular"
-            android:textColor="@color/primaryTextColor"/>
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:layout_marginBottom="15dp"
-            android:src="@drawable/asset_banner"/>
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_author"
+            android:adjustViewBounds="true"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_all_authors"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/view_authors"
+                android:textSize="@dimen/material_text_headline"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:textColor="@color/primaryTextColor"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_all_authors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
