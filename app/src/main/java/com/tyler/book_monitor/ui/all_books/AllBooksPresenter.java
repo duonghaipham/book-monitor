@@ -15,8 +15,6 @@ public class AllBooksPresenter implements AllBooksContract.Presenter {
     private final AllBooksContract.View view;
     private final AllBooksContract.Model model;
 
-    private List<Book> mBooks;
-
     public AllBooksPresenter(Context context, AllBooksContract.View view) {
         this.context = context;
         this.view = view;
@@ -27,23 +25,36 @@ public class AllBooksPresenter implements AllBooksContract.Presenter {
     public void loadContent() {
         model.loadContent(new AllBooksContract.Model.OnLoadContentListener() {
             @Override
-            public void onSuccess(List<Book> books) {
-                mBooks = books;
-
-                view.onLoadContent(books);
+            public void onSuccess(List<Book> books, List<String> pages) {
+                view.onLoadContent(books, pages);
             }
 
             @Override
             public void onFailure(String message) {
-                view.onLoadContent(null);
+                view.onLoadContent(null, null);
             }
         });
     }
 
     @Override
-    public void toCoverActivity(int position) {
+    public void loadContentByPage(String criterion, int page) {
+        model.loadContentByPage(criterion, page, new AllBooksContract.Model.OnLoadContentByPageListener() {
+            @Override
+            public void onSuccess(List<Book> books) {
+                view.onLoadContentByPage(books);
+            }
+
+            @Override
+            public void onFailure(String message) {
+                view.onLoadContentByPage(null);
+            }
+        });
+    }
+
+    @Override
+    public void toCoverActivity(String bookId) {
         Bundle bundle = new Bundle();
-        bundle.putString("bookId", mBooks.get(position).getId());
+        bundle.putString("bookId", bookId);
 
         Intent intent = new Intent(context, CoverActivity.class);
         intent.putExtras(bundle);

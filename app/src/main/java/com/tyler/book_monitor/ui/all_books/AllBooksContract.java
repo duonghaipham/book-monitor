@@ -6,19 +6,26 @@ import java.util.List;
 
 public class AllBooksContract {
     public interface View {
-        void onLoadContent(List<Book> books);
+        void onLoadContent(List<Book> books, List<String> pages);
+        void onLoadContentByPage(List<Book> books);
     }
 
     public interface Presenter {
         void loadContent();
-        void toCoverActivity(int position);
+        void loadContentByPage(String criterion, int page);
+        void toCoverActivity(String bookId);
     }
 
     public interface Model {
         interface OnLoadContentListener {
+            void onSuccess(List<Book> books, List<String> pages);
+            void onFailure(String message);
+        }
+        interface OnLoadContentByPageListener {
             void onSuccess(List<Book> books);
             void onFailure(String message);
         }
         void loadContent(OnLoadContentListener listener);
+        void loadContentByPage(String criterion, int page, OnLoadContentByPageListener listener);
     }
 }

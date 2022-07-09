@@ -53,6 +53,8 @@
         <entry key="..\:/Books/app/src/main/res/layout/item_book.xml" value="0.4" />
         <entry key="..\:/Books/app/src/main/res/layout/item_chapter.xml" value="0.2775" />
         <entry key="..\:/Books/app/src/main/res/layout/item_font.xml" value="0.25416666666666665" />
+        <entry key="..\:/Books/app/src/main/res/layout/item_loading_book.xml" value="0.253125" />
+        <entry key="..\:/Books/app/src/main/res/layout/item_pagination.xml" value="1.0" />
         <entry key="..\:/Books/app/src/main/res/layout/item_personal_book.xml" value="0.14166666666666666" />
         <entry key="..\:/Books/app/src/main/res/layout/item_search_result.xml" value="0.253125" />
         <entry key="..\:/Books/app/src/main/res/layout/nav_header_drawer.xml" value="0.25416666666666665" />
