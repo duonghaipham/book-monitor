@@ -19,11 +19,14 @@ public class PaginationAdapter extends RecyclerView.Adapter<PaginationAdapter.Vi
         void onPaginationClick(int position);
     }
 
+    private final Context context;
     private final LayoutInflater inflater;
     private final List<String> pages;
     private final IPaginationClick paginationClick;
+    private static int index = -1;
 
     public PaginationAdapter(Context context, List<String> pages, IPaginationClick paginationClick) {
+        this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.pages = pages;
         this.paginationClick = paginationClick;
@@ -38,6 +41,18 @@ public class PaginationAdapter extends RecyclerView.Adapter<PaginationAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.itemView.setOnClickListener(v -> {
+            index = holder.getAdapterPosition();
+            notifyDataSetChanged();
+
+            paginationClick.onPaginationClick(index);
+        });
+
+        if (index == position) {
+            holder.tvPageNumber.setBackgroundColor(context.getColor(R.color.paginationSelectedColor));
+        } else {
+            holder.tvPageNumber.setBackgroundColor(context.getColor(R.color.primaryButtonColor));
+        }
         holder.tvPageNumber.setText(pages.get(position));
     }
 

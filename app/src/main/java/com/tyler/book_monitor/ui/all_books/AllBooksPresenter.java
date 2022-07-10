@@ -37,8 +37,8 @@ public class AllBooksPresenter implements AllBooksContract.Presenter {
     }
 
     @Override
-    public void loadContentByPage(String criterion, int page) {
-        model.loadContentByPage(criterion, page, new AllBooksContract.Model.OnLoadContentByPageListener() {
+    public void loadContentByPage(int page) {
+        model.loadContentByPage(page, new AllBooksContract.Model.OnLoadContentByPageListener() {
             @Override
             public void onSuccess(List<Book> books) {
                 view.onLoadContentByPage(books);

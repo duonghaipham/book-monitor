@@ -12,7 +12,7 @@ public class AllBooksContract {
 
     public interface Presenter {
         void loadContent();
-        void loadContentByPage(String criterion, int page);
+        void loadContentByPage(int page);
         void toCoverActivity(String bookId);
     }
 
@@ -26,6 +26,6 @@ public class AllBooksContract {
             void onFailure(String message);
         }
         void loadContent(OnLoadContentListener listener);
-        void loadContentByPage(String criterion, int page, OnLoadContentByPageListener listener);
+        void loadContentByPage(int page, OnLoadContentByPageListener listener);
     }
 }

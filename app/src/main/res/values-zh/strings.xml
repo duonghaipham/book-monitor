@@ -4,7 +4,7 @@
     <string name="hello">你好</string>
     <string name="search_hint">搜索</string>
     <string name="popular_authors">热门作者</string>
-    <string name="continue_reading">继续阅读</string>
+    <string name="books">书</string>
     <string name="trending_books">热门图书</string>
     <string name="his_her_books">他的图书</string>
     <string name="view_all">查看全部</string>
@@ -25,7 +25,7 @@
     <string name="language">语言</string>
     <string name="dark_mode">夜间模式</string>
     <string name="view_authors">查看作者</string>
-    <string name="view_continued_books">查看继续阅读</string>
+    <string name="view_books">查看书</string>
     <string name="view_trending_books">查看热门图书</string>
     <string name="archived_books">已归档图书</string>
     <string name="downloaded_books">已下载图书</string>

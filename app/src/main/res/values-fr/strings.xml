@@ -4,7 +4,7 @@
     <string name="hello">Bonjour!</string>
     <string name="search_hint">Rechercher…</string>
     <string name="popular_authors">Auteurs populaires</string>
-    <string name="continue_reading">Continuer à lire</string>
+    <string name="books">Livres</string>
     <string name="trending_books">Livres tendance</string>
     <string name="his_her_books">Ses livres</string>
     <string name="view_all">Voir tout</string>
@@ -25,7 +25,7 @@
     <string name="language">Langue</string>
     <string name="dark_mode">Mode sombre</string>
     <string name="view_authors">Voir les auteurs les plus connus</string>
-    <string name="view_continued_books">Découvrir les livres que vous aimez</string>
+    <string name="view_books">Divertissez-vous avec les livres</string>
     <string name="view_trending_books">Voir les livres les plus populaires</string>
     <string name="archived_books">Livres archivés</string>
     <string name="downloaded_books">Livres téléchargés</string>

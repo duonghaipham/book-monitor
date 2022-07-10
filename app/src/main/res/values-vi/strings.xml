@@ -3,7 +3,7 @@
     <string name="hello">Xin chào!</string>
     <string name="search_hint">Tìm kiếm bằng từ khóa, tác giả…</string>
     <string name="popular_authors">Tác giả phổ biến</string>
-    <string name="continue_reading">Tiếp tục đọc</string>
+    <string name="books">Books</string>
     <string name="trending_books">Sách thịnh hành</string>
     <string name="his_her_books">Sách của ổng/bả</string>
     <string name="view_all">Xem tất cả</string>
@@ -24,7 +24,7 @@
     <string name="language">Ngôn ngữ</string>
     <string name="dark_mode">Chế độ tối</string>
     <string name="view_authors">Tác giả nổi tiếng nhất</string>
-    <string name="view_continued_books">Đọc tiếp</string>
+    <string name="view_books">Sách nổi tiếng nhất</string>
     <string name="view_trending_books">Sách thịnh hành</string>
     <string name="archived_books">Sách đã lưu</string>
     <string name="downloaded_books">Sách đã tải xuống</string>

@@ -14,4 +14,5 @@
     <color name="secondaryButtonColor">#FFF73D52</color>
     <color name="statusBarColor">#C1C1C1</color>
     <color name="placeholderColor">#BCBCBC</color>
+    <color name="paginationSelectedColor">#FF028A0F</color>
 </resources>

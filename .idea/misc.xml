@@ -22,7 +22,7 @@
         <entry key="..\:/Books/app/src/main/res/drawable/shape_circular_search.xml" value="0.139" />
         <entry key="..\:/Books/app/src/main/res/drawable/side_nav_bar.xml" value="0.147" />
         <entry key="..\:/Books/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.33197278911564626" />
-        <entry key="..\:/Books/app/src/main/res/layout/activity_all_authors.xml" value="0.25416666666666665" />
+        <entry key="..\:/Books/app/src/main/res/layout/activity_all_authors.xml" value="0.264" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_all_books.xml" value="0.264" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_archive.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_author.xml" value="0.25416666666666665" />
@@ -32,7 +32,7 @@
         <entry key="..\:/Books/app/src/main/res/layout/activity_download.xml" value="0.25025641025641027" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/Books/app/src/main/res/layout/activity_main.xml" value="0.42397914856646396" />
+        <entry key="..\:/Books/app/src/main/res/layout/activity_main.xml" value="0.37199124726477023" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_search.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
         <entry key="..\:/Books/app/src/main/res/layout/app_bar_drawer.xml" value="0.25416666666666665" />

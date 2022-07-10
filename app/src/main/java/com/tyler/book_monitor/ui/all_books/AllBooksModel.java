@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tyler.book_monitor.data.models.Book;
+import com.tyler.book_monitor.utils.Constants;
 
 import java.util.List;
 import java.util.Vector;
@@ -27,8 +28,7 @@ public class AllBooksModel implements AllBooksContract.Model {
         Task<QuerySnapshot> task1 = db.collection("books")
                 .whereEqualTo("isPublished", true)
                 .orderBy(FieldPath.documentId(), Query.Direction.ASCENDING)
-//                .orderBy("name", Query.Direction.DESCENDING)
-                .limit(1)
+                .limit(Constants.BOOK_LIMIT)
                 .get();
 
         Task<DocumentSnapshot> task2 = db.collection("information")
@@ -52,7 +52,7 @@ public class AllBooksModel implements AllBooksContract.Model {
 
             List<String> pages = new Vector<>();
             int counter = mRefs.size();
-            for (int i = 0; i < Math.ceil(counter / 1); i++) {
+            for (int i = 0; i < Math.ceil(counter * 1.0 / Constants.BOOK_LIMIT); i++) {
                 pages.add(String.valueOf(i + 1));
             }
 
@@ -61,12 +61,12 @@ public class AllBooksModel implements AllBooksContract.Model {
     }
 
     @Override
-    public void loadContentByPage(String criterion, int page, OnLoadContentByPageListener listener) {
+    public void loadContentByPage(int page, OnLoadContentByPageListener listener) {
         db.collection("books")
                 .whereEqualTo("isPublished", true)
                 .orderBy(FieldPath.documentId())
-                .startAt(mRefs.get(page / 1))
-                .limit(1)
+                .startAt(mRefs.get(page / Constants.BOOK_LIMIT))
+                .limit(Constants.BOOK_LIMIT)
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
             List<Book> books = new Vector<>();
